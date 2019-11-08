@@ -1,4 +1,4 @@
-/**Login:*/
+/**Login/Sign up:*/
 
 @import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
 
@@ -8,7 +8,6 @@ html {
 }
 
 body {
-    /* Remember to use the other versions for IE 10 and older browsers! */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +16,7 @@ body {
     font-family: 'lato', sans-serif;
 }
 
-.container {
+#container-login, #container-signup {
     background:rgba(58,63,68,0.5);
     border-radius: 5px;
     box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
@@ -25,6 +24,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 
 .logo{
     font-family: "museo-slab";
@@ -142,12 +142,25 @@ input {
     color: #5b5b5b;
 }
 .gender:before{
-    content:"\f004";
+    content:"\f228";
     font: 14px fontawesome;
     color: #5b5b5b;
 }
 .gender{
-    font-size: 1.3em;
-
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-size: 1em;
     color: gray;
+}
+#container-signup{
+    display: none;
+}
+.privacidad{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.privacidad input{
+    margin-right: 10px;
+
 }

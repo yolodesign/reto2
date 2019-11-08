@@ -5,16 +5,16 @@
 <head>
     <title>Yolo pop</title>
     <link rel="StyleSheet" href="Assets/CSS/main.css" type="text/css">
-    <!--<script src="Assets/JS/Login.js"-->
+    <script src="Assets/JS/Login.js"></script>
 </head>
 <body>
-<div class="container login">
+<div id="container-login">
     <div class="logo">
-        <input type="button" value="Log in">
-        <input type="button" value="Sign in">
+        <input type="button" value="Log in" onclick="loginSign('login')">
+        <input type="button" value="Sign in" onclick="loginSign('sign')">
     </div>
     <div class="login-item">
-        <form action="" method="post" class="form form-login">
+        <form action="" method="post" class="form form-login" onsubmit="return login()">
             <div class="form-field">
                 <label class="user" for="login-username"><span class="hidden">Username</span></label>
                 <input id="login-username" type="text" class="form-input" placeholder="Username" required>
@@ -34,13 +34,13 @@
 
 
 
-<div class="container signup">
+<div id="container-signup">
     <div class="logo">
-        <input type="button" value="Log in">
-        <input type="button" value="Sign in">
+        <input type="button" value="Log in" onclick="loginSign('login')">
+        <input type="button" value="Sign in" onclick="loginSign('sign')">
     </div>
     <div class="login-item">
-        <form action="" method="post" class="form form-login">
+        <form action="" method="post" class="form form-login" onsubmit="return signup()">
             <div class="form-field">
                 <label class="user" for="signup-username"><span class="hidden">Name</span></label>
                 <input id="signup-name" type="text" class="form-input" placeholder="Name" required>
@@ -73,7 +73,9 @@
                 <label class="lock" for="signup-password"><span class="hidden">Password</span></label>
                 <input id="signup-password" type="password" class="form-input" placeholder="Password" required>
             </div>
-
+            <div class="form-field privacidad">
+                <input type="checkbox" id="signup-privacidad" value=""><p>I have read and agree to the <a href="Login.php">Terms and Conditions</a> and <a href="">Privacy Policy</a></p>
+            </div>
             <div class="form-field">
                 <input type="submit" value="Sign up">
             </div>
