@@ -33,7 +33,7 @@ CREATE TABLE `perfiles` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`nombre` varchar(255) NOT NULL,
 	`apellido` varchar(255) NOT NULL,
-	`correo` varchar(255) NOT NULL AUTO_INCREMENT,
+	`correo` varchar(255) NOT NULL,
 	`sexo` varchar(255) NOT NULL,
 	`valoracion` int(255),
 	`opinion` varchar(255),
