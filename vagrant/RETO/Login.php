@@ -40,7 +40,7 @@
         <input type="button" value="Sign in" onclick="loginSign('sign')">
     </div>
     <div class="login-item">
-        <form action="" method="post" class="form form-login" onsubmit="return signup()">
+        <form action="www.google.com" method="post" class="form form-login" onsubmit="return signup()">
             <div class="form-field">
                 <label class="user" for="signup-username"><span class="hidden">Name</span></label>
                 <input id="signup-name" type="text" class="form-input" placeholder="Name" required>
