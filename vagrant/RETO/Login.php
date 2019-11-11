@@ -1,13 +1,13 @@
 <?php
-
+include ("head.php");
 ?>
-<html>
+<html id="loginHtml">
 <head>
     <title>Yolo pop</title>
     <link rel="StyleSheet" href="Assets/CSS/main.css" type="text/css">
     <script src="Assets/JS/Login.js"></script>
 </head>
-<body>
+<body id="loginBody">
 <div id="container-login">
     <div class="logo">
         <input type="button" value="Log in" onclick="loginSign('login')">
