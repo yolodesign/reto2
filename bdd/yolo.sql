@@ -42,7 +42,7 @@ CREATE TABLE `perfiles` (
 );
 
 CREATE TABLE `categoria` (
-	`id` bigint NOT NULL AUTO_INCREMENT,
+	`id` int NOT NULL AUTO_INCREMENT,
 	`nombre` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
