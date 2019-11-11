@@ -1,13 +1,8 @@
 <?php
+
 include ("head.php");
 
 ?>
-<html id="loginHtml">
-<head>
-    <title>Yolo pop</title>
-    <link rel="StyleSheet" href="Assets/CSS/main.css" type="text/css">
-    <script src="Assets/JS/Login.js"></script>
-</head>
 
 <body id="loginBody">
 <div id="container-login">
