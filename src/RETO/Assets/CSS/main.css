@@ -61,33 +61,20 @@
     flex-direction: column;
 }
 
-
-<<<<<<< HEAD:src/RETO/Assets/CSS/main.css
 .logButtons{
-=======
-.logo {
->>>>>>> desarrollo:vagrant/RETO/Assets/CSS/main.css
     font-family: "museo-slab";
     font-size: 20px;
     text-align: center;
     padding-top: 20px;
 }
-<<<<<<< HEAD:src/RETO/Assets/CSS/main.css
 .logButtons input{
-=======
 
-.logo input {
->>>>>>> desarrollo:vagrant/RETO/Assets/CSS/main.css
     padding: 15px;
     margin: 0px 10px 0px 10px;
     background: #00B9BC;
 }
-<<<<<<< HEAD:src/RETO/Assets/CSS/main.css
-.logButtons input:focus, .logButtons input:hover{
-=======
 
-.logo input:focus, .logo input:hover {
->>>>>>> desarrollo:vagrant/RETO/Assets/CSS/main.css
+.logButtons input:focus, .logButtons input:hover{
     background-color: #197071;
 }
 
