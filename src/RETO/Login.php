@@ -1,14 +1,18 @@
 <?php
-
+include ("head.php");
 ?>
-<html>
+<html id="loginHtml">
 <head>
     <title>Yolo pop</title>
     <link rel="StyleSheet" href="Assets/CSS/main.css" type="text/css">
     <script src="Assets/JS/Login.js"></script>
 </head>
+<<<<<<< HEAD:src/RETO/Login.php
 <body>
 <!--Login-->
+=======
+<body id="loginBody">
+>>>>>>> desarrollo:vagrant/RETO/Login.php
 <div id="container-login">
     <div class="logButtons">
         <input type="button" value="Log in" onclick="loginSign('login')">
