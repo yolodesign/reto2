@@ -4,8 +4,8 @@ USE yolo;
 
 CREATE TABLE `usuarios` (
 	`id` int NOT NULL AUTO_INCREMENT,
-	`usuario` varchar(255) NOT NULL AUTO_INCREMENT,
-	`contraseña` varchar(255) NOT NULL AUTO_INCREMENT,
+	`usuario` varchar(255) NOT NULL,
+	`contraseña` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -25,17 +25,19 @@ CREATE TABLE `etiquetas` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`usos` int NOT NULL,
 	`nombre` varchar(255) NOT NULL,
+	`id_categoria` int NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `perfiles` (
 	`id` int NOT NULL AUTO_INCREMENT,
-	`nombre` varchar(255) NOT NULL AUTO_INCREMENT,
-	`apellido` varchar(255) NOT NULL AUTO_INCREMENT,
-	`correo` varchar(255) NOT NULL AUTO_INCREMENT,
-	`sexo` varchar(255) NOT NULL AUTO_INCREMENT,
+	`nombre` varchar(255) NOT NULL,
+	`apellido` varchar(255) NOT NULL,
+	`correo` varchar(255) NOT NULL,
+	`sexo` varchar(255) NOT NULL,
 	`valoracion` int(255),
 	`opinion` varchar(255),
+	`id_usuario` int NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -45,17 +47,10 @@ CREATE TABLE `categoria` (
 	PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `productoEtiquetas` (
-	`id_producto` int NOT NULL AUTO_INCREMENT,
-	`id_etiquetas` int NOT NULL AUTO_INCREMENT,
-	PRIMARY KEY (`id_producto`,`id_etiquetas`)
-);
-
 ALTER TABLE `productos` ADD CONSTRAINT `productos_fk0` FOREIGN KEY (`id_categoria`) REFERENCES `categoria`(`id`);
 
 ALTER TABLE `productos` ADD CONSTRAINT `productos_fk1` FOREIGN KEY (`id_perfiles`) REFERENCES `perfiles`(`id`);
 
-ALTER TABLE `productoEtiquetas` ADD CONSTRAINT `productoEtiquetas_fk0` FOREIGN KEY (`id_producto`) REFERENCES `productos`(`id`);
+ALTER TABLE `etiquetas` ADD CONSTRAINT `etiquetas_fk0` FOREIGN KEY (`id_categoria`) REFERENCES `categoria`(`id`);
 
-ALTER TABLE `productoEtiquetas` ADD CONSTRAINT `productoEtiquetas_fk1` FOREIGN KEY (`id_etiquetas`) REFERENCES `etiquetas`(`id`);
-
+ALTER TABLE `perfiles` ADD CONSTRAINT `perfiles_fk0` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id`);
