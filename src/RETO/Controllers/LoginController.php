@@ -1,14 +1,17 @@
 <?php
-require_once(dirname(__FILE__) . '/../../../persistence/DAO/UserDAO.php');
-require_once(dirname(__FILE__) . '/../../../app/models/User.php');
-require_once(dirname(__FILE__) . '/../../../utils/SessionUtils.php');
+include_once '../Session/DAO/UserDAO.php';
+include_once '../Clases/User.php';
+include_once '../Session/Utils/SessionUtils.php';
 
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    checkAction();
-
+    if (true){
+        checkAction();
+    }else{
+        createAction();
+    }
 }
 
 
@@ -27,12 +30,33 @@ function checkAction() {
         SessionUtils::startSessionIfNotStarted();
         SessionUtils::setSession($user->getEmail());
 
-        header('Location: ../../../app/private/views/index.php');
+        header('Location: ../index.php');
     }
     else
     {
 
-        header('Location: ../../../app/public/views/index.php');
+        header('Location: ../index.php');
+    }
+
+
+    // Función encargada de crear nuevos usuarios
+    function createAction() {
+        // Obtención de los valores del formulario y validación
+        $email = ValidationsRules::test_input($_POST["email"]);
+        $pass = ValidationsRules::test_input($_POST["password"]);
+        // Creación de objeto auxiliar
+        $user = new User();
+        $user->setEmail($email);
+        $user->setPassword($pass);
+        //Creamos un objeto UserDAO para hacer las llamadas a la BD
+        $userDAO = new UserDAO();
+        $userDAO->insert($user);
+
+        // Establecemos la sesión
+        SessionUtils::startSessionIfNotStarted();
+        SessionUtils::setSession($user->getEmail());
+
+        header('Location: ../index.php');
     }
 
 }
