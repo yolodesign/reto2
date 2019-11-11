@@ -26,18 +26,18 @@ body {
 }
 
 
-.logo{
+.logButtons{
     font-family: "museo-slab";
     font-size:20px;
     text-align: center;
     padding-top: 20px;
 }
-.logo input{
+.logButtons input{
     padding: 15px;
     margin: 0px 10px 0px 10px;
     background: #00B9BC;
 }
-.logo input:focus, .logo input:hover{
+.logButtons input:focus, .logButtons input:hover{
     background-color: #197071;
 }
 

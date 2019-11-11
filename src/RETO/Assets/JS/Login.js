@@ -46,8 +46,7 @@ function signup() {
                     }
 
                     if (año >= 18) {
-
-                        console.log("ENTRA")
+                        error("Entra.")
                         return true;
                     }else{
                         error("Solo las personas mayores de 18 años pueden registrarse en esta página.")
