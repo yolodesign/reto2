@@ -15,3 +15,5 @@ DROP TABLE IF EXISTS `etiquetas`;
 DROP TABLE IF EXISTS `perfiles`;
 
 DROP TABLE IF EXISTS `categoria`;
+
+DROP DATABASE yolo;
