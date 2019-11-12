@@ -7,9 +7,6 @@ Class UserDAO{
 
     private $conn = null;
 
-    public function __construct() {
-        $this->conn = PersistentManager::getInstance()->get_connection();
-    }
     //Añade en la tabla seleccionada todos sus datos
     public function insert($user, $profile) {
         try{
