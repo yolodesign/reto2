@@ -3,6 +3,7 @@ class Profiles{
 
     private $nombre;
     private $apellido;
+    private $telefono;
     private $fechaNacimiento;
     private $genero;
     private $email;
@@ -23,6 +24,16 @@ class Profiles{
 
     public  function setApellido($apellido){
         $this->apellido =  $apellido;
+    }
+
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
     }
 
     public function getFechaNacimiento(){
