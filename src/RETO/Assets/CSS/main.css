@@ -95,6 +95,10 @@ nav{
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+}
+#container-signup{
+    margin-top: 5%;
 }
 
 .logButtons{
@@ -250,6 +254,30 @@ input {
     margin-right: 10px;
 
 }
+
+.uploadFile {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.uploadFileBtn {
+    border: 2px solid gray;
+    color: white;
+    background-color: #222222;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.uploadFile input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+
 /* ================= */
 /* Footer */
 /* ================= */

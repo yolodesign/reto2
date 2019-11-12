@@ -1,14 +1,18 @@
 <?php
-require_once(dirname(__FILE__) . '/../../../persistence/DAO/UserDAO.php');
-require_once(dirname(__FILE__) . '/../../../app/models/User.php');
-require_once(dirname(__FILE__) . '/../../../utils/SessionUtils.php');
+include_once '../Session/DAO/UserDAO.php';
+include_once '../Clases/User.php';
+include_once '../Clases/Profiles.php';
+include_once '../Session/Utils/SessionUtils.php';
 
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    checkAction();
-
+    if (isset($_GET["emailLogin"])){
+        checkAction();
+    }else if (isset($_GET["emailSignup"])){
+        createAction();
+    }
 }
 
 
@@ -16,9 +20,8 @@ function checkAction() {
 
     //Usuaeio al que le añadiremos sus propiedades
     $user = new User();
-    $user->setEmail($_POST["user"]);
-    $user->setPassword($_POST["password"]);
-
+    $user->setEmail($_GET["emailSignup"]);
+    $user->setPassword($_GET["passwordSignup"]);
     //Creamos un objeto UserDAO para hacer las llamadas a la BD
     $userDAO = new UserDAO();
     if($userDAO->check($user))
@@ -27,12 +30,50 @@ function checkAction() {
         SessionUtils::startSessionIfNotStarted();
         SessionUtils::setSession($user->getEmail());
 
-        header('Location: ../../../app/private/views/index.php');
+        header('Location: ../index.php');
     }
     else
     {
 
-        header('Location: ../../../app/public/views/index.php');
+        header('Location: ../Login.php');
+    }
+
+
+    // Función encargada de crear nuevos usuarios
+    function createAction() {
+        //Usuario al que le añadiremos sus propiedades
+        $user = new User();
+        $user->setEmail($_GET["emailSignup"]);
+        $user->setPassword($_GET["passwordSignup"]);
+
+        //Perfil al que le añadiremos sus propiedades
+        $profile = new Profiles();
+        $profile->setNombre($_GET["name"]);
+        $profile->setApellido($_GET["lastname"]);
+        $profile->setFechaNacimiento($_GET["birthdate"]);
+        $profile->setGenero($_GET["gender"]);
+        if (isset($_GET["profImg"])){
+            $profile->setProfImage($_GET["profImg"]);
+        }else{
+            $profile->setProfImage(/**Añadir aqui imagen por defecto**/);
+        }
+        $profile->setEmail($_GET["emailSignup"]);
+        $profile->setPassword($_GET["passwordSignup"]);
+        //Creamos un objeto UserDAO para hacer las llamadas a la BD
+        $userDAO = new UserDAO();
+
+        try{
+            $userDAO->insert($user, $profile);
+        }catch (PDOException $e){
+        echo $e->getMessage();
+        }
+
+
+        // Establecemos la sesión
+        SessionUtils::startSessionIfNotStarted();
+        SessionUtils::setSession($user->getEmail());
+
+        header('Location: ../index.php');
     }
 
 }
