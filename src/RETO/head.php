@@ -15,7 +15,7 @@
     <header>
         <nav id="headNav">
             <div id="nav_icon">
-                <a href="#">  <img src="Assets/MEDIA/icono_yolo.png" alt="Icono"/></a>
+                <a href="index.php">  <img src="Assets/MEDIA/icono_yolo.png" alt="Icono"/></a>
             </div>
 
             <div>
@@ -27,15 +27,6 @@
             </div>
         </nav>
     </header>
-
-
-
-
-
-
-
-
-
 
 
 <!--
