@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 function checkAction() {
 
-    //Usuaeio al que le añadiremos sus propiedades
+    //Usuario al que le añadiremos sus propiedades
     $user = new User();
     $user->setEmail($_GET["emailSignup"]);
     $user->setPassword($_GET["passwordSignup"]);
