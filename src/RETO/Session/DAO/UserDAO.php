@@ -11,13 +11,14 @@ Class UserDAO{
         $data = array(
             'nombre' => $profile("nombre"),
             'apellidos' => $profile("apellido"),
+            'telefono' => $profile("telefono"),
             'fechaNacimiento' => $profile("fechaNacimiento"),
             'genero' => $profile("genero"),
             'email' => $profile("email"),
             'password' => $profile("password"),
             'profImage' => $profile("profImage")
         );
-        $query = "INSERT INTO ". UserDAO::PROFILE_TABLE ."(nombre, apellido, correo, sexo, fechaNacimiento, foto) VALUES (:nombre, :apellidos, :fechaNacimiento, :genero, :email, :password, :profImage)";
+        $query = "INSERT INTO ". UserDAO::PROFILE_TABLE ."(nombre, apellido, telefono, correo, sexo, fechaNacimiento, foto) VALUES (:nombre, :apellidos, :telefono, :fechaNacimiento, :genero, :email, :password, :profImage)";
         $stmt = mysqli_prepare($this->conn, $query);
 
         $stmt->setFetchMode (PDO::FETCH_OBJ);

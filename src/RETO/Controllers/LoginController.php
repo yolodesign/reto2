@@ -50,6 +50,7 @@ function checkAction() {
         $profile = new Profiles();
         $profile->setNombre($_GET["name"]);
         $profile->setApellido($_GET["lastname"]);
+        $profile->setTelefono(($_GET["phone"]));
         $profile->setFechaNacimiento($_GET["birthdate"]);
         $profile->setGenero($_GET["gender"]);
         if (isset($_GET["profImg"])){
