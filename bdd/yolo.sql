@@ -35,6 +35,7 @@ CREATE TABLE `perfiles` (
 	`apellido` varchar(255) NOT NULL,
 	`correo` varchar(255) NOT NULL,
 	`sexo` varchar(255) NOT NULL,
+	`fechaNacimiento` DATE NOT NULL,
 	`valoracion` int(255),
 	`opinion` varchar(255),
 	`id_usuario` int NOT NULL,
