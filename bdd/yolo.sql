@@ -38,6 +38,7 @@ CREATE TABLE `perfiles` (
 	`valoracion` int(255),
 	`opinion` varchar(255),
 	`id_usuario` int NOT NULL,
+	`foto` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -47,10 +48,10 @@ CREATE TABLE `categorias` (
 	PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `productos` ADD CONSTRAINT `productos_fk0` FOREIGN KEY (`id_categoria`) REFERENCES `categoria`(`id`);
+ALTER TABLE `productos` ADD CONSTRAINT `productos_fk0` FOREIGN KEY (`id_categoria`) REFERENCES `categorias`(`id`);
 
 ALTER TABLE `productos` ADD CONSTRAINT `productos_fk1` FOREIGN KEY (`id_perfiles`) REFERENCES `perfiles`(`id`);
 
-ALTER TABLE `etiquetas` ADD CONSTRAINT `etiquetas_fk0` FOREIGN KEY (`id_categoria`) REFERENCES `categoria`(`id`);
+ALTER TABLE `etiquetas` ADD CONSTRAINT `etiquetas_fk0` FOREIGN KEY (`id_categoria`) REFERENCES `categorias`(`id`);
 
 ALTER TABLE `perfiles` ADD CONSTRAINT `perfiles_fk0` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id`);

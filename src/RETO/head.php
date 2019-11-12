@@ -10,7 +10,7 @@
     <script src="Assets/JS/Login.js"></script>
     <nav id="headNav">
         <ul id="headUl">
-            <li><a href="#">YoloPop</a></li>
+            <li><a href="index.php">YoloPop</a></li>
             <li><a href="#">Subir Producto</a></li>
             <li><a href="Login.php">Login</a></li>
             <li><a href="#">Salir</a></li>
@@ -18,3 +18,4 @@
     </nav>
 
 </head>
+`
