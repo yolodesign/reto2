@@ -44,6 +44,12 @@ include_once "Controllers/LoginController.php"
                 <label class="user" for="signup-lastname"><span class="hidden">Lastname</span></label>
                 <input id="signup-lastname" name="lastname" type="text" class="form-input" placeholder="Lastname" required>
             </div>
+
+            <div class="form-field">
+                <label class="phone" for="signup-lastname"><span class="hidden">Phone</span></label>
+                <input id="signup-phone" name="phone" type="text" class="form-input" placeholder="Phone number" required>
+            </div>
+
             <div class="form-field">
                 <label class="cake" for="signup-birthday"><span class="hidden">Date</span></label>
                 <input id="signup-birthday" name="birthdate" type="date" class="birthday"  required>
