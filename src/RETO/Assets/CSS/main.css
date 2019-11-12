@@ -59,7 +59,7 @@ nav{
 }
 #nav_icon img{
     width: 28%;
-    height: ;
+    height:100%;
     align-self: center;
 }
 #nav_title{
@@ -331,6 +331,12 @@ input {
     left: 0;
     top: 0;
     opacity: 0;
+}
+
+.phone:before {
+    content:"\f095";
+    font: 14px fontawesome;
+    color: #5b5b5b;
 }
 
 /* ================= */
