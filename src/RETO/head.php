@@ -7,6 +7,7 @@
 
     <title>Yolo pop</title>
     <link rel="StyleSheet" href="Assets/CSS/main.css" type="text/css">
+    <link rel="icon" type="image/png" href="Assets/MEDIA/icono_yolo_sin.png" sizes="16x16">
     <script src="Assets/JS/Login.js"></script>
     <script src="https://kit.fontawesome.com/1de908b2dd.js" crossorigin="anonymous"></script>
 
@@ -15,15 +16,21 @@
     <header>
         <nav id="headNav">
             <div id="nav_icon">
-                <a href="#">  <img src="Assets/MEDIA/icono_yolo.png" alt="Icono"/></a>
+                <a href="#">  <img src="Assets/MEDIA/icono_yolo_sin.png" alt="Icono"/></a>
             </div>
 
-            <div>
-                <p> YOLO POP</p>
+            <div id="nav_title">
+                <h1><a href="#">Yolo Pop</a></h1>
             </div>
 
-            <div>
-                <p> ENLACES</p>
+            <div id="nav_links">
+                <div class="logButtons">
+                    <input type="button" value="+ Anuncio" />
+                    <input type="button" value="Log in" onclick="loginSign('login')"/>
+                    <input type="button" value="Sign in" onclick="loginSign('sign')"/>
+
+
+                </div>
             </div>
         </nav>
     </header>

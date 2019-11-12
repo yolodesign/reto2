@@ -1,7 +1,11 @@
 @import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 /* ================= */
 /* HEADER */
 /* ================= */
+*{
+    box-sizing: border-box;
+}
 
 #html {
     height: 90%;
@@ -14,50 +18,93 @@ nav{
     top: 0;
     width: 100%;
     height: 10%;
-    /*
-    background-color: #222222;
-    color: #ffffffda;*/
-    justify-content: space-around;
-    background-color: #565656;
-
+    justify-content: start;
+    background-color: #00B9BC;
+    border-bottom: solid 2px #565656;
 }
-#nav_icon{
-    align-self: center;
+#nav_icon{  
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #FF1493;
+}
+#nav_icon a{
+    display: flex;
+    justify-content: center;
+    
+    
 }
 #nav_icon img{
-    
     width: 28%;
+    height: ;
+    align-self: center;
 }
-/*
-#headNav{
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 10%;
-    background-color: #fff;
-
+#nav_title{
+    font-family: 'Pacifico';
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-#headUl li {
-    list-style: none;
+#nav_title a{
+    font-size: 1.8em;
+    margin:0;
+    align-self: center;
+    text-decoration: none; 
     display: inline-block;
-    float: left;
-
+}
+#nav_title a:after {    
+    content: "";
+    height: 5px;
+    left: 500%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.5s ease 0s, left 0.5s ease 0s;
+  
+  }
+#nav_title a:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+  
+  
+#nav_title a:visited{
+    color:white;
 }
 
-#headUl li a {
-    display: block;
+
+  h1 a {
+    color: #fff;
+    text-transform: uppercase;
     text-decoration: none;
-    font-size: 14px;
-    font-family: Arial;
-    color: #1e1e1e;
-    padding: 0 20px;
-}
+    display: inline-block;
+    position: relative;
+  }
 
-#headUl li a:hover {
-    color: red;
+  h1 a:after {  
+    color: #FF1493;  
+    background: none repeat scroll 0 0 transparent;
+    content: "";
+    display: block;
+    left: 50%;
+    position: absolute;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    box-shadow: 0 3px 3px 0 gray;
+ 
+  }
+  h1 a:hover:after { 
+    width: 100%; 
+    left: 0; 
+  }
+ 
+
+#nav_links .logButtons{
+    width: 20%;
+    background-color: #00B9BC;
+    display: flex;
+
+    
 }
-*/
 
 /**Login/Sign up:*/
 
