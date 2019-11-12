@@ -32,20 +32,20 @@ function signup() {
             if (expRegCorreo.exec(email)) {
                 if (expRegPassword.exec(password)) {
 
-                    let año;
+                    let edad;
                     if (cumple.getMonth == today.getMonth && cumple.getDay == today.getDay) {
-                        año = today.getFullYear - cumple.getFullYear
+                        edad = today.getFullYear - cumple.getFullYear
                     } else if (cumple.getMonth > today.getMonth) {
-                        año = today.getFullYear - cumple.getFullYear - 1
+                        edad = today.getFullYear - cumple.getFullYear - 1
                     } else if (cumple.getMonth == today.getMonth && cumple.getDay > today.getDay) {
-                        año = today.getFullYear - cumple.getFullYear - 1
+                        edad = today.getFullYear - cumple.getFullYear - 1
                     } else if (cumple.getMonth == today.getMonth && cumple.getDay < today.getDay) {
-                        año = today.getFullYear - cumple.getFullYear
+                        edad = today.getFullYear - cumple.getFullYear
                     } else if (cumple.getMonth < today.getMonth) {
-                        año = today.getFullYear - cumple.getFullYear
+                        edad = today.getFullYear - cumple.getFullYear
                     }
-
-                    if (año >= 18) {
+                        edad = 18;
+                    if (edad >= 18) {
                         error("Entra.")
                         return true;
                     }else{

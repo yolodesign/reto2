@@ -40,9 +40,9 @@ class PersistentManager {
             $this->nameBD = $credentials["name"];
             $this->hostBD = $credentials["host"];
         } else {
-            $this->userBD = "";
+            $this->userBD = "root";
             $this->psswdBD = "";
-            $this->nameBD = "";
+            $this->nameBD = "yolo";
             $this->hostBD = "localhost";
         }
     }
