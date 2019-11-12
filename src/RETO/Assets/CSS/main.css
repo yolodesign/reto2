@@ -34,6 +34,7 @@ nav{
     color: #ffffffda;*/
     justify-content: space-around;
     background-color: #565656;
+    color: white;
 
 }
 #nav_icon{
@@ -276,6 +277,7 @@ input {
     left: 0;
     top: 0;
     opacity: 0;
+}
 
 /* ================= */
 /* Footer */

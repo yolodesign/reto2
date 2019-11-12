@@ -1,7 +1,7 @@
 <?php
-
 include ("head.php");
-
+include ("Session\DAO\ProductDAO.php");
+include ("Session\Conf\PersistentManager.php");
 ?>
 
 <body id="indexBody">
@@ -10,6 +10,13 @@ include ("head.php");
         <button>Buscar</button>
     </div
 
+    <?php
+    $dbh = connect();
+    consulta($dbh);
 
+    ?>
+        
 </body>
-</html>
+<?php
+include ("footer.php");
+?>
