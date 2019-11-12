@@ -81,6 +81,6 @@ include_once "Controllers/LoginController.php"
         </form>
     </div>
 </div>
-</body>
-</html>
-
+<?php
+include ("footer.php");
+?>

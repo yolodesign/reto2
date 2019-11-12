@@ -39,6 +39,7 @@ CREATE TABLE `perfiles` (
 	`valoracion` int(255),
 	`opinion` varchar(255),
 	`id_usuario` int NOT NULL,
+	`foto` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
