@@ -3,7 +3,7 @@
 /* 1 - INSERT PERFILES */
 /* ==================================================== */
  
-INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion,id_usuario) values ('yolo','design','yolodesign.jas@gmail.com','otro',999,'Son los jefes del proyecto, valoracion positiva',1);
+INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion,foto,id_usuario) values ('yolo','design','yolodesign.jas@gmail.com','otro',999,'Son los jefes del proyecto, valoracion positiva','foto',1);
 
 /* ==================================================== */
 /* 2 - INSERT USUARIOS */
@@ -74,7 +74,12 @@ INSERT INTO etiquetas (usos,nombre,id_categoria) VALUES (100,'yolo',1);
 /* ==================================================== */
 /* 5 - INSERT PRODUCTOS */
 /* ==================================================== */
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto de prueba','prueba.pjg','dir_prueba',NOW(),1,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto de prueba','prueba.pjg','dir_prueba',NOW(),1,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto','prueba.pjg','dir_prueba',NOW(),2,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','de prueba','prueba.pjg','dir_prueba',NOW(),3,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','producto de prueba','prueba.pjg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es','prueba.pjg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es una prueba','prueba.pjg','dir_prueba',NOW(),5,2);
 
 
 
