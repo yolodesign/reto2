@@ -1,7 +1,22 @@
 @import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
+
+/**Index */
+#indexBody{
+    background-color: #c9ffc3;
+    font-family: 'lato', sans-serif;
+}
+
+#buscador{
+position: absolute;
+    top: 12%;
+    left: 7%;
+}
+
 /* ================= */
 /* HEADER */
 /* ================= */
+
+
 
 #html {
     height: 90%;
@@ -67,6 +82,7 @@ nav{
     align-items: center;
     min-height: 100%;
     color: #fff;
+    background-color: #c9ffc3;
     font-family: 'lato', sans-serif;
 }
 
