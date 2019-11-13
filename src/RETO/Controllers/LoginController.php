@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 function checkAction() {
 
-    //Usuaeio al que le añadiremos sus propiedades
+    //Usuario al que le añadiremos sus propiedades
     $user = new User();
     $user->setEmail($_GET["emailSignup"]);
     $user->setPassword($_GET["passwordSignup"]);
@@ -50,6 +50,7 @@ function checkAction() {
         $profile = new Profiles();
         $profile->setNombre($_GET["name"]);
         $profile->setApellido($_GET["lastname"]);
+        $profile->setTelefono(($_GET["phone"]));
         $profile->setFechaNacimiento($_GET["birthdate"]);
         $profile->setGenero($_GET["gender"]);
         if (isset($_GET["profImg"])){
