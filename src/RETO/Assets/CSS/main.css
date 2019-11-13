@@ -1,7 +1,13 @@
 @import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
 
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+*{
+    box-sizing: border-box;
+}
 
+#html {
+    height: 90%;
+}
 
 /**Index */
 #indexBody{
@@ -15,70 +21,69 @@ position: absolute;
     left: 7%;
 }
 
+.imagenAnuncion{
+    width: 10%;
+    height: 10%;
+}
+
 
 /* ================= */
 /* HEADER */
 /* ================= */
-*{
-    box-sizing: border-box;
-}
 
-
-
-#html {
-    height: 90%;
-}
-nav{
+header{
     display: flex;
     flex-direction: row;
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    height: 10%;
-
-    justify-content: start;
+    min-height: 10%;
     background-color: #00B9BC;
     border-bottom: solid 2px #565656;
-    background-color: #565656;
-    color: white;
-
-
-}
-#nav_icon{  
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: #FF1493;
-}
-#nav_icon a{
-    display: flex;
-    justify-content: center;
-    
-    
-}
-#nav_icon img{
-    width: 28%;
-    height:100%;
-    align-self: center;
-}
-#nav_title{
-    font-family: 'Pacifico';
-    width: 65%;
-    display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
+/* ==================================================================================== */
+/* Icono del header*/
+/* ==================================================================================== */
+#nav_icon{
+    background-color: #FF1493;
+    margin-right: auto 0;
+    padding: 1%;
+    
+}
+
+#nav_icon img{
+
+    width: 30%;
+    height: auto;
+    margin-left: 25%;
+}
+/* ==================================================================================== */
+/* Titulo*/
+/* ==================================================================================== */
+#nav_title{
+    font-family: 'Pacifico';
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+}
+#nav_title h1{
+    margin: 0;
+}
+
 #nav_title a{
     font-size: 1.8em;
     margin:0;
-    align-self: center;
     text-decoration: none; 
     display: inline-block;
+    justify-self: center;
 }
 #nav_title a:after {    
     content: "";
-    height: 5px;
+    height: 4px;
     left: 500%;
     position: absolute;
     background: #fff;
@@ -96,38 +101,86 @@ nav{
 }
 
 
-  h1 a {
+h1 a {
     color: #fff;
     text-transform: uppercase;
-    text-decoration: none;
-    display: inline-block;
     position: relative;
-  }
+}
 
-  h1 a:after {  
+h1 a:after {  
     color: #FF1493;  
-    background: none repeat scroll 0 0 transparent;
-    content: "";
     display: block;
-    left: 50%;
-    position: absolute;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    box-shadow: 0 3px 3px 0 gray;
  
-  }
-  h1 a:hover:after { 
+}
+h1 a:hover:after { 
     width: 100%; 
     left: 0; 
-  }
- 
-
-#nav_links .logButtons{
-    width: 20%;
-    background-color: #00B9BC;
-    display: flex;
-
-    
 }
+
+/* ==================================================================================== */
+/* Icono del menu*/
+/* ==================================================================================== */
+
+
+nav{
+    position: relative;
+    width: 20%;
+    height: 50px;
+    background-color: #34495e;
+    border-radius: 8px;
+    font-size: 0.4em;
+    margin-right: 1%;
+}
+nav a {
+	line-height: 50px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+
+nav a:nth-child(1) {
+	width: 45%;
+}
+nav a:nth-child(2) {
+	width: 25%;
+}
+nav a:nth-child(3) {
+	width: 29%;
+}
+
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 45%;
+	left: 0;
+	background-color: #1abc9c;
+}
+nav .start-about, a:nth-child(2):hover~.animation {
+	width: 26%;
+	left: 45%;
+	background-color: #e74c3c;
+}
+nav .start-blog, a:nth-child(3):hover~.animation {
+	width: 31%;
+	left: 70%;
+	background-color: #3498db;
+}
+
+
 
 /**Login/Sign up:*/
 
