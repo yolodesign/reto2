@@ -14,37 +14,22 @@
 </head>
 <body>
     <header>
-        <nav id="headNav">
-            <div id="nav_icon">
 
-                <a href="index.php">  <img src="Assets/MEDIA/icono_yolo.png" alt="Icono"/></a>
+        <div id="nav_icon">
+            <a href="index.php">  <img src="Assets/MEDIA/icono_yolo_sin.png" alt="Icono"/></a>
+        </div>
 
-            </div>
-
-            <div id="nav_title">
-                <h1><a href="#">Yolo Pop</a></h1>
-            </div>
-
-            <div id="nav_links">
-                <div class="logButtons">
-                    <input type="button" value="+ Anuncio" />
-                    <input type="button" value="Log in" onclick="loginSign('login')"/>
-                    <input type="button" value="Sign in" onclick="loginSign('sign')"/>
+        <div id="nav_title">
+            <h1><a href="#">Yolo Pop</a></h1>
+        </div>
 
 
-                </div>
-            </div>
+        <nav>
+            <a href="#">ANUNCIATE</a>
+            <a href="#">LOG IN</a>
+            <a href="#">¡UNETE!</a>
+            <div class="animation start-home"></div>
         </nav>
+
     </header>
-
-
-<!--
-
-    <ul id="headUl">
-        <li><a href="#">  <img src="Assets/MEDIA/icono_yolo.png" alt="Icono"/></a></li>
-        <li><a href="#">Subir Producto</a></li>
-        <li><a href="Login.php">Login</a></li>
-        <li><a href="#">Salir</a></li>
-    </ul>
--->
 
