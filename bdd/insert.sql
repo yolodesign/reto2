@@ -74,12 +74,12 @@ INSERT INTO etiquetas (usos,nombre,id_categoria) VALUES (100,'yolo',1);
 /* ==================================================== */
 /* 5 - INSERT PRODUCTOS */
 /* ==================================================== */
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto de prueba','prueba.pjg','dir_prueba',NOW(),1,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto','prueba.pjg','dir_prueba',NOW(),2,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','de prueba','prueba.pjg','dir_prueba',NOW(),3,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','producto de prueba','prueba.pjg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es','prueba.pjg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es una prueba','prueba.pjg','dir_prueba',NOW(),5,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto de prueba','RETO/Assets/MEDIA/coche.jpg','dir_prueba',NOW(),1,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto','RETO/Assets/MEDIA/coche.jpg','dir_prueba',NOW(),2,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','de prueba','RETO/Assets/MEDIA/coche.jpg','dir_prueba',NOW(),3,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','producto de prueba','RETO/Assets/MEDIA/coche.jpg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es','prueba.pjg','RETO/Assets/MEDIA/coche.jpg',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es una prueba','RETO/Assets/MEDIA/coche.jpg','dir_prueba',NOW(),5,2);
 
 
 
