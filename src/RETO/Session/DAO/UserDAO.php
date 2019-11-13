@@ -40,18 +40,15 @@ function createAction()
         "password" => $_POST["passwordSignup"]
         );
 
-    try {
+
         insert($user, $dbh);
-    } catch (PDOException $e) {
-        echo $e->getMessage();
-    }
 
 
     // Establecemos la sesión
     /*SessionUtils::startSessionIfNotStarted();
     SessionUtils::setSession($user->getEmail());*/
 
-    header('Location: ../../index.php');
+    //header('Location: ../../index.php');
 }
 
 
@@ -89,6 +86,31 @@ function check($email, $password, $dbh)
 function insert($user, $dbh)
 {
 
+    $data2 = array(
+        "email" => $user["email"],
+        "password" => $user["password"]
+    );
+    try{
+        $stmt = $dbh->prepare("INSERT INTO usuarios(usuario, contrasena) VALUES (:email, :password)");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data2);
+        $stmt->fetch();
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+
+    try{
+        $stmt = $dbh->prepare("SELECT id FROM usuarios WHERE usuario=:email AND contrasena=:password");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data2);
+        while($row = $stmt->fetch()){
+            $value = $row->id;
+        }
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+
+
     $data = array(
         'nombre' => $user["nombre"],
         'apellidos' => $user["apellido"],
@@ -96,24 +118,19 @@ function insert($user, $dbh)
         'fechaNacimiento' => $user["fecha"],
         'genero' => $user["genero"],
         'email' => $user["email"],
-        'password' => $user["password"],
+        'id_usuario' => $value,
         'profImage' => $user["profImg"]
     );
-    $stmt = $dbh->prepare("INSERT INTO perfiles(nombre, apellido, telefono, correo, sexo, fechaNacimiento, foto) VALUES (:nombre, :apellidos, :telefono, :fechaNacimiento, :genero, :email, :password, :profImage)");
 
-    $stmt->setFetchMode(PDO::FETCH_OBJ);
-    $stmt->execute($data);
-    $stmt->fetch();
+    try{
+        $stmt = $dbh->prepare("INSERT INTO perfiles(nombre, apellido, telefono, correo, sexo, fechaNacimiento, id_usuario, foto) VALUES (:nombre, :apellidos, :telefono, :email, :genero, :fechaNacimiento, :id_usuario ,:profImage)");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        $stmt->fetch();
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
 
-
-    $data2 = array(
-        "email" => $user["email"],
-        "password" => $user["password"]
-    );
-    $stmt = $dbh->prepare("INSERT INTO usuarios(usuario, contraseña) VALUES (:email, :password)");
-    $stmt->setFetchMode(PDO::FETCH_OBJ);
-    $stmt->execute($data2);
-    $stmt->fetch();
 }
 
 ?>

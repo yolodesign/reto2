@@ -28,12 +28,15 @@ function signup() {
     let password = document.getElementById("signup-password").value;
     let politicaPriv = document.getElementById("signup-privacidad").checked;
     let phone = document.getElementById("signup-phone").value;
-
+    let foto = document.getElementById("profImg").value;
     if (nombre != "" && apellido != "" && cumple != "" && gender != "" && email != "" && password != "") {
         if (politicaPriv == true) {
             if (expRegPhone.exec(phone)){
                 if (expRegCorreo.exec(email)) {
                     if (expRegPassword.exec(password)) {
+                        if (foto.src == "" || foto.src == null){
+                            foto.src = "Assets/MEDIA/fotoPerfil.jpg";
+                        }
                         let today = new Date();
                         let edad;
                         if (cumple.getMonth() == today.getMonth() && cumple.getDay() == today.getDay()) {

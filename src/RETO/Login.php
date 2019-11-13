@@ -36,7 +36,7 @@ include 'Session/Utils/SessionUtils.php';
         <input type="button" value="Sign in" onclick="loginSign('sign')">
     </div>
     <div class="login-item">
-        <form action="index.php" method="post" class="form form-login" onsubmit="return signup()">
+        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return signup()">
             <div class="form-field">
                 <label class="user" for="signup-username"><span class="hidden">Name</span></label>
                 <input id="signup-name" name="name" type="text" class="form-input" placeholder="Name" required>
