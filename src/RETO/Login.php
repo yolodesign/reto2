@@ -1,7 +1,8 @@
 <?php
-
 include ("head.php");
-include_once "Controllers/LoginController.php"
+include ("Session/DAO/UserDAO.php");
+include ("Session/Conf/PersistentManager.php");
+include 'Session/Utils/SessionUtils.php';
 ?>
 
 <body id="loginBody">
@@ -11,7 +12,7 @@ include_once "Controllers/LoginController.php"
         <input type="button" value="Sign in" onclick="loginSign('sign')">
     </div>
     <div class="login-item">
-        <form action="" method="get" class="form form-login" onsubmit="return login()">
+        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return login()">
             <div class="form-field">
                 <label class="user" for="login-username"><span class="hidden">Email</span></label>
                 <input id="login-username" name="emailLogin" type="text" class="form-input" placeholder="Email" required>
@@ -35,7 +36,7 @@ include_once "Controllers/LoginController.php"
         <input type="button" value="Sign in" onclick="loginSign('sign')">
     </div>
     <div class="login-item">
-        <form action="" method="get" class="form form-login" onsubmit="return signup()">
+        <form action="index.php" method="post" class="form form-login" onsubmit="return signup()">
             <div class="form-field">
                 <label class="user" for="signup-username"><span class="hidden">Name</span></label>
                 <input id="signup-name" name="name" type="text" class="form-input" placeholder="Name" required>
