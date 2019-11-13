@@ -9,9 +9,8 @@ function consulta($dbh){
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $stmt->execute();
     while ($row = $stmt->fetch()) {
-        echo $row['id'] . "<br>";
         echo $row['nombre'] . "<br>";
-        echo '<img src="Assets/MEDIA/'.$row['foto'].'"><br>';
+        echo '<img class ="imagenAnuncion" src="Assets/MEDIA/'.$row['foto'].'"><br>';
 
     }
 
