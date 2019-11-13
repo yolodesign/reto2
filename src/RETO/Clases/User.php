@@ -3,19 +3,35 @@ class User{
     private $email;
     private $password;
 
-    public function getEmail() {
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function setEmail($email) {
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
+    {
         $this->email = $email;
     }
 
-    public function getPassword(){
-        return $this->genero;
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 
-    public function setPassword($password){
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password): void
+    {
         $this->password = $password;
     }
 }
