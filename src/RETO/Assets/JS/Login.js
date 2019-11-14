@@ -35,7 +35,11 @@ function signup() {
                 if (expRegCorreo.exec(email)) {
                     if (expRegPassword.exec(password)) {
                         if (foto.src == "" || foto.src == null){
-                            foto.src = "Assets/MEDIA/fotoPerfil.jpg";
+                            if (gender.toUpperCase() == "MALE"){
+                                foto.src = "Assets/MEDIA/ImgMujer.jpeg";
+                            }else if(gender.toUpperCase() == "FEMALE"){
+                                foto.src = "Assets/MEDIA/ImgHombre.jpeg";
+                            }
                         }
                         let today = new Date();
                         let edad;

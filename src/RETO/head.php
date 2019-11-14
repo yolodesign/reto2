@@ -15,7 +15,7 @@
     <script src="https://kit.fontawesome.com/1de908b2dd.js" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body id="loginBody">
 <header>
 
     <div id="nav_icon">
