@@ -5,7 +5,7 @@ USE yolo;
 CREATE TABLE `usuarios` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`usuario` varchar(255) NOT NULL,
-	`contraseña` varchar(255) NOT NULL,
+	`contrasena` varchar(255) NOT NULL,
 	PRIMARY KEY (`id`)
 );
 
@@ -35,6 +35,7 @@ CREATE TABLE `perfiles` (
 	`apellido` varchar(255) NOT NULL,
 	`correo` varchar(255) NOT NULL,
 	`sexo` varchar(255) NOT NULL,
+	`telefono` varchar(255) NOT NULL,
 	`fechaNacimiento` DATE NOT NULL,
 	`valoracion` int(255),
 	`opinion` varchar(255),
