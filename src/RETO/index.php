@@ -2,20 +2,27 @@
 include("head.php");
 include("Session/DAO/ProductDAO.php");
 include("Session/Conf/PersistentManager.php");
+session_start();
 $dbh = connect();
 ?>
 
-<body id="indexBody">
-<div id="buscador">
-    <input type="search" id="miBusqueda" placeholder="buscador" size="75" autofocus>
-    <button>Buscar</button>
+<div id="indexBody">
+<div id="buscadorDiv">
+    <section class="buscadorSection">
+        <form action="" method="">
+            <input type="search" placeholder="Introduce tu busqueda" autofocus>
+            <button>Buscar</button>
+        </form>
+    </section>
 </div>
+
 
 <?php
 
 consulta($dbh);
 
 ?>
+</div>
 
 <?php
 include("footer.php");
