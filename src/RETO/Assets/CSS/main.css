@@ -14,6 +14,7 @@
 body{
     background-color: #c9ffc3;
     font-family: 'lato', sans-serif;
+    overflow-x: hidden;
 
 }
 
@@ -600,4 +601,40 @@ footer a:visited{
 }
 #aboutUsLinks{
     padding: 0 5px;
+}
+/* ================= */
+/* Error */
+/* ================= */
+
+
+#error404{
+    margin: 0 auto;
+
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../MEDIA/error_img.jpeg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+#mensaje_error{
+    background: #3a3f4480;
+    font-family: 'Pacifico';
+    color: white;
+}
+#mensaje_error h1, #mensaje_error h2{
+    text-align: center;
+}
+
+
+#mensaje_error a{
+    text-decoration: none;
+}
+#amensaje_error a:hover{
+    text-decoration: underline;
+}
+#mensaje_error a:visited{
+    color:white;
 }
