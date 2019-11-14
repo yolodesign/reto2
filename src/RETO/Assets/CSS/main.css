@@ -63,7 +63,7 @@ header{
 /* ==================================================================================== */
 #nav_icon{
     
-    margin-right: auto 0;
+    margin-right: auto ;
     padding: 1%;
     
 }
@@ -655,8 +655,9 @@ footer a:visited{
     color: black;
 
 }
-#botonesPerfil input{
+#botonesPerfil input {
     padding: 5px;
+}
 
 /* ================= */
 /* Error */
