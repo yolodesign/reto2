@@ -1,6 +1,9 @@
 @import url('https://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css');
 
 @import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
+
+
 *{
     box-sizing: border-box;
 }
@@ -8,18 +11,17 @@
 #html {
     height: 90%;
 }
-
-/**Index */
-#indexBody{
+body{
     background-color: #c9ffc3;
     font-family: 'lato', sans-serif;
+
 }
 
-#buscador{
-position: absolute;
-    top: 12%;
-    left: 7%;
-}
+/**Index */
+
+
+
+
 
 .imagenAnuncion{
     width: 10%;
