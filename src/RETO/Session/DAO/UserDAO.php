@@ -1,63 +1,136 @@
 <?php
-require_once '../Conf/PersistentManager.php';
+include '../Conf/PersistentManager.php';
+include '../Utils/SessionUtils.php';
 
-Class UserDAO{
-    const USER_TABLE = "usuarios";
-    const PROFILE_TABLE = "perfiles";
+if (isset($_POST["emailLogin"])) {
+    checkAction();
+}
+if (isset($_POST["emailSignup"])) {
 
-    //Añade en la tabla seleccionada todos sus datos
-    public function insert($user, $profile){
-        $dbh = connect();
-        $data = array(
-            'nombre' => $profile("nombre"),
-            'apellidos' => $profile("apellido"),
-            'telefono' => $profile("telefono"),
-            'fechaNacimiento' => $profile("fechaNacimiento"),
-            'genero' => $profile("genero"),
-            'email' => $profile("email"),
-            'password' => $profile("password"),
-            'profImage' => $profile("profImage")
-        );
-        $query = "INSERT INTO ". UserDAO::PROFILE_TABLE ."(nombre, apellido, telefono, correo, sexo, fechaNacimiento, foto) VALUES (:nombre, :apellidos, :telefono, :fechaNacimiento, :genero, :email, :password, :profImage)";
-        $stmt = mysqli_prepare($this->conn, $query);
+    createAction();
 
-        $stmt->setFetchMode (PDO::FETCH_OBJ);
-        $stmt->execute($data);
+}
 
-
-        $data2 = array(
-            "email" => $user("email"),
-            "password" => $user("password")
-        );
-        $query = "INSERT INTO ". UserDAO::USER_TABLE ."(usuario, contraseña) VALUES (:email, :password)";
-        $stmt = mysqli_prepare($this->conn, $query);
-
-        $stmt->setFetchMode (PDO::FETCH_OBJ);
-        $stmt->execute($data2);
+function checkAction()
+{
+    $dbh = connect();
+    if(check($_POST["emailLogin"], $_POST["passwordLogin"], $dbh))
+     {
+     // Establecemos la sesión
+     header('Location: ../../index.php');
+     }
+     else
+    {
+     header('Location: ../../index2.php');
     }
+}
 
-    //Comprueba si los datos ya existen en la base de datos
-    public function check($user){
-        $dbh = connect();
-
-        $data = array(
-            'usuario' => $user -> email,
-            'constraseña' => $user -> password
+// Función encargada de crear nuevos usuarios
+function createAction()
+{
+    $dbh = connect();
+    $user = array(
+        "nombre" => $_POST["name"],
+        "apellido" => $_POST["lastname"],
+        "telefono" => $_POST["phone"],
+        "fecha" => $_POST["birthdate"],
+        "genero" => $_POST["gender"],
+        "profImg" => $_POST["profImg"],
+        "email" => $_POST["emailSignup"],
+        "password" => $_POST["passwordSignup"]
         );
 
-        $stmt = $dbh->prepare("SELECT usuario, contraseña FROM " . UserDAO::USER_TABLE . " WHERE usuario=:usuario AND contraseña=:contraseña" );
 
-        $stmt->setFetchMode (PDO::FETCH_OBJ);
+        insert($user, $dbh);
+
+
+    // Establecemos la sesión
+    /*SessionUtils::startSessionIfNotStarted();
+    SessionUtils::setSession($user->getEmail());*/
+
+    //header('Location: ../../index.php');
+}
+
+
+//Comprueba si los datos ya existen en la base de datos
+function check($email, $password, $dbh)
+{
+
+    $data = array(
+        'email' => $email,
+        'password' => $password
+    );
+
+    try {
+        $stmt = $dbh->prepare("SELECT usuario FROM usuarios WHERE usuario = :email AND contrasena = :password");
+
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
-        $rows = $stmt->fetch();
-        if($rows>0){
+        $num = 0;
+        while($row = $stmt->fetch()){
+            $num++;
+        }
+        if ($num > 0) {
             return true;
-            echo "false";
-        }else{
+        } else {
             return false;
-            echo "false";
         }
     }
+    catch (PDOException $e){
+        die($e->getMessage());
+    }
+
+}
+
+//Añade en la tabla seleccionada todos sus datos
+function insert($user, $dbh)
+{
+
+    $data2 = array(
+        "email" => $user["email"],
+        "password" => $user["password"]
+    );
+    try{
+        $stmt = $dbh->prepare("INSERT INTO usuarios(usuario, contrasena) VALUES (:email, :password)");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data2);
+        $stmt->fetch();
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+
+    try{
+        $stmt = $dbh->prepare("SELECT id FROM usuarios WHERE usuario=:email AND contrasena=:password");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data2);
+        while($row = $stmt->fetch()){
+            $value = $row->id;
+        }
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+
+
+    $data = array(
+        'nombre' => $user["nombre"],
+        'apellidos' => $user["apellido"],
+        'telefono' => $user["telefono"],
+        'fechaNacimiento' => $user["fecha"],
+        'genero' => $user["genero"],
+        'email' => $user["email"],
+        'id_usuario' => $value,
+        'profImage' => $user["profImg"]
+    );
+
+    try{
+        $stmt = $dbh->prepare("INSERT INTO perfiles(nombre, apellido, telefono, correo, sexo, fechaNacimiento, id_usuario, foto) VALUES (:nombre, :apellidos, :telefono, :email, :genero, :fechaNacimiento, :id_usuario ,:profImage)");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        $stmt->fetch();
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+
 }
 
 ?>

@@ -1,16 +1,16 @@
 <?php
-include("..\Conf\PersistentManager.php");
+include("../Conf/PersistentManager.php");
 include ("../../Clases/Products.php");
 
 function consulta($dbh){
 
     echo "------Datos de la tabla-----<hr></hr>";
-    $stmt = $dbh->prepare("SELECT id, nombre FROM productos");
+    $stmt = $dbh->prepare("SELECT id, nombre, foto FROM productos");
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $stmt->execute();
     while ($row = $stmt->fetch()) {
-        echo $row['id'] . "<br>";
         echo $row['nombre'] . "<br>";
+        echo '<img class ="imagenAnuncion" src="Assets/MEDIA/'.$row['foto'].'"><br>';
 
     }
 

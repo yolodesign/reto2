@@ -74,12 +74,24 @@ INSERT INTO etiquetas (usos,nombre,id_categoria) VALUES (100,'yolo',1);
 /* ==================================================== */
 /* 5 - INSERT PRODUCTOS */
 /* ==================================================== */
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto de prueba','prueba.pjg','dir_prueba',NOW(),1,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es un producto','prueba.pjg','dir_prueba',NOW(),2,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','de prueba','prueba.pjg','dir_prueba',NOW(),3,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','producto de prueba','prueba.pjg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es','prueba.pjg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('producto_prueba','Esto es una prueba','prueba.pjg','dir_prueba',NOW(),5,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('manzana','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('maiz','de prueba','coche.jpg','dir_prueba',NOW(),3,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pañales','producto de prueba','coche.jpg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('biberon','Esto es','coche.jpg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('maquillaje','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pera','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('tractor','de prueba','coche.jpg','dir_prueba',NOW(),3,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('cuna','producto de prueba','coche.jpg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('juguetes','Esto es','coche.jpg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pintalabios','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('sabana','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('nenuko','de prueba','coche.jpg','dir_prueba',NOW(),3,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('sandia','producto de prueba','coche.jpg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('manguera','Esto es','coche.jpg','dir_prueba',NOW(),4,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('eye-line','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,2);
 
 
 
