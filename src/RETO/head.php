@@ -36,12 +36,12 @@
         <section class="top-nav">
             <input id="menu-toggle" type="checkbox" />
             <label class='menu-button-container' for="menu-toggle">
-                <div class='menu-button' onclick="menuOcultar()"></div>
+                <div class='menu-button' onclick="visualizarMenu();"></div>
             </label>
-            <ul class="menu" id="menuDesp">
-                <li>PERFIL</li>
-                <li>ANUNCIOS</li>
-                <li>SALIR</li>
+            <ul class="menu" id="menu_desplegable">
+                <li>ANUNCIATE</li>
+                <li><a href="Login.php">LOG IN</a></li>
+                <li>¡UNETE!</li>
             </ul>
         </section>
     </header>
