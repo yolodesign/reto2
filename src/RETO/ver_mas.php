@@ -1,10 +1,17 @@
 <?php
-include "head.php"
+include "head.php";
+include("Session/DAO/ProductDAO.php");
+include("Session/Conf/PersistentManager.php");
+session_start();
+$dbh = connect();
+include "buscador.php";
 ?>
 
     <section class="contenido">
         <div class="ver_mas_anuncios">
-                <div class="box item1">One</div>
+                <div class="box item1">
+                    <h2>Esto es lo que hemos encontrado</h2>
+                </div>
                 <div class="box item2">
 
                     <div class="foto_anuncio">
