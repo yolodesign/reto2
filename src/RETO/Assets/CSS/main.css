@@ -46,7 +46,8 @@ header{
     top: 0;
     width: 100%;
     min-height: 10%;
-    background-color: #00B9BC;
+    background: rgb(250,108,152);
+    background: linear-gradient(90deg, rgba(250,108,152,1) 15%, #00b9bc 31%);
     border-bottom: solid 2px #565656;
     justify-content: space-around;
     align-items: center;
@@ -61,7 +62,7 @@ header{
 /* Icono del header*/
 /* ==================================================================================== */
 #nav_icon{
-    background-color: #fa6c98;
+    
     margin-right: auto 0;
     padding: 1%;
     
