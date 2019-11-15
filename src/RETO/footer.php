@@ -4,7 +4,7 @@
     <div id="copyright">
         <p class="footer_title">Copyright</p>
         <a href="https://github.com/yolodesign/reto2" target="_blank">@YoloDesign.jas®</a>
-        <a href="#"><img src="Assets/MEDIA/ajebask.png"> </a>
+        <a href="http://ajebaskalava.es/" target="_blank" ><img src="Assets/MEDIA/ajebask.png"> </a>
 
     </div>
 

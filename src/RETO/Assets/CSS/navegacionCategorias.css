@@ -23,7 +23,7 @@
 #brand,
 #menuCat,
 #ulCatNav {
-    background: #46b2f0;
+    background: #00b9bc;
     flex-wrap: wrap;
     -webkit-border-radius: 22px 22px 22px 22px;
     border: 0px solid #000000;
@@ -71,7 +71,7 @@
 #menu-toggle-cat {
     width: 55px;
     height: 55px;
-    background: #2ea8ee;
+    background: #00b9bc;
     display: flex;
     justify-content: center;
     align-items: center;
