@@ -11,7 +11,6 @@ $dbh = connect();
     <?php
     include("buscador.php");
     ?>
-
     <div>
         <nav id="navCat">
             <div id="menuCat">
