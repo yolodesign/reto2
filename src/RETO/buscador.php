@@ -1,6 +1,6 @@
 <?php
 ?>
-<div id="indexBody">
+
     <div id="buscadorDiv">
         <section class="buscadorSection">
             <form action="" method="">

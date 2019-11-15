@@ -3,13 +3,13 @@
 /* 1 - INSERT PERFILES */
 /* ==================================================== */
  
-INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion,foto,id_usuario) values ('yolo','design','yolodesign.jas@gmail.com','otro',999,'Son los jefes del proyecto, valoracion positiva','foto',1);
+INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion, telefono,foto,fechaNacimiento,id_usuario) values ('yolo','design','yolodesign.jas@gmail.com','otro',999,'Son los jefes del proyecto, valoracion positiva', 687740992,'foto','1996-12-22',1);
 
 /* ==================================================== */
 /* 2 - INSERT USUARIOS */
 /* ==================================================== */
 
-INSERT INTO usuarios (usuario,contraseña) values ('yolodesign.jas@gmail.com','Yolo2000');
+INSERT INTO usuarios (usuario,contrasena) values ('yolodesign.jas@gmail.com','Yolo2000');
 
 
 
@@ -74,24 +74,24 @@ INSERT INTO etiquetas (usos,nombre,id_categoria) VALUES (100,'yolo',1);
 /* ==================================================== */
 /* 5 - INSERT PRODUCTOS */
 /* ==================================================== */
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('manzana','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('maiz','de prueba','coche.jpg','dir_prueba',NOW(),3,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pañales','producto de prueba','coche.jpg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('biberon','Esto es','coche.jpg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('maquillaje','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pera','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('tractor','de prueba','coche.jpg','dir_prueba',NOW(),3,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('cuna','producto de prueba','coche.jpg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('juguetes','Esto es','coche.jpg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pintalabios','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('sabana','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('nenuko','de prueba','coche.jpg','dir_prueba',NOW(),3,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('sandia','producto de prueba','coche.jpg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('manguera','Esto es','coche.jpg','dir_prueba',NOW(),4,2);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('eye-line','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,2);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('manzana','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('maiz','de prueba','coche.jpg','dir_prueba',NOW(),3,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pañales','producto de prueba','coche.jpg','dir_prueba',NOW(),4,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('biberon','Esto es','coche.jpg','dir_prueba',NOW(),4,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('maquillaje','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pera','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('tractor','de prueba','coche.jpg','dir_prueba',NOW(),3,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('cuna','producto de prueba','coche.jpg','dir_prueba',NOW(),4,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('juguetes','Esto es','coche.jpg','dir_prueba',NOW(),4,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('pintalabios','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('yolo','Esto es un producto de prueba','coche.jpg','dir_prueba',NOW(),1,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('sabana','Esto es un producto','coche.jpg','dir_prueba',NOW(),2,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('nenuko','de prueba','coche.jpg','dir_prueba',NOW(),3,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('sandia','producto de prueba','coche.jpg','dir_prueba',NOW(),4,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('manguera','Esto es','coche.jpg','dir_prueba',NOW(),4,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('eye-line','Esto es una prueba','coche.jpg','dir_prueba',NOW(),5,1);
 
 
 
