@@ -23,8 +23,8 @@
 
 
         <ul>
-            <li>¿QUÉ ES YOLOPOP?</li>
-            <li>¿DÓNDE ESTAMOS?</li>
+            <li><a href="que_es_yolopop.php">¿QUÉ ES YOLOPOP?</a> </li>
+            <li><a href="donde_estamos.php"> ¿DÓNDE ESTAMOS?</a></li>
             <li>SOBRE NOSOTROS</li>
             <li> AYUDA</li>
 
