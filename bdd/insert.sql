@@ -1,15 +1,17 @@
 
-/* ==================================================== */
-/* 1 - INSERT PERFILES */
-/* ==================================================== */
- 
-INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion, telefono,foto,fechaNacimiento,id_usuario) values ('yolo','design','yolodesign.jas@gmail.com','otro',999,'Son los jefes del proyecto, valoracion positiva', 687740992,'foto','1996-12-22',1);
 
 /* ==================================================== */
-/* 2 - INSERT USUARIOS */
+/* 1- INSERT USUARIOS */
 /* ==================================================== */
 
 INSERT INTO usuarios (usuario,contrasena) values ('yolodesign.jas@gmail.com','Yolo2000');
+
+
+/* ==================================================== */
+/* 2 - INSERT PERFILES */
+/* ==================================================== */
+ 
+INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion, telefono,foto,fechaNacimiento,id_usuario) values ('yolo','design','yolodesign.jas@gmail.com','otro',999,'Son los jefes del proyecto, valoracion positiva', 687740992,'foto','1996-12-22',1);
 
 
 
