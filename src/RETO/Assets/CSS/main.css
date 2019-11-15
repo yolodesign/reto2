@@ -22,8 +22,6 @@ body{
 
 
 
-
-
 .imagenAnuncion{
     width: 10%;
     height: 10%;
@@ -540,17 +538,19 @@ input {
 /* ================= */
 /* Footer */
 /* ================= */
+
 footer{
-    display: flex;
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 10%;
+    height: auto;
+    text-align: center;
+    display:flex;
     background-color: #222222;
     color: #ffffffda;
     justify-content: space-around;  
-  
+
 }
 #copyright a{
     text-decoration: none;
@@ -602,7 +602,14 @@ footer a:visited{
 }
 #aboutUsLinks{
     padding: 0 5px;
-}
+
+
+
+
+
+
+
+
 /* ================= */
 /* Error */
 /* ================= */
