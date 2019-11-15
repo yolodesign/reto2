@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Icon[es_ES]=gnome-panel-launcher
+Name[es_ES]=yolopop
+Exec=bash /home/egibide/Escritorio/YoloPop/script.sh
+Name=yolopop
+Icon=/home/egibide/Escritorio/YoloPop/Archivos_configuracion/img/icono_yolo.png
