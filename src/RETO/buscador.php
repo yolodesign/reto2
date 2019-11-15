@@ -2,10 +2,10 @@
 ?>
 
     <div id="buscadorDiv">
-        <section class="buscadorSection">
+        <article class="buscadorSection">
             <form action="" method="">
                 <input type="search" placeholder="Introduce tu busqueda" autofocus>
                 <button>Buscar</button>
             </form>
-        </section>
+        </article>
     </div>

@@ -14,8 +14,8 @@ $dbh = connect();
 
     <div>
         <nav id="navCat">
-            <div id="menu">
-                <div id="menu-toggle">
+            <div id="menuCat">
+                <div id="menu-toggle-cat">
                     <div id="menu-icon">
                         <div class="bar"></div>
                         <div class="bar"></div>
@@ -55,7 +55,7 @@ $dbh = connect();
     <div>
         <?php
 
-        consulta($dbh);
+        //consulta($dbh);
 
         ?>
     </div>
