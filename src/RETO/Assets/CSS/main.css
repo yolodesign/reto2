@@ -721,14 +721,14 @@ footer a:visited{
     background: #3a3f4480;
     display:flex;
     width: 50vw;
-    height: 100vh;
+    height: 70vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 #mapa iframe {
     max-width: 70vw;
-    height: 70vh;
+    height: 60vh;
  }
 
  /* ================= */
@@ -737,7 +737,7 @@ footer a:visited{
 
 #que_es_yolopop{
     justify-content: space-around;
-    height: 70vh;
+    
 }
 
 #que_es_yolopop_titulo{
