@@ -1,52 +1,41 @@
 <?php
 
-class SessionUtils {
-
-    static function startSessionIfNotStarted() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start([
-                'cookie_lifetime' => 86400,
-            ]);
-        }
+function startSessionIfNotStarted()
+{
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
     }
+}
 
-    static function destroySession() {
-        $_SESSION = array();
+function destroySession()
+{
+    session_destroy();
+}
 
-        if (session_id() != "" || isset($_COOKIE[session_name()]))
-            setcookie(session_name(), '', time() - 2592000, '/');
+function setSession($user)
+{
+    $_SESSION['user'] = $user;
+}
 
+function loggedIn()
+{
+    session_start([
+        'cookie_lifetime' => 86400,
+    ]);
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+        session_unset();
         session_destroy();
     }
-
-    static function setSession($user) {
-        $_SESSION['user'] = $user;
-        if (!isset($_SESSION['CREATED'])) {
-            $_SESSION['CREATED'] = time();
-        } else if (time() - $_SESSION['CREATED'] > 1800) {
-            session_regenerate_id(true);
-            $_SESSION['CREATED'] = time();
-        }
+    $_SESSION['LAST_ACTIVITY'] = time();
+    if (isset($_SESSION['user'])) {
+        return true;
+    } else {
+        return false;
     }
-
-    static function loggedIn() {
-        session_start([
-            'cookie_lifetime' => 86400,
-        ]);
-        if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
-            session_unset();
-            session_destroy();
-        }
-        $_SESSION['LAST_ACTIVITY'] = time();
-        if (isset($_SESSION['user'])) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    static function getSession() {
-        return $_SESSION['user'];
-    }
-
 }
+
+function getSession()
+{
+    return $_SESSION['user'];
+}
+

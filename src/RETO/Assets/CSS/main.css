@@ -61,7 +61,7 @@ header{
 /* ==================================================================================== */
 #nav_icon{
     
-    margin-right: auto 0;
+    margin-right: auto ;
     padding: 1%;
     
 }
@@ -603,12 +603,62 @@ footer a:visited{
 #aboutUsLinks{
     padding: 0 5px;
 
+}
 
 
+/* ================= */
+/* Perfil */
+/* ================= */
 
+#contenedor{
+    display: grid;
+    grid-template-columns: 300px 600px;
+    grid-template-rows: 300px 500px 200px;
+    margin-top: 5.5%;
+    margin-bottom: 4%;
+    margin-bottom: 4%;
+}
+#perfilCabecera{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    border: solid 1px black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#perfilCabecera img{
+    width: 30%;
+    height: 50%;
+}
+#anuncios{
+    grid-column: 1/2;
+    grid-row: 1/4;
+    border: solid 1px black;
+}
+#perfilDatos{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#botonesPerfil{
+    grid-column: 2/3;
+    grid-row: 3/4;
+    border: solid 1px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: black;
 
-
-
+}
+#botonesPerfil input {
+    padding: 5px;
+}
 
 /* ================= */
 /* Error */
