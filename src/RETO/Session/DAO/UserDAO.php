@@ -2,6 +2,7 @@
 include '../Conf/PersistentManager.php';
 include '../Utils/SessionUtils.php';
 
+
 if (isset($_POST["emailLogin"])) {
     checkAction();
 }
@@ -17,11 +18,14 @@ function checkAction()
     if(check($_POST["emailLogin"], $_POST["passwordLogin"], $dbh))
      {
      // Establecemos la sesión
-     header('Location: ../../index.php');
+         startSessionIfNotStarted();
+         setSession($_POST["emailLogin"]);
+
+         header('Location: ../../index.php');
      }
      else
     {
-     header('Location: ../../index2.php');
+        header('Location: ../../index2.php');
     }
 }
 
@@ -45,10 +49,12 @@ function createAction()
 
 
     // Establecemos la sesión
-    /*SessionUtils::startSessionIfNotStarted();
-    SessionUtils::setSession($user->getEmail());*/
+    startSessionIfNotStarted();
+    setSession($_POST["emailSignup"]);
 
-    //header('Location: ../../index.php');
+
+
+    header('Location: ../../index.php');
 }
 
 
@@ -85,7 +91,6 @@ function check($email, $password, $dbh)
 //Añade en la tabla seleccionada todos sus datos
 function insert($user, $dbh)
 {
-
     $data2 = array(
         "email" => $user["email"],
         "password" => $user["password"]
@@ -94,22 +99,11 @@ function insert($user, $dbh)
         $stmt = $dbh->prepare("INSERT INTO usuarios(usuario, contrasena) VALUES (:email, :password)");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data2);
-        $stmt->fetch();
     }catch (PDOException $e){
         die($e->getMessage());
     }
 
-    try{
-        $stmt = $dbh->prepare("SELECT id FROM usuarios WHERE usuario=:email AND contrasena=:password");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($data2);
-        while($row = $stmt->fetch()){
-            $value = $row->id;
-        }
-    }catch (PDOException $e){
-        die($e->getMessage());
-    }
-
+    $value = getIdUsuario($dbh, $data2);
 
     $data = array(
         'nombre' => $user["nombre"],
@@ -123,14 +117,59 @@ function insert($user, $dbh)
     );
 
     try{
-        $stmt = $dbh->prepare("INSERT INTO perfiles(nombre, apellido, telefono, correo, sexo, fechaNacimiento, id_usuario, foto) VALUES (:nombre, :apellidos, :telefono, :email, :genero, :fechaNacimiento, :id_usuario ,:profImage)");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($data);
-        $stmt->fetch();
+        $stmt2 = $dbh->prepare("INSERT INTO perfiles(nombre, apellido, correo, sexo, telefono, fechaNacimiento, id_usuario, foto) VALUES (:nombre, :apellidos, :email, :genero, :telefono, :fechaNacimiento, :id_usuario ,:profImage)");
+        $stmt2->setFetchMode(PDO::FETCH_OBJ);
+        $stmt2->execute($data);
     }catch (PDOException $e){
         die($e->getMessage());
     }
-
+}
+function getIdUsuario($dbh, $data){
+    try{
+        $stmt = $dbh->prepare("SELECT id FROM usuarios WHERE usuario=:email AND contrasena=:password");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->id;
+        }
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+    return $value;
 }
 
+
+function getNamebyIDEmail(){
+    $dbh = connect();
+    $email = getSession();
+    $data = array(
+      'email' => $email
+    );
+    $stmt = $dbh->prepare("SELECT nombre FROM perfiles WHERE correo=:email");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    while($row = $stmt->fetch()){
+        $name = $row->nombre;
+    }
+
+    return $name;
+}
+function getImgProfile(){
+    $dbh = connect();
+    $email = getSession();
+    $data = array(
+      'email' => $email
+    );
+    try{
+        $stmt = $dbh->prepare("SELECT foto FROM perfiles WHERE correo=:email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->id;
+        }
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+    return $value;
+}
 ?>

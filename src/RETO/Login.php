@@ -5,10 +5,10 @@ include ("Session/Conf/PersistentManager.php");
 include 'Session/Utils/SessionUtils.php';
 ?>
 
-<body id="loginBody">
+
 <div id="container-login">
     <div class="logButtons">
-        <input type="button" value="Log in" onclick="loginSign('login')">
+        <!--<input type="button" value="Log in" onclick="loginSign('login')">-->
         <input type="button" value="Sign in" onclick="loginSign('sign')">
     </div>
     <div class="login-item">
@@ -33,7 +33,7 @@ include 'Session/Utils/SessionUtils.php';
 <div id="container-signup">
     <div class="logButtons">
         <input type="button" value="Log in" onclick="loginSign('login')">
-        <input type="button" value="Sign in" onclick="loginSign('sign')">
+        <!--<input type="button" value="Sign in" onclick="loginSign('sign')">-->
     </div>
     <div class="login-item">
         <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return signup()">
@@ -61,7 +61,6 @@ include 'Session/Utils/SessionUtils.php';
                     <option></option>
                     <option>Male</option>
                     <option>Female</option>
-                    <option>Other</option>
                 </select>
             </div>
 
