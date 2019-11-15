@@ -2,13 +2,13 @@
 
 #navCat {
     width: 100vw;
-    height: 160px;
-    background: #46b2f0;
-    display: grid;
+    height: 7%;
+    display: flex;
     grid-template-columns: 1fr 1fr;
     position: fixed;
     z-index: 10;
     transition: all 0.3s;
+    justify-content: flex-end;
 }
 
 
@@ -23,8 +23,10 @@
 #brand,
 #menuCat,
 #ulCatNav {
-    display: flex;
-    align-items: center;
+    background: #00b9bc;
+    flex-wrap: wrap;
+    -webkit-border-radius: 22px 22px 22px 22px;
+    border: 0px solid #000000;
 }
 
 #brand {
@@ -52,11 +54,11 @@
 
 #menuCat {
     justify-content: flex-end;
-    padding-right: 40px;
 }
 
 .liCatNav {
-    margin-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 .liCatNav a {
     width: 80px;
@@ -69,7 +71,7 @@
 #menu-toggle-cat {
     width: 55px;
     height: 55px;
-    background: #2ea8ee;
+    background: #00b9bc;
     display: flex;
     justify-content: center;
     align-items: center;

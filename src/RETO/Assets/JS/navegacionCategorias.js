@@ -19,13 +19,13 @@ $( () => {
         e.preventDefault();
     });
 
-    $('#menu-toggle').on('click', () => {
-        $('#menu-toggle').toggleClass('closeMenu');
+    $('#menu-toggle-cat').on('click', () => {
+        $('#menu-toggle-cat').toggleClass('closeMenu');
         $('ul').toggleClass('showMenu');
 
         $('li').on('click', () => {
             $('ul').removeClass('showMenu');
-            $('#menu-toggle').removeClass('closeMenu');
+            $('#menu-toggle-cat').removeClass('closeMenu');
         });
     });
 
