@@ -47,7 +47,7 @@ header{
     min-height: 10%;
     background: rgb(250,108,152);
     background: linear-gradient(90deg, rgba(250,108,152,1) 15%, #00b9bc 31%);
-    border-bottom: solid 2px #565656;
+    border-bottom: solid 6px #565656;
     justify-content: space-around;
     align-items: center;
     clear:both;
@@ -280,6 +280,7 @@ h1 a:hover:after {
     color: #fff;
     background-color: #c9ffc3;
     font-family: 'lato', sans-serif;
+    margin-top: -1.5%;
 }
 
 #container-login, #container-signup {
