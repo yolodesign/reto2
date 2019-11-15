@@ -15,6 +15,7 @@ body{
     background-color: #c9ffc3;
     font-family: 'lato', sans-serif;
     overflow-x: hidden;
+    position: relative;
 
 }
 
@@ -540,7 +541,7 @@ input {
 /* ================= */
 
 footer{
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -549,8 +550,15 @@ footer{
     display:flex;
     background-color: #222222;
     color: #ffffffda;
-    justify-content: space-around;  
+    justify-content: space-around; 
+    clear: both;
+    padding: 1%;
 
+}
+#copyright{
+    display: flex;
+    flex-direction:column;
+    width: 30%;
 }
 #copyright a{
     text-decoration: none;
@@ -558,6 +566,12 @@ footer{
 #copyright a:visited{
     color:#ffffffda;
 }
+#copyright img{
+    width: 10%;
+    height: auto;
+}
+
+
 footer a:visited{
     color: #ffffffda;
 }
@@ -579,6 +593,7 @@ footer a:visited{
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 3%;
 }
 #copyright{
     height: 100%;
@@ -589,9 +604,13 @@ footer a:visited{
 #rrss{
     flex-direction: row;
     margin-left: 11%;
+    width: 30%;
 }
 #rrss > i{
     padding: 5px;
+}
+#aboutUsLinks{
+    width: 30%;
 }
 
 #aboutUsLinks ul{
