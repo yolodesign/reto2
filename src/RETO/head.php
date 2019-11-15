@@ -27,7 +27,7 @@
     <div id="nav_title">
         <h1><a href="#">Yolo Pop</a></h1>
     </div>
-    <section class="top-nav">
+    <article class="top-nav">
         <input id="menu-toggle" type="checkbox"/>
         <label class='menu-button-container' for="menu-toggle">
             <div class='menu-button' onclick="visualizarMenu();"></div>
@@ -37,7 +37,7 @@
             <li><a href="Login.php">LOG IN</a></li>
             <li>¡UNETE!</li>
         </ul>
-    </section>
+    </article>
 </header>
 
 
