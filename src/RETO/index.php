@@ -43,8 +43,7 @@ $dbh = connect();
         </section>
         <section id="section03">
             <div id="heading"></div>
-        </section>
-
+        </section> 
     </div>
     <div></div>
     <div></div>
@@ -54,7 +53,8 @@ $dbh = connect();
     <div>
         <?php
 
-        //consulta($dbh);
+
+        consulta($dbh);
 
         ?>
     </div>
