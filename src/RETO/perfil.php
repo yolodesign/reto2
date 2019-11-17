@@ -17,6 +17,11 @@ function checkGender($genderP)
 
 <div id="contenedor">
     <div id="anuncios">
+        <ul>
+            <li>Ver Perfil</li>
+            <li>Subir Anuncio</li>
+            <li>Editar Perfil</li>
+        </ul>
     </div>
     <div id="perfilCabecera">
         <img src="<?php echo getImgProfile($_SESSION['user']) ?>">
@@ -61,6 +66,27 @@ function checkGender($genderP)
                     <input type="submit" name="borrar" value="Borrar cuenta">
                 </div>
             </form>
+        </div>
+        <div id="datos">
+            <div>
+                <h3>Nombre</h3><p><?php echo getNamebyEmail($_SESSION['user']) ?></p>
+            </div>
+            <div>
+                <h3>Apellido</h3><p><?php echo getLastnameProfile($_SESSION['user']) ?></p><br>
+            </div>
+            <div>
+                <h3>Teléfono</h3><p><?php echo getPhoneProfile($_SESSION['user']) ?></p><br>
+            </div>
+            <di>
+                <h3>Género</h3><p><?php echo getGenderProfile($_SESSION['user']) ?></p><br>
+            </di>
+            <div>
+                <h3>Fecha de nacimiento</h3><p><?php echo getBirthdateProfile($_SESSION['user']) ?></p><br>
+            </div>
+            <div>
+                <h3>Correo</h3><p><?php echo getNamebyEmail($_SESSION['user']) ?></p><br>
+            </div>
+
         </div>
     </div>
 
