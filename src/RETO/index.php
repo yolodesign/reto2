@@ -1,10 +1,10 @@
 <?php
 include("head.php");
 include("Session/DAO/ProductDAO.php");
-include 'Session/Utils/SessionUtils.php';
-include("Session/Conf/PersistentManager.php");
-startSessionIfNotStarted();
-$dbh = connect();
+//include_once 'Session/Utils/SessionUtils.php';
+//include_once("Session/Conf/PersistentManager.php");
+//startSessionIfNotStarted();
+//$dbh = connect();
 ?>
 
 <div id="indexBody">
@@ -52,10 +52,7 @@ $dbh = connect();
 
     <div>
         <?php
-
-
-        consulta($dbh);
-
+        consulta();
         ?>
     </div>
 </div>
