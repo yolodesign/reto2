@@ -19,7 +19,9 @@ body{
     position: relative;
 
 }
-
+h1, h2{
+    font-family: 'Pacifico';
+}
 /**Index */
 
 
@@ -486,7 +488,7 @@ input {
 /* ================= */
 /* "VER MAS" */
 /* ================= */
-.ver_mas_anuncios {
+.ver_mas_anuncios, .que_es_yolopop {
     margin: 0 auto;
     margin-top: 10%;
     width: 80%;
@@ -500,7 +502,7 @@ input {
   }
   
   .box {
-    background-color: #b1b1b1;
+    background-color: #3a3f4480;
     color: #fff;
     border-radius: 5px;
     padding: 20px;
@@ -629,6 +631,65 @@ footer a:visited{
 /* Perfil */
 /* ================= */
 
+.perfil {
+    display: grid;
+    grid-gap: 5%;
+        grid-template-columns: 20vw 12vw 10vw;
+        color: #444;
+    }
+    .a {
+        grid-column: 1 / 3;
+        grid-row: 1;
+        display: flex;
+        justify-content: center;
+    }
+    .b {
+        grid-column: 3 ;
+        grid-row: 1 / 3;
+    }
+    .c {
+        grid-column: 1 ;
+        grid-row: 2 ;
+    }
+    .d {
+        grid-column: 2;
+        grid-row: 2;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+#boton_log_out{
+    width: 50%;
+    background-color: #FF6347;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: background-color .3s;
+}
+#boton_log_out:hover{
+    background-color: #8B0000;
+}
+#botonesPerfil input{
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+/*
 #contenedor{
     display: grid;
     grid-template-columns: 300px 600px;
@@ -685,7 +746,7 @@ footer a:visited{
 #botonesPerfil input {
     padding: 5px;
 }
-
+*/
 /* ================= */
 /* Error */
 /* ================= */
@@ -742,18 +803,20 @@ footer a:visited{
 /* Que es YOLOPOP*/
 /* ================= */
 
-#que_es_yolopop{
+
+
+#links_iconos{
+    display: flex;
     justify-content: space-around;
-    
+    align-items: center;
+    font-size: 2em;
 }
 
-#que_es_yolopop_titulo{
 
-}
-
-#que_es_yolopop_contenido{
-    padding: 8%;
-
+#ajebask_img{
+    width: 7vw;
+    height: auto;
+    margin: 0;
 }
 
 
