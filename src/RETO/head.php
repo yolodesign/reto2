@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="Assets/JS/Login.js"></script>
     <script src="Assets/JS/header.js"></script>
+    <script src="Assets/JS/search_julen.js"></script>
     <script src="Assets/JS/jquery-3.4.1.js"></script>
     <script src="Assets/JS/navegacionCategorias.js"></script>
     <script src="https://kit.fontawesome.com/1de908b2dd.js" crossorigin="anonymous"></script>
@@ -26,7 +27,7 @@
     </div>
 
     <div id="nav_title">
-        <h1><a href="#">Yolo Pop</a></h1>
+        <h1><a href="index.php">Yolo Pop</a></h1>
     </div>
     <article class="top-nav">
         <input id="menu-toggle" type="checkbox"/>

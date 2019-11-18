@@ -22,6 +22,9 @@ body{
 h1, h2{
     font-family: 'Pacifico';
 }
+p{
+    line-height: 1.5em;
+}
 /**Index */
 
 
@@ -36,9 +39,9 @@ h1, h2{
     
 }
 
-/* ================= */
+/* ==================================================================================== */
 /* HEADER */
-/* ================= */
+/* ==================================================================================== */
 
 header{
     display: flex;
@@ -54,6 +57,8 @@ header{
     justify-content: space-around;
     align-items: center;
     clear:both;
+    z-index: 1;
+
     
 }
 .menu a {
@@ -485,9 +490,9 @@ input {
 
 
 
-/* ================= */
+/* ==================================================================================== */
 /* "VER MAS" */
-/* ================= */
+/* ==================================================================================== */
 .ver_mas_anuncios, .que_es_yolopop {
     margin: 0 auto;
     margin-top: 10%;
@@ -538,9 +543,9 @@ input {
   }
   
 
-/* ================= */
+/* ==================================================================================== */
 /* Footer */
-/* ================= */
+/* ==================================================================================== */
 
 footer{
     position: absolute;
@@ -625,11 +630,16 @@ footer a:visited{
     padding: 0 5px;
 
 }
+li a{
+    text-decoration: none;
+}
+li a:visited{
+    color:white;
+}
 
-
-/* ================= */
+/* ==================================================================================== */
 /* Perfil */
-/* ================= */
+/* ==================================================================================== */
 
 .perfil {
     display: grid;
@@ -682,74 +692,9 @@ footer a:visited{
 }
 
 
-
-
-
-
-
-
-
-/*
-#contenedor{
-    display: grid;
-    grid-template-columns: 300px 600px;
-    grid-template-rows: 300px 500px 200px;
-    margin-top: 5.5%;
-    margin-bottom: 4%;
-    margin-bottom: 4%;
-}
-#perfilCabecera{
-    grid-column: 2/3;
-    grid-row: 1/2;
-    border: solid 1px black;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#perfilCabecera img{
-    width: 30%;
-    height: 50%;
-}
-#anuncios{
-    grid-column: 1/2;
-    grid-row: 1/4;
-    border: solid 1px black;
-}
-#perfilCuerpo{
-    grid-column: 2/3;
-    grid-row: 2/4;
-    border: solid 1px black;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-#perfilDatos{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#datos{
-    display: flex;
-}
-#botonesPerfil{
-    margin-top: 5%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    color: black;
-
-}
-#botonesPerfil input {
-    padding: 5px;
-}
-*/
-/* ================= */
+/* ==================================================================================== */
 /* Error */
-/* ================= */
+/* ==================================================================================== */
 
 
 #error404{
@@ -782,16 +727,16 @@ footer a:visited{
 #mensaje_error a:visited{
     color:white;
 }
-/* ================= */
-/* Donde Estamos */
-/* ================= */
+/* ==================================================================================== */
+/* Donde Estamos */ /* AYUDA*/
+/* ==================================================================================== */
 
 
 
 
 
 
-.donde_estamos {
+.donde_estamos, .ayuda {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 0,8fr);
@@ -799,7 +744,7 @@ footer a:visited{
     grid-row-gap: 0px;
 }
         
-.donde_estamos_titulo { 
+.donde_estamos_titulo, .ayuda_titulo { 
     grid-area: 1 / 2 / 2 / 5;
     display: flex;
     justify-content: center;
@@ -811,30 +756,32 @@ footer a:visited{
     padding: 20px;
     
  }  
-.mapa {
+.mapa, .contenido_ayuda{
     grid-area: 2 / 2 / 5 / 5;
     background: #3a3f4480;
 }
 
-/*
-#donde_estamos, #que_es_yolopop{
-    background: #3a3f4480;
-    display:flex;
-    width: 50vw;
-    height: 70vh;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-*/
 #mapa iframe {
     max-width: 70vw;
     height: 60vh;
  }
 
- /* ================= */
+ .contenido_ayuda{
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     padding: 3%;
+ }
+ #ayuda_img{
+     width: 40%;
+     height: auto;
+     float: right;
+     
+     
+ }
+ /* ==================================================================================== */
 /* Que es YOLOPOP*/
-/* ================= */
+/* ==================================================================================== */
 
 
 
@@ -853,9 +800,9 @@ footer a:visited{
 }
 
 
- /* ================= */
+ /* ==================================================================================== */
 /* Sobre nosotros/
-/* ================= */
+/* ==================================================================================== */
 
 .nosotros {
     display: grid;
@@ -921,3 +868,4 @@ footer a:visited{
     height: auto;
     border-radius: 50%;
 }
+
