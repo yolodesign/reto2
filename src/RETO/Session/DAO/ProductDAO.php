@@ -1,8 +1,8 @@
 <?php
 include("../Conf/PersistentManager.php");
-<<<<<<< HEAD
 include '../Utils/SessionUtils.php';
 
+//startSessionIfNotStarted();
 
 
 if (isset($_POST["nombreProducto"])){
@@ -22,12 +22,7 @@ if (isset($_POST["nombreProducto"])){
     );
     $dbh = connect();
     añadirProducto($producto, $dbh);
-
 }
-=======
-include("../../Clases/Products.php");
-//startSessionIfNotStarted();
->>>>>>> arkaitz-desarrollo
 
 function consulta($dbh)
 {
@@ -38,27 +33,9 @@ function consulta($dbh)
     while ($row = $stmt->fetch()) {
         echo $row['nombre'] . "<br>";
         echo '<img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['foto'] . '"><br>';
-
     }
-
-
 }
 
-<<<<<<< HEAD
-function consultaByIdCategoriProduct($dbh)
-{
-
-    $stmt = $dbh->prepare("SELECT id, nombre, foto FROM productos");
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    $stmt->execute();
-    while ($row = $stmt->fetch()) {
-        echo $row['nombre'] . "<br>";
-        echo '<img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['foto'] . '"><br>';
-
-    }
-
-
-}
 function mostrarCategorias(){
     try{
         $dbh = connect();
@@ -67,7 +44,6 @@ function mostrarCategorias(){
         $stmt->execute();
         while ($row = $stmt->fetch()) {
             echo "<option>{$row['nombre']}</option>";
-
         }
     } catch (PDOException $e) {
         die($e->getMessage());
@@ -122,8 +98,6 @@ function getIdUsuarioByEmail(){
     }
     return $value;
 }
-=======
->>>>>>> arkaitz-desarrollo
 
 function añadirProducto($producto, $dbh)
 {
@@ -150,7 +124,6 @@ function añadirProducto($producto, $dbh)
 
 function getProductosById($dbh, $id)
 {
-
     $data = array(
         'id' => $id
     );
