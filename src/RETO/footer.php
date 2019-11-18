@@ -25,7 +25,7 @@
         <ul>
             <li><a href="que_es_yolopop.php">¿QUÉ ES YOLOPOP?</a> </li>
             <li><a href="donde_estamos.php"> ¿DÓNDE ESTAMOS?</a></li>
-            <li>SOBRE NOSOTROS</li>
+            <li><a href="nosotros.php">SOBRE NOSOTROS</a></li>
             <li> AYUDA</li>
 
         </ul>
