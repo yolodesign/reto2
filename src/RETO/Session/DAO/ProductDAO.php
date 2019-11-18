@@ -1,5 +1,6 @@
 <?php
 include("../Conf/PersistentManager.php");
+<<<<<<< HEAD
 include '../Utils/SessionUtils.php';
 
 
@@ -23,6 +24,10 @@ if (isset($_POST["nombreProducto"])){
     añadirProducto($producto, $dbh);
 
 }
+=======
+include("../../Clases/Products.php");
+//startSessionIfNotStarted();
+>>>>>>> arkaitz-desarrollo
 
 function consulta($dbh)
 {
@@ -39,6 +44,7 @@ function consulta($dbh)
 
 }
 
+<<<<<<< HEAD
 function consultaByIdCategoriProduct($dbh)
 {
 
@@ -116,6 +122,8 @@ function getIdUsuarioByEmail(){
     }
     return $value;
 }
+=======
+>>>>>>> arkaitz-desarrollo
 
 function añadirProducto($producto, $dbh)
 {
@@ -138,5 +146,28 @@ function añadirProducto($producto, $dbh)
     //Redireccionar al index
     header('Location: ../../index.php');
 }
+
+
+function getProductosById($dbh, $id)
+{
+
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT pro.nombre productonombre, pro.descripcion productodescripcion, pro.foto productofoto, 
+                                    pro.direccion productodireccion, pro.fecha productofecha, cat.nombre categorianombre, per.nombre perfilnombre, 
+                                    per.telefono perfiltelefono, per.correo  perfilcorreo
+                                    FROM productos pro, perfiles per, categorias cat 
+                                    WHERE pro.id=:id 
+                                    AND per.id = pro.id_perfiles AND pro.id_categoria = cat.id");
+
+        $stmt->execute($data);
+        return $stmt->FetchObject();
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
 
 ?>
