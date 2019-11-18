@@ -785,6 +785,38 @@ footer a:visited{
 /* ================= */
 /* Donde Estamos */
 /* ================= */
+
+
+
+
+
+
+.donde_estamos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 0,8fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+        
+.donde_estamos_titulo { 
+    grid-area: 1 / 2 / 2 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(250,108,152);
+    background: linear-gradient(90deg, rgba(250,108,152,1) 15%, rgba(0,185,188,1) 31%);
+    margin-bottom: 5%;
+    border-radius: 5px;
+    padding: 20px;
+    
+ }  
+.mapa {
+    grid-area: 2 / 2 / 5 / 5;
+    background: #3a3f4480;
+}
+
+/*
 #donde_estamos, #que_es_yolopop{
     background: #3a3f4480;
     display:flex;
@@ -794,6 +826,7 @@ footer a:visited{
     justify-content: center;
     flex-direction: column;
 }
+*/
 #mapa iframe {
     max-width: 70vw;
     height: 60vh;
@@ -820,6 +853,71 @@ footer a:visited{
 }
 
 
+ /* ================= */
+/* Sobre nosotros/
+/* ================= */
 
+.nosotros {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+    
+.titulo_nosotros { 
+    grid-area: 1 / 2 / 2 / 5; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(250,108,152);
+    background: linear-gradient(90deg, rgba(250,108,152,1) 15%, rgba(0,185,188,1) 31%);
+    margin-bottom: 5%;
+    border-radius: 5px;
+    padding: 20px;
+}
+.miembro_1 {
+     grid-area: 2 / 2 / 3 / 3;
+    
+}
+.contenido_1 {
+     grid-area: 3 / 2 / 6 / 3; 
+}
+.miembro_2 {
+     grid-area: 2 / 3 / 3 / 4;
+}
+.contenido_2 { 
+    grid-area: 3 / 3 / 6 / 4; 
+}
+.miembro_3 { 
+    grid-area: 2 / 4 / 3 / 5; 
+}
+.contenido_3 { 
+    grid-area: 3 / 4 / 6 / 5;
+}
 
- 
+.miembro_1, .miembro_2, .miembro_3{
+    background-color: #3a3f4480;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    border-radius: 5px;
+}
+.contenido_1, .contenido_2, .contenido_3{
+    background-color: #3a3f4480;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2%;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.contenido_1 img, .contenido_2 img, .contenido_3 img{
+    width: 30%;
+    height: auto;
+    border-radius: 50%;
+}
