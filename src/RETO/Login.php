@@ -3,6 +3,7 @@ include ("head.php");
 include ("Session/DAO/UserDAO.php");
 include ("Session/Conf/PersistentManager.php");
 include 'Session/Utils/SessionUtils.php';
+unset($_SESSION['user']);
 ?>
 <div id="container-login">
     <div class="logButtons">

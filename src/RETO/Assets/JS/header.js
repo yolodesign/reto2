@@ -9,3 +9,11 @@ function visualizarMenu() {
         console.log("Esto deberia ocultar el menu");
     }
 }
+function loggeado(logged){
+    let login = document.getElementById("loginHead")
+    if (logged == true){
+        login.style.display = "none";
+    }else{
+        console.log(logged)
+    }
+}

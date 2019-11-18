@@ -482,8 +482,41 @@ input {
     font: 14px fontawesome;
     color: #5b5b5b;
 }
+/* ================= */
+/* Subir Anuncio */
+/* ================= */
+.nombreProducto:before{
+    content:"\f118";
+    font: 14px fontawesome;
+    color: #5b5b5b;
+}
+.descpcionProducto:before{
+    content:"\f031";
+    font: 14px fontawesome;
+    color: #5b5b5b;
+}
+.direccionProducto:before{
+    content:"\f124";
+    font: 14px fontawesome;
+    color: #5b5b5b;
+}
+#descrpcionProducto{
+    width: 100%;
+    font: inherit;
+}
 
+.categ:before {
+    content:"\f06e";
+    font: 14px fontawesome;
+    color: #5b5b5b;
+}
 
+.categ {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-size: 1em;
+    color: gray;
+}
 
 /* ================= */
 /* "VER MAS" */

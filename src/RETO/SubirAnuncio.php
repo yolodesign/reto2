@@ -1,29 +1,37 @@
 <?php
 include ("head.php");
-include ("Session/DAO/UserDAO.php");
+include ("Session/DAO/ProductDAO.php");
 include ("Session/Conf/PersistentManager.php");
 include 'Session/Utils/SessionUtils.php';
 ?>
 <div id="container-login">
-
     <div class="login-item">
-        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return login()">
+        <form action="Session/DAO/ProductDAO.php" method="post" class="form form-login" onsubmit="return subirAnuncio()">
             <div class="form-field">
-                <label class="user" for="nombreProducto"><span class="hidden">Nombre</span></label>
+                <label class="nombreProducto" for="nombreProducto"><span class="hidden">Nombre</span></label>
                 <input id="nombreProducto" name="nombreProducto" type="text" class="form-input" placeholder="Nombre" required>
             </div>
-
             <div class="form-field">
-                <label class="lock" for="descrpcionProducto"><span class="hidden">Descripcion</span></label>
-                <input id="descrpcionProducto" name="descrpcionProducto" type="text" class="form-input" placeholder="Descripción" required>
-            </div>
-            <div class="form-field">
-                <label class="lock" for="direccionProducto"><span class="hidden">Direccion</span></label>
+                <label class="direccionProducto" for="direccionProducto"><span class="hidden">Direccion</span></label>
                 <input id="direccionProducto" name="direccionProducto" type="text" class="form-input" placeholder="Dirección" required>
             </div>
-
             <div class="form-field">
-                <input type="submit" value="Subir anuncio">
+                <label class="categ" for="categoriaProducto"><span class="hidden">Gender</span></label>
+                <select id="categoriaProducto" name="categoriaProducto" class="categ" required>
+                    <option></option>
+                    <?php mostrarCategorias(); ?>
+                </select>
+            </div>
+            <div class="form-field">
+                <label class="descpcionProducto" for="descrpcionProducto"><span class="hidden">Descripcion</span></label>
+                <textarea id="descrpcionProducto" name="descrpcionProducto" class="form-input" placeholder="Descripción"></textarea>
+            </div>
+            <div class="uploadFile">
+                <button class="uploadFileBtn">Upload a image</button>
+                <input type="file" id="fotoProducto" name="fotoProducto" />
+            </div>
+            <div class="form-field">
+                <input type="submit" name="subirAnuncio" value="Subir anuncio">
             </div>
         </form>
     </div>
