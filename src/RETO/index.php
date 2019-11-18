@@ -1,10 +1,10 @@
 <?php
 include("head.php");
 include("Session/DAO/ProductDAO.php");
+include 'Session/Utils/SessionUtils.php';
 include("Session/Conf/PersistentManager.php");
-session_start();
+startSessionIfNotStarted();
 $dbh = connect();
-
 ?>
 
 <div id="indexBody">
