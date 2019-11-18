@@ -10,10 +10,17 @@ function visualizarMenu() {
     }
 }
 function loggeado(logged){
-    let login = document.getElementById("loginHead")
+    let login = document.getElementById("loginHead");
+    let cerrarSesion = document.getElementById("cerrarSesionHeader");
+    let anunciate = document.getElementById("anunciate");
     if (logged == true){
         login.style.display = "none";
+        anunciate.href = "SubirAnuncio.php";
+        cerrarSesion.style.display = "list-item";
     }else{
+        login.style.display = "list-item";
+        anunciate.href = "Login.php";
+        cerrarSesion.style.display = "none";
         console.log(logged)
     }
 }

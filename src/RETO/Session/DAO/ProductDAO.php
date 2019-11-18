@@ -6,10 +6,8 @@ include '../Utils/SessionUtils.php';
 
 
 if (isset($_POST["nombreProducto"])){
-    echo "entra";
     startSessionIfNotStarted();
     $idCategoria = idCategoriaPorNombre($_POST["categoriaProducto"]);
-    echo $idCategoria;
     $idPerfil = getIdUsuarioByEmail();
     $producto = array(
         "nombre" => $_POST["nombreProducto"],
@@ -26,7 +24,7 @@ if (isset($_POST["nombreProducto"])){
 
 function consulta($dbh)
 {
-
+    $dbh = connect();
     $stmt = $dbh->prepare("SELECT id, nombre, foto FROM productos");
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     $stmt->execute();
