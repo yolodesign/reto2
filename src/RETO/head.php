@@ -1,8 +1,9 @@
 <?php
-
+include_once 'Session/Utils/SessionUtils.php';
+startSessionIfNotStarted();
 ?>
 
-<html id="html">
+<html ="html">
 <head>
 
     <title>Yolo pop</title>
@@ -12,13 +13,15 @@
     <link rel="icon" type="image/png" href="Assets/MEDIA/icono_yolo_sin.png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="Assets/JS/Login.js"></script>
+    <script src="Assets/JS/anuncio.js"></script>
+    <script src="Assets/JS/perfil.js"></script>
     <script src="Assets/JS/header.js"></script>
     <script src="Assets/JS/jquery-3.4.1.js"></script>
     <script src="Assets/JS/navegacionCategorias.js"></script>
     <script src="https://kit.fontawesome.com/1de908b2dd.js" crossorigin="anonymous"></script>
 
 </head>
-<body id="loginBody">
+<body id="loginBody" onload="loggeado(<?php echo $_SESSION["logged"] ?>)">
 <header>
 
     <div id="nav_icon">
@@ -34,9 +37,9 @@
             <div class='menu-button' onclick="visualizarMenu();"></div>
         </label>
         <ul class="menu" id="menu_desplegable">
-            <li>ANUNCIATE</li>
-            <li><a href="Login.php">LOG IN</a></li>
-            <li>¡UNETE!</li>
+            <li><a id="anunciate">ANUNCIATE</a></li>
+            <li id="loginHead"><a href="Login.php">LOG IN</a></li>
+            <li id="cerrarSesionHeader" >CERRAR SESIÓN</li>
         </ul>
     </article>
 </header>

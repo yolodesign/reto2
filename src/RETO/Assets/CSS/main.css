@@ -19,7 +19,9 @@ body{
     position: relative;
 
 }
-
+h1, h2{
+    font-family: 'Pacifico';
+}
 /**Index */
 
 
@@ -480,13 +482,46 @@ input {
     font: 14px fontawesome;
     color: #5b5b5b;
 }
+/* ================= */
+/* Subir Anuncio */
+/* ================= */
+.nombreProducto:before{
+    content:"\f118";
+    font: 14px fontawesome;
+    color: #5b5b5b;
+}
+.descpcionProducto:before{
+    content:"\f031";
+    font: 14px fontawesome;
+    color: #5b5b5b;
+}
+.direccionProducto:before{
+    content:"\f124";
+    font: 14px fontawesome;
+    color: #5b5b5b;
+}
+#descrpcionProducto{
+    width: 100%;
+    font: inherit;
+}
 
+.categ:before {
+    content:"\f06e";
+    font: 14px fontawesome;
+    color: #5b5b5b;
+}
 
+.categ {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    font-size: 1em;
+    color: gray;
+}
 
 /* ================= */
 /* "VER MAS" */
 /* ================= */
-.ver_mas_anuncios {
+.ver_mas_anuncios, .que_es_yolopop {
     margin: 0 auto;
     margin-top: 10%;
     width: 80%;
@@ -500,7 +535,7 @@ input {
   }
   
   .box {
-    background-color: #b1b1b1;
+    background-color: #3a3f4480;
     color: #fff;
     border-radius: 5px;
     padding: 20px;
@@ -629,6 +664,65 @@ footer a:visited{
 /* Perfil */
 /* ================= */
 
+.perfil {
+    display: grid;
+    grid-gap: 5%;
+        grid-template-columns: 20vw 12vw 10vw;
+        color: #444;
+    }
+    .a {
+        grid-column: 1 / 3;
+        grid-row: 1;
+        display: flex;
+        justify-content: center;
+    }
+    .b {
+        grid-column: 3 ;
+        grid-row: 1 / 3;
+    }
+    .c {
+        grid-column: 1 ;
+        grid-row: 2 ;
+    }
+    .d {
+        grid-column: 2;
+        grid-row: 2;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+#boton_log_out{
+    width: 50%;
+    background-color: #FF6347;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: background-color .3s;
+}
+#boton_log_out:hover{
+    background-color: #8B0000;
+}
+#botonesPerfil input{
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+/*
 #contenedor{
     display: grid;
     grid-template-columns: 300px 600px;
@@ -685,7 +779,7 @@ footer a:visited{
 #botonesPerfil input {
     padding: 5px;
 }
-
+*/
 /* ================= */
 /* Error */
 /* ================= */
@@ -724,6 +818,38 @@ footer a:visited{
 /* ================= */
 /* Donde Estamos */
 /* ================= */
+
+
+
+
+
+
+.donde_estamos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 0,8fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+        
+.donde_estamos_titulo { 
+    grid-area: 1 / 2 / 2 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(250,108,152);
+    background: linear-gradient(90deg, rgba(250,108,152,1) 15%, rgba(0,185,188,1) 31%);
+    margin-bottom: 5%;
+    border-radius: 5px;
+    padding: 20px;
+    
+ }  
+.mapa {
+    grid-area: 2 / 2 / 5 / 5;
+    background: #3a3f4480;
+}
+
+/*
 #donde_estamos, #que_es_yolopop{
     background: #3a3f4480;
     display:flex;
@@ -733,6 +859,7 @@ footer a:visited{
     justify-content: center;
     flex-direction: column;
 }
+*/
 #mapa iframe {
     max-width: 70vw;
     height: 60vh;
@@ -742,21 +869,88 @@ footer a:visited{
 /* Que es YOLOPOP*/
 /* ================= */
 
-#que_es_yolopop{
+
+
+#links_iconos{
+    display: flex;
     justify-content: space-around;
+    align-items: center;
+    font-size: 2em;
+}
+
+
+#ajebask_img{
+    width: 7vw;
+    height: auto;
+    margin: 0;
+}
+
+
+ /* ================= */
+/* Sobre nosotros/
+/* ================= */
+
+.nosotros {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+    
+.titulo_nosotros { 
+    grid-area: 1 / 2 / 2 / 5; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(250,108,152);
+    background: linear-gradient(90deg, rgba(250,108,152,1) 15%, rgba(0,185,188,1) 31%);
+    margin-bottom: 5%;
+    border-radius: 5px;
+    padding: 20px;
+}
+.miembro_1 {
+     grid-area: 2 / 2 / 3 / 3;
     
 }
-
-#que_es_yolopop_titulo{
-
+.contenido_1 {
+     grid-area: 3 / 2 / 6 / 3; 
+}
+.miembro_2 {
+     grid-area: 2 / 3 / 3 / 4;
+}
+.contenido_2 { 
+    grid-area: 3 / 3 / 6 / 4; 
+}
+.miembro_3 { 
+    grid-area: 2 / 4 / 3 / 5; 
+}
+.contenido_3 { 
+    grid-area: 3 / 4 / 6 / 5;
 }
 
-#que_es_yolopop_contenido{
-    padding: 8%;
-
+.miembro_1, .miembro_2, .miembro_3{
+    background-color: #3a3f4480;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    border-radius: 5px;
+}
+.contenido_1, .contenido_2, .contenido_3{
+    background-color: #3a3f4480;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2%;
+    flex-direction: column;
+    border-radius: 5px;
 }
 
-
-
-
- 
+.contenido_1 img, .contenido_2 img, .contenido_3 img{
+    width: 30%;
+    height: auto;
+    border-radius: 50%;
+}

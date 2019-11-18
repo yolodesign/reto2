@@ -4,6 +4,7 @@ include '../Utils/SessionUtils.php';
 
 if (isset($_POST["emailLogin"])) {
     checkAction();
+
 }
 if (isset($_POST["emailSignup"])) {
     createAction();
@@ -14,7 +15,10 @@ if (isset($_POST["update"])){
 if (isset($_POST["borrar"])){
     borrarCuenta();
 }
-
+if (isset($_POST["cerrarSession"])){
+    unset($_SESSION['user']);
+    header('Location: ../../Login.php');
+}
 
 function checkAction()
 {
@@ -24,7 +28,6 @@ function checkAction()
      // Establecemos la sesión
          startSessionIfNotStarted();
          setSession($_POST["emailLogin"]);
-
          header('Location: ../../index.php');
      }
      else
