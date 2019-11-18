@@ -40,3 +40,15 @@ function validacionesPerfil() {
 function error(mensaje) {
     console.log(mensaje)
 }
+
+function editarPerfil(ocultar = true){
+    let editar = document.getElementById("perfilDatos").style
+    let mostrar = document.getElementById("datos").style
+    if (ocultar == true){
+        editar.display = "none";
+        mostrar.display = "flex";
+    } else{
+        editar.display = "flex";
+        mostrar.display = "none";
+    }
+}

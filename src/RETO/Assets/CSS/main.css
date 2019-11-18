@@ -670,6 +670,9 @@ footer a:visited{
     justify-content: center;
     align-items: center;
 }
+#datos{
+    display: flex;
+}
 #botonesPerfil{
     margin-top: 5%;
     display: flex;
