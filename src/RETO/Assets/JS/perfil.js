@@ -2,9 +2,9 @@ function validacionesPerfil() {
     let expRegPhone = /^(\+34|0034|34)?[6|7|8|9][0-9]{8}$/;
     let nombre = document.getElementById("profileName").value;
     let apellido = document.getElementById("profileLastname").value;
-    let cumple = document.getElementById("profilePhone").value;
-    let gender = document.getElementById("profileBirthday").value;
-    let phone = document.getElementById("profileGender").value;
+    let cumple = document.getElementById("profileBirthday").value;
+    let gender = document.getElementById("profileGender").value;
+    let phone = document.getElementById("profilePhone").value;
 
     if (nombre != "" && apellido != "" && cumple != "" && gender != "" && phone != "") {
         if (expRegPhone.exec(phone)) {
