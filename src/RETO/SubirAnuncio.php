@@ -2,7 +2,7 @@
 include ("head.php");
 include ("Session/DAO/ProductDAO.php");
 include ("Session/Conf/PersistentManager.php");
-include 'Session/Utils/SessionUtils.php';
+//include 'Session/Utils/SessionUtils.php';
 ?>
 <div id="container-login">
     <div class="login-item">

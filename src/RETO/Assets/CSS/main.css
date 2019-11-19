@@ -295,8 +295,8 @@ h1 a:hover:after {
 
 }
 #container-signup{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 8%;
+    margin-bottom: 8.5%;
 }
 
 .logButtons{
@@ -667,9 +667,11 @@ footer a:visited{
 .perfil {
     display: grid;
     grid-gap: 5%;
-        grid-template-columns: 20vw 12vw 10vw;
-        color: #444;
-    }
+    grid-template-columns: 20vw 12vw 10vw;
+    color: #444;
+    margin-top: 7%;
+    margin-bottom: 9%;
+}
     .a {
         grid-column: 1 / 3;
         grid-row: 1;
@@ -780,6 +782,9 @@ footer a:visited{
     padding: 5px;
 }
 */
+#datos div p{
+    font-style: italic;
+}
 /* ================= */
 /* Error */
 /* ================= */
