@@ -1,7 +1,9 @@
 <?php
 include("head.php");
+include("Session/Conf/PersistentManager.php");
 include("Session/DAO/ProductDAO.php");
-include_once("Session/Conf/PersistentManager.php");
+include("Session/DAO/CategoriaDAO.php");
+
 
 $dbh = connect();
 ?>
@@ -19,10 +21,11 @@ $dbh = connect();
                     </div>
                 </div>
                 <ul id="ulCatNav">
-                    <li class="liCatNav">Categoria1<a href="#section00"></a></li>
-                    <li class="liCatNav">Categoria2<a href="#section01"></a></li>
-                    <li class="liCatNav">Categoria3<a href="#section02"></a></li>
-                    <li class="liCatNav">Categoria4<a href="#section03"></a></li>
+                    <?php
+                    foreach ($categorias as $categoria) {
+                        echo "<li class=\"liCatNav\">{$categoria->nombre}<a href=\"#section{$categoria->id}\"></a></li>";
+                    }
+                    ?>
                 </ul>
             </div>
         </nav>
@@ -31,18 +34,14 @@ $dbh = connect();
             include("buscador.php");
             ?>
         </div>
-        <section id="section00">
-            <div id="heading"></div>
-        </section>
-        <section id="section01">
-            <div id="heading"></div>
-        </section>
-        <section id="section02">
-            <div id="heading"></div>
-        </section>
-        <section id="section03">
-            <div id="heading"></div>
-        </section> 
+        <?php
+        foreach ($categorias as $categoria) {
+            echo "<section id=\"section{$categoria->id}\">
+                    <div id=\"heading\"> </div>
+                  </section>";
+        }
+        ?>
+
     </div>
     <div></div>
     <div></div>
