@@ -9,12 +9,14 @@ function startSessionIfNotStarted()
 
 function destroySession()
 {
-    session_destroy();
+    unset($_SESSION[ "user"]);
+    $_SESSION["logged"] = "false";
 }
 
 function setSession($user)
 {
     $_SESSION['user'] = $user;
+    $_SESSION["logged"] = "true";
 }
 
 function loggedIn()

@@ -3,9 +3,8 @@ include ("head.php");
 include ("Session/DAO/UserDAO.php");
 include ("Session/Conf/PersistentManager.php");
 include 'Session/Utils/SessionUtils.php';
+unset($_SESSION['user']);
 ?>
-
-
 <div id="container-login">
     <div class="logButtons">
         <!--<input type="button" value="Log in" onclick="loginSign('login')">-->
@@ -38,7 +37,7 @@ include 'Session/Utils/SessionUtils.php';
     <div class="login-item">
         <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return signup()">
             <div class="form-field">
-                <label class="user" for="signup-username"><span class="hidden">Name</span></label>
+                <label class="user" for="signup-name"><span class="hidden">Name</span></label>
                 <input id="signup-name" name="name" type="text" class="form-input" placeholder="Name" required>
             </div>
             <div class="form-field">
@@ -47,7 +46,7 @@ include 'Session/Utils/SessionUtils.php';
             </div>
 
             <div class="form-field">
-                <label class="phone" for="signup-lastname"><span class="hidden">Phone</span></label>
+                <label class="phone" for="signup-phone"><span class="hidden">Phone</span></label>
                 <input id="signup-phone" name="phone" type="text" class="form-input" placeholder="Phone number" required>
             </div>
 

@@ -36,9 +36,9 @@ function signup() {
                     if (expRegPassword.exec(password)) {
                         if (foto.src == "" || foto.src == null){
                             if (gender.toUpperCase() == "MALE"){
-                                foto.src = "Assets/MEDIA/ImgMujer.jpeg";
+                                document.getElementById("profImg").src = "Assets/MEDIA/ImgMujer.jpeg";
                             }else if(gender.toUpperCase() == "FEMALE"){
-                                foto.src = "Assets/MEDIA/ImgHombre.jpeg";
+                                document.getElementById("profImg").src = "Assets/MEDIA/ImgHombre.jpeg";
                             }
                         }
                         let today = new Date();

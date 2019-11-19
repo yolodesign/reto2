@@ -1,15 +1,17 @@
 
-/* ==================================================== */
-/* 1 - INSERT PERFILES */
-/* ==================================================== */
- 
-INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion, telefono,foto,fechaNacimiento,id_usuario) values ('yolo','design','yolodesign.jas@gmail.com','otro',999,'Son los jefes del proyecto, valoracion positiva', 687740992,'foto','1996-12-22',1);
 
 /* ==================================================== */
-/* 2 - INSERT USUARIOS */
+/* 1- INSERT USUARIOS */
 /* ==================================================== */
 
 INSERT INTO usuarios (usuario,contrasena) values ('yolodesign.jas@gmail.com','Yolo2000');
+
+
+/* ==================================================== */
+/* 2 - INSERT PERFILES */
+/* ==================================================== */
+ 
+INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion, telefono,foto,fechaNacimiento,id_usuario) values ('yolo','design','yolodesign.jas@gmail.com','otro',999,'Son los jefes del proyecto, valoracion positiva', 687740992,'foto','1996-12-22',1);
 
 
 
@@ -18,9 +20,9 @@ INSERT INTO usuarios (usuario,contrasena) values ('yolodesign.jas@gmail.com','Yo
 /* ==================================================== */
 
 INSERT INTO categorias (nombre) values ('yolo');
-INSERT INTO categorias (nombre) values ('alimentación y bebidas');
+INSERT INTO categorias (nombre) values ('alimentacion y bebidas');
 INSERT INTO categorias (nombre) values ('agricultura');
-INSERT INTO categorias (nombre) values ('bebé');
+INSERT INTO categorias (nombre) values ('bebe');
 INSERT INTO categorias (nombre) values ('belleza');
 INSERT INTO categorias (nombre) values ('bricolaje y herramientas');
 INSERT INTO categorias (nombre) values ('coche');

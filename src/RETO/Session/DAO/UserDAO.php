@@ -2,14 +2,22 @@
 include '../Conf/PersistentManager.php';
 include '../Utils/SessionUtils.php';
 
-
 if (isset($_POST["emailLogin"])) {
     checkAction();
+
 }
 if (isset($_POST["emailSignup"])) {
-
     createAction();
-
+}
+if (isset($_POST["update"])){
+    updateAction();
+}
+if (isset($_POST["borrar"])){
+    borrarCuenta();
+}
+if (isset($_POST["cerrarSession"])){
+    unset($_SESSION['user']);
+    header('Location: ../../Login.php');
 }
 
 function checkAction()
@@ -20,7 +28,6 @@ function checkAction()
      // Establecemos la sesión
          startSessionIfNotStarted();
          setSession($_POST["emailLogin"]);
-
          header('Location: ../../index.php');
      }
      else
@@ -56,8 +63,64 @@ function createAction()
 
     header('Location: ../../index.php');
 }
+function borrarCuenta(){
+    startSessionIfNotStarted();
+    $dbh = connect();
+    $id = getIdUsuarioByEmail();
+    $data = array(
+        'id' => $id
+    );
+    try{
+        $stmt = $dbh->prepare("DELETE FROM perfiles WHERE id_usuario = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+    try{
+        $stmt2 = $dbh->prepare("DELETE FROM usuarios WHERE id = :id");
+        $stmt2->setFetchMode(PDO::FETCH_OBJ);
+        $stmt2->execute($data);
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
 
+    header('Location: ../../Login.php');
+}
+function updateAction(){
+    startSessionIfNotStarted();
+    $dbh = connect();
+    $user = array(
+        "nombre" => $_POST["nameP"],
+        "apellido" => $_POST["lastnameP"],
+        "telefono" => $_POST["phoneP"],
+        "fecha" => $_POST["birthdateP"],
+        "genero" => $_POST["genderP"]
+    );
 
+    actualizarPerfil($user, $dbh);
+
+    header('Location: ../../perfil.php');
+}
+function actualizarPerfil($user, $dbh){
+
+    $data = array(
+        "nombre" => $user["nombre"],
+        "apellido" => $user["apellido"],
+        "telefono" => $user["telefono"],
+        "fecha" => $user["fecha"],
+        "genero" => $user["genero"],
+        "correo" => $_SESSION['user']
+
+    );
+    try{
+        $stmt = $dbh->prepare("UPDATE perfiles SET nombre = :nombre, apellido = :apellido, telefono = :telefono, fechaNacimiento = :fecha, sexo = :genero WHERE correo = :correo");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
 //Comprueba si los datos ya existen en la base de datos
 function check($email, $password, $dbh)
 {
@@ -139,29 +202,127 @@ function getIdUsuario($dbh, $data){
 }
 
 
-function getNamebyIDEmail(){
+function getNamebyEmail($email){
     $dbh = connect();
-    $email = getSession();
     $data = array(
-      'email' => $email
+        'email' => $email
     );
-    $stmt = $dbh->prepare("SELECT nombre FROM perfiles WHERE correo=:email");
-    $stmt->setFetchMode(PDO::FETCH_OBJ);
-    $stmt->execute($data);
-    while($row = $stmt->fetch()){
-        $name = $row->nombre;
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT nombre FROM perfiles WHERE correo=:email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->nombre;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
     }
-
-    return $name;
 }
-function getImgProfile(){
+function getImgProfile($email){
     $dbh = connect();
-    $email = getSession();
     $data = array(
-      'email' => $email
+        'email' => $email
     );
+    $value = "";
     try{
         $stmt = $dbh->prepare("SELECT foto FROM perfiles WHERE correo=:email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->nombre;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
+
+function getLastnameProfile($email){
+    $dbh = connect();
+    $data = array(
+        'email' => $email
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT apellido FROM perfiles WHERE correo=:email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->apellido;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
+
+
+function getPhoneProfile($email){
+    $dbh = connect();
+    $data = array(
+        'email' => $email
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT telefono FROM perfiles WHERE correo=:email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->telefono;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
+function getBirthdateProfile($email){
+    $dbh = connect();
+    $data = array(
+        'email' => $email
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT fechaNacimiento FROM perfiles WHERE correo=:email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->fechaNacimiento;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
+function getGenderProfile($email){
+    $dbh = connect();
+    $data = array(
+        'email' => $email
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT sexo FROM perfiles WHERE correo=:email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->sexo;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
+
+function getIdUsuarioByEmail(){
+
+    $dbh = connect();
+    $data = array(
+        'email' => $_SESSION['user']
+    );
+
+    try{
+        $stmt = $dbh->prepare("SELECT id FROM usuarios WHERE usuario=:email");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         while($row = $stmt->fetch()){
@@ -172,4 +333,5 @@ function getImgProfile(){
     }
     return $value;
 }
+
 ?>
