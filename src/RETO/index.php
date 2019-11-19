@@ -1,16 +1,13 @@
 <?php
 include("head.php");
 include("Session/DAO/ProductDAO.php");
-//include_once 'Session/Utils/SessionUtils.php';
-//include_once("Session/Conf/PersistentManager.php");
-//startSessionIfNotStarted();
-//$dbh = connect();
+include_once("Session/Conf/PersistentManager.php");
+
+$dbh = connect();
 ?>
 
 <div id="indexBody">
-    <?php
-    include("buscador.php");
-    ?>
+
     <div>
         <nav id="navCat">
             <div id="menuCat">
@@ -30,7 +27,9 @@ include("Session/DAO/ProductDAO.php");
             </div>
         </nav>
         <div id="hero-section">
-            <div id="head-line"></div>
+            <?php
+            include("buscador.php");
+            ?>
         </div>
         <section id="section00">
             <div id="heading"></div>
@@ -52,7 +51,7 @@ include("Session/DAO/ProductDAO.php");
 
     <div>
         <?php
-        consulta();
+        consulta($dbh);
         ?>
     </div>
 </div>
