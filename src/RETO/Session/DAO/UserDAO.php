@@ -364,7 +364,7 @@ function getIdPerfil(){
         'id' => $id
     );
     try{
-        $stmt = $dbh->prepare("SELECT id FROM usuarios WHERE id_usuario=:id");
+        $stmt = $dbh->prepare("SELECT id FROM perfiles WHERE id_usuario = :id");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         while($row = $stmt->fetch()){
@@ -378,22 +378,28 @@ function getIdPerfil(){
 
 function mostrarProductoPorUsuario(){
     $dbh = connect();
-
     $id = getIdPerfil();
-
     $data = array(
         'id' => $id
     );
+
     $stmt = $dbh->prepare("SELECT nombre, descripcion, fecha FROM productos WHERE id_perfiles = :id");
     $stmt->setFetchMode(PDO::FETCH_OBJ);
     $stmt->execute($data);
     while($row = $stmt->fetch()){
         //Crear la tarjeta
-        echo "<div>";
-        echo $row -> nombre;
+        echo "<div class='tarjetasPerfil'>";
+        echo "<p class='p1'>";
         echo $row -> fecha;
+        echo "</p>";
+        echo "<h1>";
+        echo $row -> nombre;
+        echo "</h1>";
+        echo "<p class='p2'>";
         echo $row -> descripcion;
+        "</p>";
         echo "</div>";
     }
+
 };
 ?>

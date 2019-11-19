@@ -674,7 +674,7 @@ footer a:visited{
 }
     .a {
         grid-column: 1 / 3;
-        grid-row: 1;
+        grid-row: 1/2;
         display: flex;
         justify-content: center;
     }
@@ -684,7 +684,7 @@ footer a:visited{
     }
     .c {
         grid-column: 1 ;
-        grid-row: 2 ;
+        grid-row: 2/3 ;
     }
     .d {
         grid-column: 2;
@@ -784,6 +784,9 @@ footer a:visited{
 */
 #datos div p{
     font-style: italic;
+}
+#tusAnuncios{
+    display: none;
 }
 /* ================= */
 /* Error */
@@ -958,4 +961,40 @@ footer a:visited{
     width: 30%;
     height: auto;
     border-radius: 50%;
+}
+#tusAnuncios{
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+#tusAnuncios::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+.tarjetasPerfil{
+    background: darkseagreen;
+    width: 360px;
+    height: 170px;
+    overflow: hidden;
+    border: solid 1px black;
+    border-radius: 1px ;
+    display: flex;
+    flex-direction: column;
+}
+.tarjetasPerfil .p1{
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.3);
+    align-self: flex-start;
+
+}
+.tarjetasPerfil h1{
+    line-height: 1.25;
+    font-size: 2em;
+    color: rgba(0,0,0,0.9);
+    align-self: center;
+    margin-bottom: 3%;
+}
+.tarjetasPerfil .p2{
+    font-weight: normal;
+    color: rgba(0,0,0,0.6);
+    align-self: flex-start;
 }
