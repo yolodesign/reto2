@@ -37,9 +37,10 @@ startSessionIfNotStarted();
             <div class='menu-button' onclick="visualizarMenu();"></div>
         </label>
         <ul class="menu" id="menu_desplegable">
-            <li><a id="anunciate">ANUNCIATE</a></li>
+            <li id="anunciate"><a href="SubirAnuncio.php">ANUNCIATE</a></li>
+            <li id="irPerfil"><a href="perfil.php">PERFIL</a></li>
             <li id="loginHead"><a href="Login.php">LOG IN</a></li>
-            <li id="cerrarSesionHeader" >CERRAR SESIÓN</li>
+            <li id="cerrarSesionHeader"><a href="logout.php">CERRAR SESIÓN</a></li>
         </ul>
     </article>
 </header>
