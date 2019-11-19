@@ -7,6 +7,7 @@ startSessionIfNotStarted();
 <head>
 
     <title>Yolo pop</title>
+    <link rel="StyleSheet" href="Assets/CSS/normalize.css" type="text/css">
     <link rel="StyleSheet" href="Assets/CSS/main.css" type="text/css">
     <link rel="StyleSheet" href="Assets/CSS/buscador.css" type="text/css">
     <link rel="Stylesheet" href="Assets/CSS/navegacionCategorias.css" type="text/css">

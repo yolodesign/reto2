@@ -20,9 +20,9 @@ INSERT INTO perfiles (nombre,apellido,correo,sexo,valoracion,opinion, telefono,f
 /* ==================================================== */
 
 INSERT INTO categorias (nombre) values ('yolo');
-INSERT INTO categorias (nombre) values ('alimentación y bebidas');
+INSERT INTO categorias (nombre) values ('alimentacion y bebidas');
 INSERT INTO categorias (nombre) values ('agricultura');
-INSERT INTO categorias (nombre) values ('bebé');
+INSERT INTO categorias (nombre) values ('bebe');
 INSERT INTO categorias (nombre) values ('belleza');
 INSERT INTO categorias (nombre) values ('bricolaje y herramientas');
 INSERT INTO categorias (nombre) values ('coche');

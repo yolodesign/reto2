@@ -1,6 +1,5 @@
 <?php
 include("head.php");
-include 'Session/Utils/SessionUtils.php';
 include 'Session/Conf/PersistentManager.php';
 include "Session/DAO/UserDAO.php";
 //startSessionIfNotStarted();
