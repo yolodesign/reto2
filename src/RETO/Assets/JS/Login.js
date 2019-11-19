@@ -34,13 +34,6 @@ function signup() {
             if (expRegPhone.exec(phone)){
                 if (expRegCorreo.exec(email)) {
                     if (expRegPassword.exec(password)) {
-                        if (foto.src == "" || foto.src == null){
-                            if (gender.toUpperCase() == "MALE"){
-                                document.getElementById("profImg").src = "Assets/MEDIA/ImgMujer.jpeg";
-                            }else if(gender.toUpperCase() == "FEMALE"){
-                                document.getElementById("profImg").src = "Assets/MEDIA/ImgHombre.jpeg";
-                            }
-                        }
                         let today = new Date();
                         let edad;
                         if (cumple.getMonth() == today.getMonth() && cumple.getDay() == today.getDay()) {
@@ -53,9 +46,10 @@ function signup() {
                             edad = today.getFullYear() - cumple.getFullYear()
                         } else if (cumple.getMonth() < today.getMonth()) {
                             edad = today.getFullYear() - cumple.getFullYear()
+                        }else{
+                            edad = today.getFullYear() - cumple.getFullYear()
                         }
                         if (edad >= 18) {
-                            error("Entra.")
                             return true;
                         }else{
                             error("Solo las personas mayores de 18 años pueden registrarse en esta página.")
@@ -84,5 +78,11 @@ function signup() {
 }
 
 function error(mensaje) {
-console.log(mensaje)
+    console.log(mensaje)
+    //let apartadoError = document.getElementById("errorSign");
+    //apartadoError.style.background = "#CD5C5C";
+    /*let elementoError = document.createTextNode(mensaje);
+    let p = document.createElement("p");
+    p.appendChild(elementoError)
+    apartadoError.appendChild(p)*/
 }

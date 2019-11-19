@@ -1,5 +1,6 @@
 <?php
 include("head.php");
+//include 'Session/Utils/SessionUtils.php';
 include 'Session/Conf/PersistentManager.php';
 include "Session/DAO/UserDAO.php";
 //startSessionIfNotStarted();
@@ -11,11 +12,10 @@ function checkGender($genderP)
         echo "selected";
     }
 }
-
 ?>
 
 <div class="perfil">
-    <div class="box a">
+    <div id="updatePerfil" class="box a">
         <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return validacionesPerfil()">
             <div class="form-field">
                 <label class="user" for="profileName"><span class="hidden">Name</span></label>
@@ -42,26 +42,24 @@ function checkGender($genderP)
                     <option <?php checkGender('Female'); ?>>Female</option>
                 </select>
             </div>
-            <div class="uploadFile">
-                <button class="uploadFileBtn">Upload a profile image</button>
-                <input type="file" id="profileImg" name="profImgP"/>
-            </div>
             <div id="botonesPerfil">
                 <input type="submit" name="update" value="Cambiar datos">
                 <input type="submit" name="borrar" value="Borrar cuenta">
             </div>
         </form>
     </div>
+    <div id="tusAnuncios">
+        <?php //mostrarProductoPorUsuario(); ?>
+    </div>
     <div class="box b">
         <div id="perfilCabecera">
             <img src="<?php echo getImgProfile($_SESSION['user']) ?>">
-            <h1><?php echo getNamebyEmail($_SESSION['user']) ?></h1>
-            <p><?php echo $_SESSION['user'] ?></p>
-            <p><?php echo getIdUsuarioByEmail() ?></p>
+
+
         </div>
         <div id="datos">
             <div>
-                <h3>Nombre</h3><p><?php echo getNamebyEmail($_SESSION['user']) ?></p>
+                <h3>Nombre</h3><p><?php echo getNamebyEmail($_SESSION['user']) ?></p><br>
             </div>
             <div>
                 <h3>Apellido</h3><p><?php echo getLastnameProfile($_SESSION['user']) ?></p><br>
@@ -76,7 +74,7 @@ function checkGender($genderP)
                 <h3>Fecha de nacimiento</h3><p><?php echo getBirthdateProfile($_SESSION['user']) ?></p><br>
             </div>
             <div>
-                <h3>Correo</h3><p><?php echo getNamebyEmail($_SESSION['user']) ?></p><br>
+                <h3>Correo</h3><p><?php echo $_SESSION['user'] ?></p><br>
             </div>
 
         </div>
@@ -85,18 +83,14 @@ function checkGender($genderP)
     <div class="box c">
         <div id="anuncios">
             <ul>
-                <li>Ver Perfil</li>
-                <li>Subir Anuncio</li>
-                <li>Editar Perfil</li>
+                <li><a onclick="editarPerfil("true")">Subir Anuncio</a></li>
+                <li><a onclick="editarPerfil("false")">Editar Perfil</a></li>
             </ul>
         </div>
 
     </div>
     <div class="box d">
-        <form action="Session/DAO/UserDAO.php" method="post">
-            <button id="boton_log_out" name="cerrarSession">LOG OUT</button>
-        </form>
-
+        <button id="boton_log_out"><a href="logout.php">LOG OUT</a></button>
     </div>
 </div>
 
