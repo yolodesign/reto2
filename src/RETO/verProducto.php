@@ -3,26 +3,24 @@ include("head.php");
 include("Session/DAO/ProductDAO.php");
 include("Session/Conf/PersistentManager.php");
 $dbh = connect();
-$id = 6;
-$userId = getIdPerfilbyIdProducto(6);
-
+$id = 1;
 ?>
 <div id="paginaProducto">
-    <div id="contenedorProducto" >
+    <div id="contenedorProducto" style="display: none">
 
         <div id="productoHead">
-            <h1><?php echo getNombreProductoById($id, $dbh); ?></h1>
+            <h1><?php echo getNombreProductoById($id, $dbh) ?></h1>
             <img src="Assets/MEDIA/coche.jpg">
         </div>
 
-        <p><?php echo getDescripcionProductoById($id, $dbh)?></p>
+        <p><?php echo getDescripcionProductoById($id, $dbh) ?></p>
         <div id="productoBody">
             <p id="fechaProd"><?php echo getFechaProductoById($id, $dbh) ?></p>
-            <p id="persona"><?php echo $userId; ?></p>
+            <p id="persona"><?php echo "Giorno Giovanna"; ?></p>
             <p id="direccion"><?php echo getDireccionProductoById($id, $dbh) ?></p>
         </div>
     </div>
-    <div id="actualizarAnuncio" style="display: none">
+    <div id="actualizarAnuncio" >
         <div class="login-item">
             <form action="Session/DAO/ProductDAO.php?id=<?php echo $id ?>" method="post" class="form form-login" onsubmit="return subirAnuncio()">
                 <div class="form-field">
