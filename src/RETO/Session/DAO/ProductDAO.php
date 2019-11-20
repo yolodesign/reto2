@@ -3,6 +3,7 @@ include("../Conf/PersistentManager.php");
 include '../Utils/SessionUtils.php';
 
 //startSessionIfNotStarted();
+$dbh = connect();
 
 
 if (isset($_POST["nombreProducto"])){
@@ -139,6 +140,27 @@ function getProductosById($dbh, $id)
         die($e->getMessage());
     }
 }
+
+
+function ProductosByIdCat($dbh)
+{
+    try {
+        $stmt = $dbh->prepare("SELECT pro.nombre productonombre, pro.descripcion productodescripcion, pro.foto productofoto, 
+                                    pro.direccion productodireccion, pro.fecha productofecha, cat.id idcategoria, cat.nombre categorianombre, 
+                                    per.id idperfiles, per.nombre perfilnombre, 
+                                    per.telefono perfiltelefono, per.correo  perfilcorreo
+                                    FROM productos pro, perfiles per, categorias cat                                     
+                                    WHERE per.id = pro.id_perfiles 
+                                    AND pro.id_categoria = cat.id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
+$productosid = ProductosByIdCat($dbh);
 
 
 ?>
