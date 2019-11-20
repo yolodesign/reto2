@@ -1,10 +1,10 @@
 <?php
-include("head.php");
+include("head.php");/*
 include("Session/DAO/ProductDAO.php");
 include("Session/Conf/PersistentManager.php");
 session_start();
 $dbh = connect();
-
+*/
 ?>
 
 

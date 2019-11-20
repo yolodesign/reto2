@@ -6,6 +6,8 @@
 
 *{
     box-sizing: border-box;
+  
+    word-wrap: break-word;
 }
 
 #html {
@@ -800,10 +802,12 @@ li a:visited{
 .mapa, .contenido_ayuda{
     grid-area: 2 / 2 / 5 / 5;
     background: #3a3f4480;
+    border-radius: 5px;
 }
 
 #mapa iframe {
     max-width: 70vw;
+    width: auto;
     height: 60vh;
  }
 
@@ -823,9 +827,16 @@ li a:visited{
  /* ==================================================================================== */
 /* Que es YOLOPOP*/
 /* ==================================================================================== */
+#que_es_yolopop{
+    hyphens: auto;
+}
 
-
-
+#descripcion_anuncio{
+    width: 100%;
+}
+#links_iconos a, #links_iconos a:visited{
+    color: white;
+}
 #links_iconos{
     display: flex;
     justify-content: space-around;
@@ -951,7 +962,7 @@ li a:visited{
 /* ==================================================================================== */
 /* MEDIA QUERY PORTATIL*/
 /* ==================================================================================== */
-@media (max-width: 1100px) and (min-width:768px){
+@media (max-width: 1100px) and (min-width:790px){
     #nav_icon{
         display: none;
     }
@@ -963,7 +974,6 @@ li a:visited{
       display: flex;
     }
 
-   
     .menu {
       position: absolute;
       top: 0;
@@ -1000,12 +1010,25 @@ li a:visited{
     .menu > li:not(:last-child) {
       border-bottom: 1px solid #444;
     }
+    .donde_estamos_titulo, .ayuda_titulo{
+      margin-top: 18%;
+    
+    }
+
+    .mapa{
+        display: block;
+        clear: both;
+    }
+    footer{
+        display: none;
+    }
   }
+  
   /* ==================================================================================== */
   /* MEDIA QUERY TABLET*/
   /* ==================================================================================== */
-  @media (max-width: 767px){
-    body{
+  @media (max-width: 789px){
+    body, p{
         font-size: 0.8em;
     }
     #nav_icon{
@@ -1017,8 +1040,25 @@ li a:visited{
     #nav_title{
         font-size: 0.8em;
     }
+ 
     .menu-button-container {
       display: flex;
+    }
+    #que_es_yolopop{
+        font-size: 0.5em;
+    }
+    .donde_estamos{
+        display: block;
+       
+    }
+    .donde_estamos_titulo, .ayuda_titulo{
+        margin-top: 18%;
+      
+      }
+
+    .mapa{
+        display: block;
+        clear: both;
     }
     footer{
         display: none;
