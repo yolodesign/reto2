@@ -30,7 +30,7 @@ startSessionIfNotStarted();
     </div>
 
     <div id="nav_title">
-        <h1><a href="#">Yolo Pop</a></h1>
+        <h1><a href="index.php">Yolo Pop</a></h1>
     </div>
     <article class="top-nav">
         <input id="menu-toggle" type="checkbox"/>

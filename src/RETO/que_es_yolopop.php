@@ -1,9 +1,9 @@
 <?php
-include("head.php");
+include("head.php");/*
 include("Session/DAO/ProductDAO.php");
 include("Session/Conf/PersistentManager.php");
 session_start();
-$dbh = connect();
+$dbh = connect();*/
 
 ?>
 
@@ -16,15 +16,9 @@ $dbh = connect();
         </div>
         <div class="box item2">
 
-            <div class="foto_anuncio">
-                <a href="index.php"> <img src="Assets/MEDIA/icono_yolo_sin.png" alt="Icono"/></a>
-            </div>
-
-            <div class="descripcion_anuncio">
-                <h2>Reto 2</h2>
                 <p> YoloPop es un portal de publicidad para que los jóvenes empresarios de Álava puedan anunciar su empresa de una forma
                     sencia y gratuita, pudiendo llegar así a más público y crecer como emprededores.</p>
-            </div>
+
 
         </div>
         <div class="box item3" class="item3_que_es_yolopop">
@@ -39,7 +33,7 @@ $dbh = connect();
         </div>
         <div class="box item5" id="links_iconos">
             <a class="twitter"  target="_blank" href="https://twitter.com/?lang=ES"><i class="fab fa-twitter"></i></a>
-            <a class="git" target="_blank" href="https://github.com/yolodesign/reto2"><i class="fab fa-github"></i></a>
+            <a class="github" target="_blank" href="https://github.com/yolodesign/reto2"><i class="fab fa-github"></i></a>
             <a class="mail" tarjet="_blank" href="mailto:yolodesign.jas@gmail.com"> <i class="far fa-envelope"></i></a>
         </div>
     </div>
