@@ -23,3 +23,10 @@ function subirAnuncio(){
 function error(mensaje) {
     console.log(mensaje)
 }
+
+function updateProduct(){
+    let actualizar = document.getElementById("actualizarAnuncio").style;
+    let contenedorProducto = document.getElementById("contenedorProducto").style;
+    actualizar.display = "flex";
+    contenedorProducto.display = "none";
+}

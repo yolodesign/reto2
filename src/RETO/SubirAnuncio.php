@@ -36,3 +36,6 @@ include ("Session/Conf/PersistentManager.php");
         </form>
     </div>
 </div>
+<?php
+include("footer.php");
+?>
