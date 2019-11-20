@@ -1,9 +1,9 @@
 <?php
-include("head.php");
+include("head.php");/*
 include("Session/DAO/ProductDAO.php");
 include("Session/Conf/PersistentManager.php");
 session_start();
-$dbh = connect();
+$dbh = connect();*/
 ?>
 
 <div class="nosotros">
@@ -15,7 +15,7 @@ $dbh = connect();
     </div>
     <div class="contenido_1">
         <img src="Assets/MEDIA/fotoPerfil.jpg">
-        <p>Hola soy Zulu y programo que da gusto</p>
+        <p>Soy Zulu y programo que da gusto</p>
         <p>Este es mi <a href="https://github.com/SergioZulueta"> GitHub!</a></p>
     </div>
     <div class="miembro_2">
@@ -23,7 +23,7 @@ $dbh = connect();
     </div>
     <div class="contenido_2">
         <img src="Assets/MEDIA/fotoPerfil.jpg">
-        <p> Hola soy Arkaitz y programo que da gusto</p>
+        <p> Soy Arkaitz y programo que da gusto</p>
         <p>Este es mi <a href="https://github.com/SrArkaitz"> GitHub!</a></p>
     </div>
     <div class="miembro_3">
@@ -31,7 +31,7 @@ $dbh = connect();
     </div>
     <div class="contenido_3">
         <img src="Assets/MEDIA/fotoPerfil.jpg">
-        <p> Hola soy Julen , master en css</p>
+        <p> Soy Julen , master en css</p>
         <p>Este es mi <a href="https://github.com/prietojulen"> GitHub!</a></p>
 
     </div>
