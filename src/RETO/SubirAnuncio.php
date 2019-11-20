@@ -16,7 +16,7 @@ include ("Session/Conf/PersistentManager.php");
                 <input id="direccionProducto" name="direccionProducto" type="text" class="form-input" placeholder="Dirección" required>
             </div>
             <div class="form-field">
-                <label class="categ" for="categoriaProducto"><span class="hidden">Gender</span></label>
+                <label class="categ" for="categoriaProducto"><span class="hidden">Categoria</span></label>
                 <select id="categoriaProducto" name="categoriaProducto" class="categ" required>
                     <option></option>
                     <?php mostrarCategorias(); ?>

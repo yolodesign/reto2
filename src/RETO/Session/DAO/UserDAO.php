@@ -337,7 +337,24 @@ function getGenderProfile($email){
         die($e->getMessage());
     }
 }
-
+function getEmailById($id){
+    $dbh = connect();
+    $data = array(
+        'id' => $id
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT correo FROM perfiles WHERE id=:id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->sexo;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
 function getIdUsuarioByEmail(){
 
     $dbh = connect();
