@@ -22,6 +22,9 @@ body{
 h1, h2{
     font-family: 'Pacifico';
 }
+p{
+    line-height: 1.5em;
+}
 /**Index */
 
 
@@ -36,9 +39,9 @@ h1, h2{
     
 }
 
-/* ================= */
+/* ==================================================================================== */
 /* HEADER */
-/* ================= */
+/* ==================================================================================== */
 
 header{
     display: flex;
@@ -54,6 +57,8 @@ header{
     justify-content: space-around;
     align-items: center;
     clear:both;
+    z-index: 1;
+
     
 }
 .menu a {
@@ -518,9 +523,9 @@ input {
     color: gray;
 }
 
-/* ================= */
+/* ==================================================================================== */
 /* "VER MAS" */
-/* ================= */
+/* ==================================================================================== */
 .ver_mas_anuncios, .que_es_yolopop {
     margin: 0 auto;
     margin-top: 10%;
@@ -571,9 +576,9 @@ input {
   }
   
 
-/* ================= */
+/* ==================================================================================== */
 /* Footer */
-/* ================= */
+/* ==================================================================================== */
 
 footer{
     position: absolute;
@@ -658,11 +663,16 @@ footer a:visited{
     padding: 0 5px;
 
 }
+li a{
+    text-decoration: none;
+}
+li a:visited{
+    color:white;
+}
 
-
-/* ================= */
+/* ==================================================================================== */
 /* Perfil */
-/* ================= */
+/* ==================================================================================== */
 
 .perfil {
     display: grid;
@@ -788,9 +798,10 @@ footer a:visited{
 #tusAnuncios{
     display: none;
 }
-/* ================= */
+
+/* ==================================================================================== */
 /* Error */
-/* ================= */
+/* ==================================================================================== */
 
 
 #error404{
@@ -823,16 +834,16 @@ footer a:visited{
 #mensaje_error a:visited{
     color:white;
 }
-/* ================= */
-/* Donde Estamos */
-/* ================= */
+/* ==================================================================================== */
+/* Donde Estamos */ /* AYUDA*/
+/* ==================================================================================== */
 
 
 
 
 
 
-.donde_estamos {
+.donde_estamos, .ayuda {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 0,8fr);
@@ -840,7 +851,7 @@ footer a:visited{
     grid-row-gap: 0px;
 }
         
-.donde_estamos_titulo { 
+.donde_estamos_titulo, .ayuda_titulo { 
     grid-area: 1 / 2 / 2 / 5;
     display: flex;
     justify-content: center;
@@ -852,30 +863,32 @@ footer a:visited{
     padding: 20px;
     
  }  
-.mapa {
+.mapa, .contenido_ayuda{
     grid-area: 2 / 2 / 5 / 5;
     background: #3a3f4480;
 }
 
-/*
-#donde_estamos, #que_es_yolopop{
-    background: #3a3f4480;
-    display:flex;
-    width: 50vw;
-    height: 70vh;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-*/
 #mapa iframe {
     max-width: 70vw;
     height: 60vh;
  }
 
- /* ================= */
+ .contenido_ayuda{
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     padding: 3%;
+ }
+ #ayuda_img{
+     width: 40%;
+     height: auto;
+     float: right;
+     
+     
+ }
+ /* ==================================================================================== */
 /* Que es YOLOPOP*/
-/* ================= */
+/* ==================================================================================== */
 
 
 
@@ -894,9 +907,9 @@ footer a:visited{
 }
 
 
- /* ================= */
+ /* ==================================================================================== */
 /* Sobre nosotros/
-/* ================= */
+/* ==================================================================================== */
 
 .nosotros {
     display: grid;
@@ -962,6 +975,7 @@ footer a:visited{
     height: auto;
     border-radius: 50%;
 }
+
 #tusAnuncios{
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
