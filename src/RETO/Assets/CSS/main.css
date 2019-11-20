@@ -784,7 +784,7 @@ li a:visited{
 .donde_estamos, .ayuda {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 0,8fr);
+    grid-template-rows: repeat(5, 0.8fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
@@ -960,7 +960,6 @@ li a:visited{
     align-self: flex-start;
 }
 
-
 /* ================= */
 /* Página anuncio/
 /* ================= */
@@ -1068,6 +1067,7 @@ li a:visited{
 }
 #boton_update:hover{
     background-color: blue;
+
 }
 
 /* ==================================================================================== */
@@ -1175,3 +1175,5 @@ li a:visited{
         display: none;
     }
 }
+
+
