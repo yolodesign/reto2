@@ -1,5 +1,4 @@
 <?php
-
 ?>
 
 <div class="s003">
@@ -8,19 +7,17 @@
             <div class="input-field first-wrap">
                 <div class="input-select">
                     <select data-trigger="" name="choices-single-defaul">
-                        <option placeholder="">Category</option>
-                        <option>New Arrivals</option>
-                        <option>Sale</option>
-                        <option>Ladies</option>
-                        <option>Men</option>
-                        <option>Clothing</option>
-                        <option>Footwear</option>
-                        <option>Accessories</option>
+                        <option placeholder="">Categorias</option>
+                            <?php
+                            foreach ($categorias as $categoria){
+                                echo "<option>{$categoria->nombre}</option>";
+                            }
+                            ?>
                     </select>
                 </div>
             </div>
             <div class="input-field second-wrap">
-                <input id="search" type="text" placeholder="Enter Keywords?" />
+                <input id="search" type="text" placeholder="Que deseas buscar?" />
             </div>
             <div class="input-field third-wrap">
                 <button class="btn-search" type="button">

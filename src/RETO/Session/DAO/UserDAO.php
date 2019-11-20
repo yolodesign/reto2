@@ -15,11 +15,6 @@ if (isset($_POST["update"])){
 if (isset($_POST["borrar"])){
     borrarCuenta();
 }
-if (isset($_POST["cerrarSession"])){
-    unset($_SESSION['user']);
-    header('Location: ../../Login.php');
-}
-
 function checkAction()
 {
     $dbh = connect();
@@ -40,29 +35,58 @@ function checkAction()
 function createAction()
 {
     $dbh = connect();
+    $url_basica = "../img/imagenes_usuarios/";
+    $url_imagen = "";
+    //$url_imagen = validateAndUploadImage($url_basica, $_POST["emailSignup"], "subida_foto_perfil");
     $user = array(
         "nombre" => $_POST["name"],
         "apellido" => $_POST["lastname"],
         "telefono" => $_POST["phone"],
         "fecha" => $_POST["birthdate"],
         "genero" => $_POST["gender"],
-        "profImg" => $_POST["profImg"],
+        "profImg" => $url_imagen,
         "email" => $_POST["emailSignup"],
         "password" => $_POST["passwordSignup"]
         );
+    echo "cosa de files - ".$_FILES['profImg'];
 
-
-        insert($user, $dbh);
-
-
-    // Establecemos la sesión
+    insert($user, $dbh);
+    //Establecemos la sesión
     startSessionIfNotStarted();
     setSession($_POST["emailSignup"]);
-
-
-
     header('Location: ../../index.php');
 }
+function validateAndUploadImage($url, $correo, $queImagen)
+{
+    $destination = $url . $correo . ".png";
+    // borrar la existente
+    if (file_exists($destination)) {
+        unlink($destination);
+    }
+    //Hemos recibido el fichero
+    //Comprobamos que es un fichero subido por PHP, y no hay inyección por otros medios
+    if (!is_uploaded_file($_FILES[$queImagen]['tmp_name'])) {
+        echo "Error: El fichero encontrado no fue procesado por la subida correctamente";
+        exit;
+    }
+    $source = $_FILES[$queImagen]['tmp_name'];
+    if (is_file($destination)) {
+        echo "Error: Ya existe almacenado un fichero con ese nombre";
+        @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
+        exit;
+    }
+    if (!@move_uploaded_file($source, $destination)) {
+        echo "Error: No se ha podido mover el fichero enviado a la carpeta de destino";
+        echo "<br>  $destination";
+        @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
+        exit;
+    }
+    //  echo "Fichero subido correctamente a: " . $destination;
+    //  echo " <br> Ultimo echo " . file_get_contents($_FILES["userfile"]["tmp_name"]);
+    return $destination;
+}
+
+
 function borrarCuenta(){
     startSessionIfNotStarted();
     $dbh = connect();
@@ -333,5 +357,49 @@ function getIdUsuarioByEmail(){
     }
     return $value;
 }
+function getIdPerfil(){
+    $dbh = connect();
+    $id = getIdUsuarioByEmail();
+    $data = array(
+        'id' => $id
+    );
+    try{
+        $stmt = $dbh->prepare("SELECT id FROM perfiles WHERE id_usuario = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->id;
+        }
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+    return $value;
+}
 
+function mostrarProductoPorUsuario(){
+    $dbh = connect();
+    $id = getIdPerfil();
+    $data = array(
+        'id' => $id
+    );
+
+    $stmt = $dbh->prepare("SELECT nombre, descripcion, fecha FROM productos WHERE id_perfiles = :id");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    while($row = $stmt->fetch()){
+        //Crear la tarjeta
+        echo "<div class='tarjetasPerfil'>";
+        echo "<p class='p1'>";
+        echo $row -> fecha;
+        echo "</p>";
+        echo "<h1>";
+        echo $row -> nombre;
+        echo "</h1>";
+        echo "<p class='p2'>";
+        echo $row -> descripcion;
+        "</p>";
+        echo "</div>";
+    }
+
+};
 ?>

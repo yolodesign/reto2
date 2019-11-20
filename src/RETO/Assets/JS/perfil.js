@@ -41,14 +41,17 @@ function error(mensaje) {
     console.log(mensaje)
 }
 
-function editarPerfil(ocultar = true){
-    let editar = document.getElementById("perfilDatos").style
-    let mostrar = document.getElementById("datos").style
+function editarPerfil(ocultar){
+    let editarP = document.getElementById("updatePerfil").style
+    let anuncios = document.getElementById("tusAnuncios").style
     if (ocultar == true){
-        editar.display = "none";
-        mostrar.display = "flex";
+        editarP.display = "none";
+        anuncios.display = "flex";
+        anuncios.flexDirection ="column";
+        anuncios.justifyContent = "space-around";
+        anuncios.alignItems = "center";
     } else{
-        editar.display = "flex";
-        mostrar.display = "none";
+        editarP.display = "flex";
+        anuncios.display = "none";
     }
 }

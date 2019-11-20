@@ -2,8 +2,8 @@
 include ("head.php");
 include ("Session/DAO/UserDAO.php");
 include ("Session/Conf/PersistentManager.php");
-include 'Session/Utils/SessionUtils.php';
-unset($_SESSION['user']);
+//include 'Session/Utils/SessionUtils.php';
+//unset($_SESSION['user']);
 ?>
 <div id="container-login">
     <div class="logButtons">
@@ -73,8 +73,8 @@ unset($_SESSION['user']);
                 <input id="signup-password" name="passwordSignup" type="password" class="form-input" placeholder="Password" required>
             </div>
             <div class="uploadFile">
-                <button class="uploadFileBtn">Upload a file</button>
-                <input type="file" id="profImg" name="profImg" />
+                <button class="uploadFileBtn">Upload a Image</button>
+                <input type="file" id="nueva_foto   " accept="Assets/MEDIA/Imagenes/*" name="subida_foto_perfil" />
             </div>
 
             <div class="form-field privacidad">
@@ -84,6 +84,9 @@ unset($_SESSION['user']);
                 <input type="submit" value="Sign up">
             </div>
         </form>
+        <div id="errorSign">
+
+        </div>
     </div>
 </div>
 <?php
