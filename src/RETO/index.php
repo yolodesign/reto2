@@ -35,18 +35,36 @@ $dbh = connect();
             ?>
         </div>
         <?php
+        $categoriaspro = consultaCategoriasPro($dbh);
         foreach ($categorias as $categoria) {
             echo "<section id=\"section{$categoria->id}\">
-                    <div id=\"heading\"> </div>
+                    <div > <h1>{$categoria->nombre}</h1> 
+                    
+                    
+                    <table>
+    <thead>
+    <tr>
+        <th>$categoriaspro->nombreproducto</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <td>
+    </td>
+    </tr>
+
+    </tbody>
+</table>
+                    
+                    
+                    
+                    
+                    
+                    </div>
                   </section>";
         }
         ?>
-
     </div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
 
     <div>
         <?php
