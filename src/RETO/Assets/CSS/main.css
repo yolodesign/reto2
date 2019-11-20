@@ -213,68 +213,6 @@ h1 a:hover:after {
     margin-top: 0px;
     transform: rotate(-405deg);
   }
-/* ==================================================================================== */
-/* MEDIA QUERY PORTATIL*/
-/* ==================================================================================== */
-  @media (max-width: 1100px) and (min-width:768px){
-    #nav_icon{
-        display: none;
-    }
-    .menu{
-        display: none;
-    }
-   
-    .menu-button-container {
-      display: flex;
-    }
-
-   
-    .menu {
-      position: absolute;
-      top: 0;
-      margin-top: 50px;
-      left: 0;
-      flex-direction: column;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      margin-top: 10%;
-    }
-    #menu-toggle ~ .menu li {
-      height: 0;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    #menu-toggle:checked ~ .menu li {
-      border: 1px solid #333;
-      height: 2.5em;
-      padding: 0.5em;
-      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .menu > li {
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      padding: 0.5em 0;
-      width: 100%;
-      color: white;
-      background-color: #222;
-    }
-    .menu > li:not(:last-child) {
-      border-bottom: 1px solid #444;
-    }
-  }
-  /* ==================================================================================== */
-  /* MEDIA QUERY TABLET*/
-  /* ==================================================================================== */
-  @media (max-width: 767px){
-    .menu{
-        display: none;
-    }
-}
-
 
 
 /**Login/Sign up:*/
@@ -596,25 +534,21 @@ footer{
     margin:0;
 
 }
+footer a, footer a:visited{
+    color:#ffffffda;
+    text-decoration: none;
+}
+
 #copyright{
     display: flex;
     flex-direction:column;
     width: 30%;
 }
-#copyright a{
-    text-decoration: none;
-}
-#copyright a:visited{
-    color:#ffffffda;
-}
+
+
 #copyright img{
     width: 10%;
     height: auto;
-}
-
-
-footer a:visited{
-    color: #ffffffda;
 }
 .twitter:hover{
     color:#1da1f2;
@@ -1012,3 +946,82 @@ li a:visited{
     color: rgba(0,0,0,0.6);
     align-self: flex-start;
 }
+
+
+/* ==================================================================================== */
+/* MEDIA QUERY PORTATIL*/
+/* ==================================================================================== */
+@media (max-width: 1100px) and (min-width:768px){
+    #nav_icon{
+        display: none;
+    }
+    .menu{
+        display: none;
+    }
+   
+    .menu-button-container {
+      display: flex;
+    }
+
+   
+    .menu {
+      position: absolute;
+      top: 0;
+      margin-top: 50px;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10%;
+    }
+    #menu-toggle ~ .menu li {
+      height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    #menu-toggle:checked ~ .menu li {
+      border: 1px solid #333;
+      height: 2.5em;
+      padding: 0.5em;
+      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .menu > li {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0.5em 0;
+      width: 100%;
+      color: white;
+      background-color: #222;
+    }
+    .menu > li:not(:last-child) {
+      border-bottom: 1px solid #444;
+    }
+  }
+  /* ==================================================================================== */
+  /* MEDIA QUERY TABLET*/
+  /* ==================================================================================== */
+  @media (max-width: 767px){
+    body{
+        font-size: 0.8em;
+    }
+    #nav_icon{
+        display: none;
+    }
+    .menu{
+        display: none;
+    }
+    #nav_title{
+        font-size: 0.8em;
+    }
+    .menu-button-container {
+      display: flex;
+    }
+    footer{
+        display: none;
+    }
+}
+
