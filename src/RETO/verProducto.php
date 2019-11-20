@@ -3,10 +3,21 @@ include("head.php");
 include("Session/DAO/ProductDAO.php");
 include("Session/Conf/PersistentManager.php");
 $dbh = connect();
-$id = 1;
+$id = 4;
+$disabled = "";
+$disabled2 = "disabled";
+$idP = getProfileIdByproductId($id, $dbh);
+$correo = getEmailById($idP, $dbh);
+if ($_SESSION['user'] == $correo){
+    $disabled2 = "disabled";
+    $disabled = "";
+}else{
+    $disabled = "disabled";
+    $disabled2 = "";
+}
 ?>
 <div id="paginaProducto">
-    <div id="contenedorProducto" style="display: none">
+    <div id="contenedorProducto">
 
         <div id="productoHead">
             <h1><?php echo getNombreProductoById($id, $dbh) ?></h1>
@@ -20,7 +31,7 @@ $id = 1;
             <p id="direccion"><?php echo getDireccionProductoById($id, $dbh) ?></p>
         </div>
     </div>
-    <div id="actualizarAnuncio" >
+    <div id="actualizarAnuncio" style="display: none">
         <div class="login-item">
             <form action="Session/DAO/ProductDAO.php?id=<?php echo $id ?>" method="post" class="form form-login" onsubmit="return subirAnuncio()">
                 <div class="form-field">
@@ -46,12 +57,11 @@ $id = 1;
         </div>
     </div>
     <div>
-        <form action="Session/DAO/ProductDAO.php?id=<?php echo $id ?>" method="post" id="formBotones">
-            <input type="submit" id="boton_contacto" name="enviarP" value="Ponerse en contacto">
-            <input type="submit" id="boton_update" name="" value="Modificar producto">
-            <input type="submit" id="boton_log_out" name="borrarP" value="Borrar producto">
+        <form action="Session/DAO/ProductDAO.php?id=<?php echo $id ?>&correo=<?php echo $correo ?>" method="post" id="formBotones">
+            <input type="submit" id="boton_contacto" name="enviarP" value="Ponerse en contacto" <?php echo $disabled2 ?>>
+            <input type="button" onclick="updateProduct()" id="boton_update" value="Modificar producto" <?php echo $disabled ?>>
+            <input type="submit" id="boton_log_out" name="borrarP" value="Borrar producto" <?php echo $disabled ?>>
         </form>
-
     </div>
 </div>
 

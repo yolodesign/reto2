@@ -21,7 +21,8 @@ if (isset($_POST["nombreProducto"])){
     añadirProducto($producto, $dbh);
 }
 if (isset($_POST["enviarP"])){
-    header('Location: ../../enviarMail.php');
+    $correo = $_GET['correo'];
+    header('Location: ../../enviarMail.php?correo=' . $correo);
 }
 if (isset($_POST["actualizarAnuncio"])){
     $producto = array(
@@ -236,6 +237,39 @@ function borrarProductoById($id, $dbh){
         $stmt = $dbh->prepare("DELETE FROM productos WHERE id = :id");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
+function getProfileIdByproductId($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT id_perfiles FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->id_perfiles;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function getEmailById($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT correo FROM perfiles WHERE id=:id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->correo;
+        }
+        return $value;
     }catch (PDOException $e){
         die($e->getMessage());
     }
