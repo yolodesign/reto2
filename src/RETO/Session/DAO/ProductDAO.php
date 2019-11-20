@@ -22,7 +22,28 @@ if (isset($_POST["nombreProducto"])){
     $dbh = connect();
     añadirProducto($producto, $dbh);
 }
-
+if (isset($_POST["actualizarAnuncio"])){
+    $producto = array(
+        "nombre" => $_POST["nombreProductoA"],
+        "descripcion" => $_POST["descrpcionProductoA"],
+        "direccion" => $_POST["direccionProductoA"],
+        "foto" => $_POST["fotoProductoA"],
+        "id" => $_GET['id']
+    );
+    $dbh = connect();
+    actualizarProducto($producto, $dbh);
+}
+if (isset($_POST["enviarP"])){
+    $dbh = connect();
+    $idPerfil = getIdPerfilbyIdProducto($_GET['id'], $dbh);
+    echo $idPerfil;
+    //header('Location: ../../enviarMail.php?id=' . $idPerfil);
+}
+if (isset($_POST["borrarP"])){
+    $dbh = connect();
+    borrarProductoById(7, $dbh);
+    header('Location: ../../index.php');
+}
 function consulta($dbh)
 {
     $dbh = connect();
@@ -34,8 +55,38 @@ function consulta($dbh)
         echo '<img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['foto'] . '"><br>';
     }
 }
+function actualizarProducto($producto, $dbh){
+    $data = array(
+        'nombre' => $producto["nombre"],
+        'descripcion' => $producto["descripcion"],
+        'foto' => $producto["foto"],
+        'direccion' => $producto["direccion"],
+        'id' => $producto["id"]
+    );
+    try {
+        $stmt = $dbh->prepare("UPDATE productos SET nombre = :nombre, descripcion = :descripcion, direccion = :direccion, foto = :foto WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute($data);
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
 
+    header('Location: ../../index.php');
+}
 function mostrarCategorias(){
+    try{
+        $dbh = connect();
+        $stmt = $dbh->prepare("SELECT nombre FROM categorias");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        while ($row = $stmt->fetch()) {
+            echo "<option>{$row['nombre']}</option>";
+        }
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function mostrarCategoriasAct(){
     try{
         $dbh = connect();
         $stmt = $dbh->prepare("SELECT nombre FROM categorias");
@@ -141,6 +192,103 @@ function getProductosById($dbh, $id)
     }
 }
 
+function getNombreProductoById($id = 6, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT nombre FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+
+        while($row = $stmt->fetch()){
+            $value = $row->nombre;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function getDescripcionProductoById($id = 6, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT descripcion FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+
+        while($row = $stmt->fetch()){
+            $value = $row->descripcion;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function getDireccionProductoById($id = 6, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT direccion FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+
+        while($row = $stmt->fetch()){
+            $value = $row->direccion;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function getFechaProductoById($id = 6, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT fecha FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+
+        while($row = $stmt->fetch()){
+            $value = $row->fecha;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function getIdPerfilbyIdProducto($id){
+    $dbh = connect();
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT id_perfiles FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->fecha;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function borrarProductoById($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    try{
+        $stmt = $dbh->prepare("DELETE FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
 
 function ProductosByIdCat($dbh)
 {

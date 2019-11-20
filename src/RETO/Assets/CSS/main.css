@@ -6,6 +6,8 @@
 
 *{
     box-sizing: border-box;
+  
+    word-wrap: break-word;
 }
 
 #html {
@@ -22,6 +24,9 @@ body{
 h1, h2{
     font-family: 'Pacifico';
 }
+p{
+    line-height: 1.5em;
+}
 /**Index */
 
 
@@ -36,9 +41,9 @@ h1, h2{
     
 }
 
-/* ================= */
+/* ==================================================================================== */
 /* HEADER */
-/* ================= */
+/* ==================================================================================== */
 
 header{
     display: flex;
@@ -54,6 +59,8 @@ header{
     justify-content: space-around;
     align-items: center;
     clear:both;
+    z-index: 1;
+
     
 }
 .menu a {
@@ -208,71 +215,11 @@ h1 a:hover:after {
     margin-top: 0px;
     transform: rotate(-405deg);
   }
+
+
 /* ==================================================================================== */
-/* MEDIA QUERY PORTATIL*/
+/*LOGIN/SIGNUP*/
 /* ==================================================================================== */
-  @media (max-width: 1100px) and (min-width:768px){
-    #nav_icon{
-        display: none;
-    }
-    .menu{
-        display: none;
-    }
-   
-    .menu-button-container {
-      display: flex;
-    }
-
-   
-    .menu {
-      position: absolute;
-      top: 0;
-      margin-top: 50px;
-      left: 0;
-      flex-direction: column;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-      margin-top: 10%;
-    }
-    #menu-toggle ~ .menu li {
-      height: 0;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    #menu-toggle:checked ~ .menu li {
-      border: 1px solid #333;
-      height: 2.5em;
-      padding: 0.5em;
-      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .menu > li {
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      padding: 0.5em 0;
-      width: 100%;
-      color: white;
-      background-color: #222;
-    }
-    .menu > li:not(:last-child) {
-      border-bottom: 1px solid #444;
-    }
-  }
-  /* ==================================================================================== */
-  /* MEDIA QUERY TABLET*/
-  /* ==================================================================================== */
-  @media (max-width: 767px){
-    .menu{
-        display: none;
-    }
-}
-
-
-
-/**Login/Sign up:*/
 
 #loginBody{
     display: flex;
@@ -518,9 +465,9 @@ input {
     color: gray;
 }
 
-/* ================= */
+/* ==================================================================================== */
 /* "VER MAS" */
-/* ================= */
+/* ==================================================================================== */
 .ver_mas_anuncios, .que_es_yolopop {
     margin: 0 auto;
     margin-top: 10%;
@@ -571,9 +518,9 @@ input {
   }
   
 
-/* ================= */
+/* ==================================================================================== */
 /* Footer */
-/* ================= */
+/* ==================================================================================== */
 
 footer{
     position: absolute;
@@ -591,25 +538,21 @@ footer{
     margin:0;
 
 }
+footer a, footer a:visited{
+    color:#ffffffda;
+    text-decoration: none;
+}
+
 #copyright{
     display: flex;
     flex-direction:column;
     width: 30%;
 }
-#copyright a{
-    text-decoration: none;
-}
-#copyright a:visited{
-    color:#ffffffda;
-}
+
+
 #copyright img{
     width: 10%;
     height: auto;
-}
-
-
-footer a:visited{
-    color: #ffffffda;
 }
 .twitter:hover{
     color:#1da1f2;
@@ -658,11 +601,16 @@ footer a:visited{
     padding: 0 5px;
 
 }
+li a{
+    text-decoration: none;
+}
+li a:visited{
+    color:white;
+}
 
-
-/* ================= */
+/* ==================================================================================== */
 /* Perfil */
-/* ================= */
+/* ==================================================================================== */
 
 .perfil {
     display: grid;
@@ -788,9 +736,10 @@ footer a:visited{
 #tusAnuncios{
     display: none;
 }
-/* ================= */
+
+/* ==================================================================================== */
 /* Error */
-/* ================= */
+/* ==================================================================================== */
 
 
 #error404{
@@ -823,16 +772,16 @@ footer a:visited{
 #mensaje_error a:visited{
     color:white;
 }
-/* ================= */
-/* Donde Estamos */
-/* ================= */
+/* ==================================================================================== */
+/* Donde Estamos */ /* AYUDA*/
+/* ==================================================================================== */
 
 
 
 
 
 
-.donde_estamos {
+.donde_estamos, .ayuda {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 0,8fr);
@@ -840,7 +789,7 @@ footer a:visited{
     grid-row-gap: 0px;
 }
         
-.donde_estamos_titulo { 
+.donde_estamos_titulo, .ayuda_titulo { 
     grid-area: 1 / 2 / 2 / 5;
     display: flex;
     justify-content: center;
@@ -852,33 +801,44 @@ footer a:visited{
     padding: 20px;
     
  }  
-.mapa {
+.mapa, .contenido_ayuda{
     grid-area: 2 / 2 / 5 / 5;
     background: #3a3f4480;
+    border-radius: 5px;
 }
 
-/*
-#donde_estamos, #que_es_yolopop{
-    background: #3a3f4480;
-    display:flex;
-    width: 50vw;
-    height: 70vh;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-*/
 #mapa iframe {
     max-width: 70vw;
+    width: auto;
     height: 60vh;
  }
 
- /* ================= */
+ .contenido_ayuda{
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     padding: 3%;
+ }
+ #ayuda_img{
+     width: 40%;
+     height: auto;
+     float: right;
+     
+     
+ }
+ /* ==================================================================================== */
 /* Que es YOLOPOP*/
-/* ================= */
+/* ==================================================================================== */
+#que_es_yolopop{
+    hyphens: auto;
+}
 
-
-
+#descripcion_anuncio{
+    width: 100%;
+}
+#links_iconos a, #links_iconos a:visited{
+    color: white;
+}
 #links_iconos{
     display: flex;
     justify-content: space-around;
@@ -894,9 +854,9 @@ footer a:visited{
 }
 
 
- /* ================= */
+ /* ==================================================================================== */
 /* Sobre nosotros/
-/* ================= */
+/* ==================================================================================== */
 
 .nosotros {
     display: grid;
@@ -962,6 +922,7 @@ footer a:visited{
     height: auto;
     border-radius: 50%;
 }
+
 #tusAnuncios{
     overflow-y: scroll;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -997,4 +958,220 @@ footer a:visited{
     font-weight: normal;
     color: rgba(0,0,0,0.6);
     align-self: flex-start;
+}
+
+
+/* ================= */
+/* Página anuncio/
+/* ================= */
+
+#contenedorProducto{
+    background: rgba(58, 63, 68, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+    width: 750px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+#actualizarAnuncio{
+    background: rgba(58, 63, 68, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+    width: 750px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+#productoBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-self: flex-end;
+}
+#productoBody #fechaProd{
+    align-self: flex-start;
+}
+#productoBody #persona{
+    align-self: center;
+}
+#productoBody #direccion{
+    align-self: flex-end;
+}
+#productoHead{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#contenedorProducto img{
+    width: 300px;
+    height: 200px;
+    margin-bottom: 2%;
+}
+
+#formBotones{
+    margin-top: 3%;
+    background: rgba(58, 63, 68, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+    width: 750px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#paginaProducto{
+    display: flex;
+    flex-direction: column;
+    margin-top: 7%;
+    margin-bottom: 6%;
+}
+#boton_contacto{
+    width: 50%;
+    background-color: green;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: background-color .3s;
+}
+#boton_contacto:hover{
+    background-color: darkgreen;
+}
+#boton_update{
+    width: 50%;
+    background-color: dodgerblue;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: background-color .3s;
+}
+#boton_update:hover{
+    background-color: blue;
+}
+
+/* ==================================================================================== */
+/* MEDIA QUERY PORTATIL*/
+/* ==================================================================================== */
+@media (max-width: 1100px) and (min-width:790px){
+    #nav_icon{
+        display: none;
+    }
+    .menu{
+        display: none;
+    }
+   
+    .menu-button-container {
+      display: flex;
+    }
+
+    .menu {
+      position: absolute;
+      top: 0;
+      margin-top: 50px;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10%;
+    }
+    #menu-toggle ~ .menu li {
+      height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    #menu-toggle:checked ~ .menu li {
+      border: 1px solid #333;
+      height: 2.5em;
+      padding: 0.5em;
+      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .menu > li {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0.5em 0;
+      width: 100%;
+      color: white;
+      background-color: #222;
+    }
+    .menu > li:not(:last-child) {
+      border-bottom: 1px solid #444;
+    }
+    .donde_estamos_titulo, .ayuda_titulo{
+      margin-top: 18%;
+    
+    }
+
+    .mapa{
+        display: block;
+        clear: both;
+    }
+    footer{
+        display: none;
+    }
+  }
+  
+  /* ==================================================================================== */
+  /* MEDIA QUERY TABLET*/
+  /* ==================================================================================== */
+  @media (max-width: 789px){
+    body, p{
+        font-size: 0.8em;
+    }
+    #nav_icon{
+        display: none;
+    }
+    .menu{
+        display: none;
+    }
+    #nav_title{
+        font-size: 0.8em;
+    }
+ 
+    .menu-button-container {
+      display: flex;
+    }
+    #que_es_yolopop{
+        font-size: 0.5em;
+    }
+    .donde_estamos{
+        display: block;
+       
+    }
+    .donde_estamos_titulo, .ayuda_titulo{
+        margin-top: 18%;
+      
+      }
+
+    .mapa{
+        display: block;
+        clear: both;
+    }
+    footer{
+        display: none;
+    }
 }
