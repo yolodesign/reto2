@@ -14,21 +14,21 @@ $dbh = connect();*/
         <div class="box item1">
             <h2>¿Qué es YoloPop? </h2>
         </div>
-        <div class="box item2">
+                <div class="box item2" id="item2_que_es_yolopop">
 
                 <p> YoloPop es un portal de publicidad para que los jóvenes empresarios de Álava puedan anunciar su empresa de una forma
                     sencia y gratuita, pudiendo llegar así a más público y crecer como emprededores.</p>
 
 
         </div>
-        <div class="box item3" class="item3_que_es_yolopop">
+        <div class="box item3" id="item3_que_es_yolopop">
             <p>Nuestra empresa se dedica a diseñar páginas y aplicaciones web, en este caso, YoloPop.
                 Esta web está diseñada para Ajebask.
             </p>
             <a href="http://ajebaskalava.es/" target="_blank" ><img id="ajebask_img" src="Assets/MEDIA/ajebask.png"> </a>
         </div>
 
-        <div class="box item4">
+        <div class="box item4" id="info_equipo" >
             <p>Somos el equpo 4 YOLO DESIGN® de Desarrollo de Aplicaciones Web de Egibide Arriaga.</p>
         </div>
         <div class="box item5" id="links_iconos">

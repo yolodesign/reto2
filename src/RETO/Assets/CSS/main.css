@@ -29,6 +29,16 @@ p{
 }
 /**Index */
 
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.div1 { grid-area: 1 / 1 / 4 / 6; }
+
 
 
 .imagenAnuncion{
@@ -532,95 +542,6 @@ input {
   }
   
 
-/* ==================================================================================== */
-/* Footer */
-/* ==================================================================================== */
-
-footer{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    text-align: center;
-    display:flex;
-    background-color: #222222;
-    color: #ffffffda;
-    justify-content: space-around; 
-    clear: both;
-    padding: 0;
-    margin:0;
-
-}
-footer a, footer a:visited{
-    color:#ffffffda;
-    text-decoration: none;
-}
-
-#copyright{
-    display: flex;
-    flex-direction:column;
-    width: 30%;
-}
-
-
-#copyright img{
-    width: 10%;
-    height: auto;
-}
-.twitter:hover{
-    color:#1da1f2;
-}
-.git:hover{
-    color:#222222;
-    background-color:#ffffffda ;
-}
-.mail {
-    color:#ffffffda ;
-}
-.mail:hover{
-    color:red;
-}
-.footer_title{
-    color:#a6a6a6;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 3%;
-}
-#copyright{
-    height: 100%;
-    align-content: center;
-  
-}
-
-#rrss{
-    flex-direction: row;
-    width: 30%;
-}
-#rrss > i{
-    padding: 5px;
-}
-#aboutUsLinks{
-    width: 30%;
-}
-
-#aboutUsLinks ul{
-    columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    list-style: none;
-}
-#aboutUsLinks{
-    padding: 0 5px;
-
-}
-li a{
-    text-decoration: none;
-}
-li a:visited{
-    color:white;
-}
 
 /* ==================================================================================== */
 /* Perfil */
@@ -817,10 +738,6 @@ li a:visited{
 /* ==================================================================================== */
 
 
-
-
-
-
 .donde_estamos, .ayuda {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -846,13 +763,26 @@ li a:visited{
     background: #3a3f4480;
     border-radius: 5px;
 }
-
+/*
 #mapa iframe {
     max-width: 70vw;
     width: auto;
     height: 60vh;
  }
-
+*/
+.mapa {
+    position: relative;
+    padding-bottom: 75%; 
+    height: 0;
+    overflow: hidden;
+}
+.mapa iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
  .contenido_ayuda{
      display: flex;
      align-items: center;
@@ -1111,13 +1041,110 @@ li a:visited{
     background-color: blue;
 
 }
+/* ==================================================================================== */
+/* Footer */
+/* ==================================================================================== */
+
+footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    display:flex;
+    background-color: #222222;
+    color: #ffffffda;
+    justify-content: space-around; 
+    clear: both;
+    padding: 0;
+    margin:0;
+
+}
+footer a, footer a:visited{
+    color:#ffffffda;
+    text-decoration: none;
+}
+
+#copyright{
+    display: flex;
+    flex-direction:column;
+    width: 30%;
+}
+
+
+#copyright img{
+    width: 10%;
+    height: auto;
+}
+.twitter:hover{
+    color:#1da1f2;
+}
+.git:hover{
+    color:#222222;
+    background-color:#ffffffda ;
+}
+.mail {
+    color:#ffffffda ;
+}
+.mail:hover{
+    color:red;
+}
+.footer_title{
+    color:#a6a6a6;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3%;
+}
+#copyright{
+    height: 100%;
+    align-content: center;
+  
+}
+
+#rrss{
+    flex-direction: row;
+    width: 30%;
+}
+#rrss > i{
+    padding: 5px;
+}
+#aboutUsLinks{
+    width: 30%;
+}
+
+#aboutUsLinks ul{
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style: none;
+}
+#aboutUsLinks{
+    padding: 0 5px;
+
+}
+li a{
+    text-decoration: none;
+}
+li a:visited{
+    color:white;
+}
+
 
 /* ==================================================================================== */
-/* MEDIA QUERY PORTATIL*/
+/* MEDIA QUERY TABLET*/
 /* ==================================================================================== */
 @media (max-width: 1100px) and (min-width:790px){
+   
+   /* ---------------------------------------------------------------- */
+   /* HEADER */
+   /* ---------------------------------------------------------------- */
     #nav_icon{
         display: none;
+    }
+    #nav_title{
+        font-size: 0.8em;
     }
     .menu{
         display: none;
@@ -1163,27 +1190,123 @@ li a:visited{
     .menu > li:not(:last-child) {
       border-bottom: 1px solid #444;
     }
-    .donde_estamos_titulo, .ayuda_titulo{
-      margin-top: 18%;
-    
+ 
+    /* ---------------------------------------------------------------- */
+    /* Ayuda */
+    /* ---------------------------------------------------------------- */
+
+    .ayuda{
+        display: flex;
+        flex-direction: column;
+        margin-top: -15%;
     }
 
-    .mapa{
-        display: block;
-        clear: both;
+   
+    /* ---------------------------------------------------------------- */
+    /* Donde Estamos */
+    /* ---------------------------------------------------------------- */
+    .donde_estamos{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10%;
     }
-    footer{
+    .donde_estamos_titulo{
+        font-size: 0.8em;
+        margin-bottom: 2%;
+    }
+    .mapa{
+        margin-bottom: 13%;
+    }
+    /* ---------------------------------------------------------------- */
+    /* Nosotros */
+    /* ---------------------------------------------------------------- */
+
+    .miembro_1, .miembro_2, .miembro_3{
         display: none;
     }
+    .contenido_1, .contenido_2, .contenido_3{
+        border-radius: 0;
+        margin-bottom: 10px;
+        padding: 2%;
+    }
+    .contenido_3{
+        margin-bottom: 17vh;
+    }
+    .nosotros{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        margin-top: 12vh;
+        align-content: space-around;
+    }
+
+    /* ---------------------------------------------------------------- */
+    /* Qué es YoloPop */
+    /* ---------------------------------------------------------------- */
+
+    .que_es_yolopop{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        justify-content: center;
+        margin-top: 1%;
+        
+    }
+    .box{
+        min-height: 20vh;
+        margin: 15px 0;
+        font-size: 1.3em;
+
+        
+    }
+    .item1{
+        min-height: 10vh;
+        margin-top: 25vh;
+        
+    }
+
+    #links_iconos, #info_equipo{
+        display: none;
+    }
+    #item3_que_es_yolopop{
+        display: flex;
+        font-size: 1.8em;
+
+    }
+    #item3_que_es_yolopop img{
+        width: 50%;
+        float: right;
+   
+    }
+
+
+    /* ---------------------------------------------------------------- */
+    /* Footer */
+    /* ---------------------------------------------------------------- */
+
+    footer{
+        font-size: 0.7em;
+    }
+    #aboutUsLinks ul{
+        columns: 1;
+        list-style: none;
+    }
+
+
   }
   
   /* ==================================================================================== */
-  /* MEDIA QUERY TABLET*/
+  /* MEDIA QUERY Movil*/
   /* ==================================================================================== */
   @media (max-width: 789px){
     body, p{
         font-size: 0.8em;
     }
+      /* ---------------------------------------------------------------- */
+   /* HEADER */
+   /* -------------------------------------------------------------------*/
+   
     #nav_icon{
         display: none;
     }
@@ -1197,24 +1320,127 @@ li a:visited{
     .menu-button-container {
       display: flex;
     }
-    #que_es_yolopop{
-        font-size: 0.5em;
+
+    /* ---------------------------------------------------------------- */
+    /* Ayuda */
+    /* ---------------------------------------------------------------- */
+
+    .ayuda{
+        display: flex;
+        flex-direction: column;
+        margin-top: -15%;
     }
-    .donde_estamos{
-        display: block;
-       
-    }
-    .donde_estamos_titulo, .ayuda_titulo{
-        margin-top: 18%;
-      
-      }
 
     .mapa{
         display: block;
         clear: both;
     }
-    footer{
+    .contenido_ayuda{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-content: center;
+    }
+    #ayuda_img{
+        margin-right:30% ;
+    }
+    /* ---------------------------------------------------------------- */
+    /* Donde Estamos */
+    /* ---------------------------------------------------------------- */
+    .donde_estamos{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 3vh;
+    }
+    .donde_estamos_titulo{
+        font-size: 0.8em;
+        margin-bottom: 2%;
+    }
+    .mapa{
+        margin-bottom: 13%;
+    }
+
+    /* ---------------------------------------------------------------- */
+    /* Nosotros */
+    /* ---------------------------------------------------------------- */
+
+    .miembro_1, .miembro_2, .miembro_3{
         display: none;
+    }
+    .contenido_1, .contenido_2, .contenido_3{
+        border-radius: 0;
+        margin-bottom: 10px;
+        padding: 2%;
+    }
+    .contenido_3{
+        margin-bottom: 17vh;
+    }
+    .nosotros{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        margin-top: 12vh;
+        align-content: space-around;
+    }
+
+    /* ---------------------------------------------------------------- */
+    /* Qué es YoloPop */
+    /* ---------------------------------------------------------------- */
+
+    .que_es_yolopop{
+        font-size: 1em;
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+        justify-content: center;
+        margin-top: 1%;
+        font-size: 1em;
+        
+    }
+    .box{
+        min-height: 20vh;
+        margin: 15px 0;
+        font-size: 1.3em;
+
+    }
+
+    .item1{
+        min-height: 10vh;
+        margin-top: 25vh;
+        font-size: 1.2em;
+    }
+
+    #links_iconos, #info_equipo{
+        display: none;
+    }
+    #item3_que_es_yolopop{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center ;
+    }
+    #item3_que_es_yolopop p{
+
+    }
+    #item3_que_es_yolopop img{
+ 
+        width: 30%;
+        margin-left: 30%;
+   
+    }
+
+
+    /* ---------------------------------------------------------------- */
+    /* Footer */
+    /* ---------------------------------------------------------------- */
+
+    footer{
+        font-size: 0.7em;
+    }
+    #aboutUsLinks ul{
+        columns: 1;
+        list-style: none;
     }
 }
 

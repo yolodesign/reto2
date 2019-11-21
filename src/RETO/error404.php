@@ -10,8 +10,6 @@ include "head.php";
         <h2> 404 Page not found</h2>
         <a href="index.php"><h2>Inicio</h2></a>
     </div>
-
-
 </div>
 
 
