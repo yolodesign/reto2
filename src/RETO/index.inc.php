@@ -9,7 +9,7 @@ function menuCat($categorias){
 function sectionPorCat($categorias){
     foreach ($categorias as $categoria) {
         echo "<section id=\"section{$categoria->id}\">
-                    <div > <h1>{$categoria->nombre}</h1> ";?>
+                    <div ><a href=ver_mas.php?id={$categoria->id}>Ver mas</a> <h1>{$categoria->nombre}</h1> ";?>
         <?php
         $datos = consultaCategoriasPro(connect(),$categoria->id);?>
         <table>
@@ -26,7 +26,7 @@ function sectionPorCat($categorias){
 
             while($row = $datos->fetch()){
                 echo "<tr><td> {$row['nombreproducto']} </td>";
-                echo '<td> <img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['fotoproducto'] . '"></td>';
+                echo '<td> <a href=\'verProducto.php?id=' .$row["idproducto"] .'\'><img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['fotoproducto'] . '"></a></td>';
                 echo "<td>  {$row['descproducto']}  </td></tr>";
             }
             ?>
