@@ -43,7 +43,7 @@ p{
 
 .imagenAnuncion{
     width: 10%;
-    height: 10%;
+    height: auto;
 }
 .contenido{
     max-width: 80%;
