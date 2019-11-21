@@ -33,16 +33,20 @@ function consultaCategoriasPro($dbh,$id)
     }
 
 }
+
 function productosPorCategoria($id, $dbh){
     $data = array(
         'id' => $id
     );
     try{
-        $stmt = $dbh->prepare("SELECT nombre FROM productos WHERE id_categoria = :id");
+        $stmt = $dbh->prepare("SELECT id, nombre, foto, descripcion FROM productos WHERE id_categoria = :id");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         while($row = $stmt->fetch()){
-            echo $row->nombre;
+
+            echo "<tr><th> {$row -> nombre} </th></tr>";
+            echo '<tr><td> <a href=\'verProducto.php?id=' .$row -> id.'\'><img class ="imagenAnuncion" src="Assets/MEDIA/' . $row -> foto . '"></a></td>';
+            echo "<td>  {$row -> descripcion}  </td></tr>";
         }
     } catch (PDOException $e) {
         die($e->getMessage());

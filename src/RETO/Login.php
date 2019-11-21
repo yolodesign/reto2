@@ -45,7 +45,7 @@ include ("Session/Conf/PersistentManager.php");
         <!--<input type="button" value="Sign in" onclick="loginSign('sign')">-->
     </div>
     <div class="login-item">
-        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return signup()">
+        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return signup()" enctype="multipart/form-data">
             <div class="form-field">
                 <label class="user" for="signup-name"><span class="hidden">Name</span></label>
                 <input id="signup-name" name="name" type="text" class="form-input" placeholder="Name" required>
@@ -84,7 +84,7 @@ include ("Session/Conf/PersistentManager.php");
             </div>
             <div class="uploadFile">
                 <button class="uploadFileBtn">Upload a Image</button>
-                <input type="file" id="nueva_foto   " accept="Assets/MEDIA/Imagenes/*" name="subida_foto_perfil" />
+                <input type="file" id="nueva_foto" accept="image/*" name="fotoPerfil" />
             </div>
 
             <div class="form-field privacidad">
