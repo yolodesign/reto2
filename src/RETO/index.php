@@ -40,7 +40,7 @@ include ("index.inc.php");
 
     <div>
         <?php
-        consulta($dbh);
+        //consulta($dbh);
         ?>
     </div>
 </div>

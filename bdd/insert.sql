@@ -88,7 +88,7 @@ INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_p
 /*Deportes*/
 
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Balon futbol','Balon para jugar al futbol','balon.jpg','dir_prueba',NOW(),5,1);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Camiseta Madrid','Camiseta del equipo todopoderoso','cmadird.jpg','dir_prueba',NOW(),5,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Camiseta Madrid','Camiseta del equipo todopoderoso','cmadrid.jpg','dir_prueba',NOW(),5,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Zapatillas tacon','Zapatillas para agarrarte mejor al cesped','zapatillas.jpg','dir_prueba',NOW(),5,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Bicicleta','Bici para poder llegar antes a los sitios','bicicleta.jpg','dir_prueba',NOW(),5,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Tabla Snow','Recomendado uso solo en la nieve','tablasnow.jpg','dir_prueba',NOW(),5,1);
@@ -100,7 +100,7 @@ INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_p
 
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Vestido','Que se hacerca el verano y empieza a hacer calorcito','vestido.jpg','dir_prueba',NOW(),6,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Camiseta','Barata y bonita','camiseta.jpg','dir_prueba',NOW(),6,1);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Chaqueta vaquera','Mas bonita de lo que abriga','cvaquera.jpg','dir_prueba',NOW(),6,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Chaqueta vaquera','Mas bonita de lo que abriga','chaquetavaquera.jpg','dir_prueba',NOW(),6,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Pantalones','Mira por si son tu talla, de ofertas','pantalon.jpg','dir_prueba',NOW(),6,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Zapatos','Es justo lo que necesitas para combinar a juego con tu traje','zapatos.jpg','dir_prueba',NOW(),6,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Medias','Cuidado no las rajes','medias.jpg','dir_prueba',NOW(),6,1);

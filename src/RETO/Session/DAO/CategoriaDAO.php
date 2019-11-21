@@ -22,7 +22,8 @@ function consultaCategoriasPro($dbh,$id)
                                     p.descripcion descproducto, p.foto fotoproducto
                                     FROM categorias c, productos p 
                                     WHERE p.id_categoria = c.id
-                                    AND c.id = :id");
+                                    AND c.id = :id
+                                    LIMIT 5");
         $stmt->bindParam("id", $id);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
