@@ -7,6 +7,7 @@ include '../Utils/SessionUtils.php';
 if (isset($_POST["nombreProducto"])){
     startSessionIfNotStarted();
     $idCategoria = idCategoriaPorNombre($_POST["categoriaProducto"]);
+    $idEtiqueta = idEtiquetaPorNombre($_POST["etiquetaProducto"]);
     $idPerfil = getIdUsuarioByEmail();
     $producto = array(
         "nombre" => $_POST["nombreProducto"],
@@ -15,6 +16,7 @@ if (isset($_POST["nombreProducto"])){
         "fecha" => date("Y-m-d"),
         "foto" => $_POST["fotoProducto"],
         "id_categoria" => $idCategoria,
+        "id_etiqueta" => $idEtiqueta,
         "id_User" => $idPerfil
     );
     $dbh = connect();
@@ -64,6 +66,19 @@ function mostrarCategorias(){
         die($e->getMessage());
     }
 }
+function mostrarEtiquetas(){
+    try{
+        $dbh = connect();
+        $stmt = $dbh->prepare("SELECT nombre FROM etiquetas");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        while ($row = $stmt->fetch()) {
+            echo "<option>{$row['nombre']}</option>";
+        }
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
 function idCategoriaPorNombre($nombre){
     try{
         $data = array(
@@ -82,6 +97,27 @@ function idCategoriaPorNombre($nombre){
         die($e->getMessage());
     }
 }
+
+function idEtiquetaPorNombre($nombre){
+    try{
+        $data = array(
+            "nombre" => $nombre
+        );
+        $dbh = connect();
+        $stmt = $dbh->prepare("SELECT id FROM etiquetas where nombre=:nombre");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute($data);
+        $value = "";
+        while ($row = $stmt->fetch()) {
+            $value = $row['id'];
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
+
 function getIdUsuarioByEmail(){
     $dbh = connect();
     $data = array(
@@ -110,13 +146,11 @@ function getIdUsuarioByEmail(){
 }
 function validateAndUploadImage($url, $correo, $queImagen)
 {
-    $destination = $url . $correo . ".png";
-    // borrar la existente
+    $destination = $url . $correo . ".jpg";
+    $nombre = $correo . ".jpg";
     if (file_exists($destination)) {
         unlink($destination);
     }
-    //Hemos recibido el fichero
-    //Comprobamos que es un fichero subido por PHP, y no hay inyección por otros medios
     if (!is_uploaded_file($_FILES[$queImagen]['tmp_name'])) {
         echo "Error: El fichero encontrado no fue procesado por la subida correctamente";
         exit;
@@ -133,19 +167,17 @@ function validateAndUploadImage($url, $correo, $queImagen)
         @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
         exit;
     }
-    //  echo "Fichero subido correctamente a: " . $destination;
-    //  echo " <br> Ultimo echo " . file_get_contents($_FILES["userfile"]["tmp_name"]);
-    return $destination;
+    return $nombre;
 }
 
 function añadirProducto($producto, $dbh)
 {
-    if (isset($_FILES['fotoPerfil'])) {
+    if (isset($_FILES['fotoProducto'])) {
         echo "prueba de coger foto";
         echo $_FILES['fotoProducto'];
         echo $_FILES['fotoProducto']['name'];
 
-        $url_foto = validateAndUploadImage("../../Assets/MEDIA", $producto["nombre"] . $_SESSION['user'], 'fotoProducto');
+        $url_foto = validateAndUploadImage("../../Assets/MEDIA/", $producto["nombre"] . $_SESSION['user'], 'fotoProducto');
 
         $data = array(
             'nombre' => $producto["nombre"],
