@@ -108,26 +108,66 @@ function getIdUsuarioByEmail(){
     }
     return $value;
 }
+function validateAndUploadImage($url, $correo, $queImagen)
+{
+    $destination = $url . $correo . ".png";
+    // borrar la existente
+    if (file_exists($destination)) {
+        unlink($destination);
+    }
+    //Hemos recibido el fichero
+    //Comprobamos que es un fichero subido por PHP, y no hay inyección por otros medios
+    if (!is_uploaded_file($_FILES[$queImagen]['tmp_name'])) {
+        echo "Error: El fichero encontrado no fue procesado por la subida correctamente";
+        exit;
+    }
+    $source = $_FILES[$queImagen]['tmp_name'];
+    if (is_file($destination)) {
+        echo "Error: Ya existe almacenado un fichero con ese nombre";
+        @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
+        exit;
+    }
+    if (!@move_uploaded_file($source, $destination)) {
+        echo "Error: No se ha podido mover el fichero enviado a la carpeta de destino";
+        echo "<br>  $destination";
+        @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
+        exit;
+    }
+    //  echo "Fichero subido correctamente a: " . $destination;
+    //  echo " <br> Ultimo echo " . file_get_contents($_FILES["userfile"]["tmp_name"]);
+    return $destination;
+}
+
 function añadirProducto($producto, $dbh)
 {
-    $data = array(
-        'nombre' => $producto["nombre"],
-        'descripcion' => $producto["descripcion"],
-        'foto' => $producto["foto"],
-        'direccion' => $producto["direccion"],
-        'fecha' => $producto["fecha"],
-        'id_categoria' => $producto["id_categoria"],
-        'id_User' => $producto["id_User"]
-    );
-    try {
-        $stmt = $dbh->prepare("INSERT INTO productos (nombre, descripcion, foto, direccion, fecha, id_categoria, id_perfiles) VALUES (:nombre, :descripcion, :foto, :direccion, :fecha, :id_categoria, :id_User)");
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->execute($data);
-    } catch (PDOException $e) {
-        die($e->getMessage());
+    if (isset($_FILES['fotoPerfil'])) {
+        echo "prueba de coger foto";
+        echo $_FILES['fotoProducto'];
+        echo $_FILES['fotoProducto']['name'];
+
+        $url_foto = validateAndUploadImage("../../Assets/MEDIA", $producto["nombre"] . $_SESSION['user'], 'fotoProducto');
+
+        $data = array(
+            'nombre' => $producto["nombre"],
+            'descripcion' => $producto["descripcion"],
+            'foto' => $url_foto,
+            'direccion' => $producto["direccion"],
+            'fecha' => $producto["fecha"],
+            'id_categoria' => $producto["id_categoria"],
+            'id_User' => $producto["id_User"]
+        );
+        try {
+            $stmt = $dbh->prepare("INSERT INTO productos (nombre, descripcion, foto, direccion, fecha, id_categoria, id_perfiles) VALUES (:nombre, :descripcion, :foto, :direccion, :fecha, :id_categoria, :id_User)");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute($data);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+        //Redireccionar al index
+        header('Location: ../../index.php');
+    }else{
+        header('Location: ../../subirAnuncio.php');
     }
-    //Redireccionar al index
-    header('Location: ../../index.php');
 }
 function getProductosById($dbh, $id)
 {
