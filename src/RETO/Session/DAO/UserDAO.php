@@ -68,14 +68,11 @@ function createAction()
 }
 function validateAndUploadImageProfile($url, $correo, $queImagen)
 {
-    $destination = $url . $correo . ".png";
-    // borrar la existente
+    $destination = $url . $correo . ".jpg";
+    $nombre = $correo . ".jpg";
     if (file_exists($destination)) {
         unlink($destination);
     }
-    //Hemos recibido el fichero
-    //Comprobamos que es un fichero subido por PHP, y no hay inyección por otros medios
-
     if (!is_uploaded_file($_FILES[$queImagen]['tmp_name'])) {
         echo "Error: El fichero encontrado no fue procesado por la subida correctamente";
         exit;
@@ -92,9 +89,7 @@ function validateAndUploadImageProfile($url, $correo, $queImagen)
         @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
         exit;
     }
-    //  echo "Fichero subido correctamente a: " . $destination;
-    //  echo " <br> Ultimo echo " . file_get_contents($_FILES["userfile"]["tmp_name"]);
-    return $destination;
+    return $nombre;
 }
 
 function borrarCuenta(){
@@ -284,7 +279,7 @@ function getImgProfile($email){
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         while($row = $stmt->fetch()){
-            $value = $row->nombre;
+            $value = $row->foto;
         }
         return $value;
     }catch (PDOException $e){

@@ -45,6 +45,10 @@ p{
     width: 10%;
     height: auto;
 }
+.imagenAnuncioMasGrande{
+    width: 25%;
+    height: auto;
+}
 .contenido{
     margin: 0 auto; 
 
@@ -479,11 +483,16 @@ input {
     color: #5b5b5b;
 }
 
-.categ {
+.categ, .etiqueta{
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     font-size: 1em;
     color: gray;
+}
+.etiqueta:before{
+    content: "\f02b";
+    font: 14px fontawesome;
+    color: #5b5b5b;
 }
 
 /* ==================================================================================== */
@@ -565,6 +574,9 @@ input {
         grid-column: 3 ;
         grid-row: 1 / 3;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
     }
     .c {
         grid-column: 1 ;
@@ -699,7 +711,10 @@ input {
 /* Error */
 /* ==================================================================================== */
 
-
+#perfilCabecera img{
+    width: 50%;
+    height: auto;
+}
 #error404{
     margin: 0 auto;
     width: 100vw;
@@ -892,7 +907,7 @@ input {
 
 #tusAnuncios{
     display: block;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 700px;
 }
 #updatePerfil{
@@ -1466,8 +1481,34 @@ li a:visited{
     padding-right: 2%;
 }
 #tablaVerMas{
-    display: block;
+    display: flex;
+    flex-direction: column;
     overflow: scroll;
     padding-bottom: 7%;
+    margin-top: 5%;
 }
+#verMasProductos{
+    text-align: left;
+    border-collapse: collapse;
+}
+#verMasProductos, #verMasProductos tr{
+    border: solid 3px black;
+    background: #ed8caa;
 
+}
+#verMasProductos td{
+    padding: 20px;
+}
+#verMasProductos tr:nth-child(even){
+
+    background: #ed4076;
+}
+#verMasProductos tr:hover{
+background: #821f3e;
+}
+#tituloCat{
+    align-self: center;
+}
+#contenedorProductosVerMas{
+    background: #79EDEE;
+}
