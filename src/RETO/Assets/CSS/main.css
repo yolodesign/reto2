@@ -895,6 +895,7 @@ input {
 
 #tusAnuncios{
     overflow: scroll;
+    padding-top: 5%;
     height: 1000px;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
@@ -903,7 +904,7 @@ input {
     display: none;  /* Safari and Chrome */
 }
 .tarjetasPerfil{
-    
+
     background: darkseagreen;
     width: 360px;
     height: 170px;
