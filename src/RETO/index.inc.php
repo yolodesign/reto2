@@ -15,9 +15,9 @@ function sectionPorCat($categorias){
         <table>
             <?php
             while($row = $datos->fetch()){
-                echo "<tr><th> {$row['nombreproducto']} </th></tr>";
-                echo '<tr><td> <a href=\'verProducto.php?id=' .$row["idproducto"] .'\'><img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['fotoproducto'] . '"></a></td>';
-                echo "<td>  {$row['descproducto']}  </td></tr>";
+                echo "<td><stron>{$row['nombreproducto']} </stron></td></tr>";
+                echo '<tr><td> <a href=\'verProducto.php?id=' .$row["idproducto"] .'\'><img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['fotoproducto'] . '"></a></td></tr>';
+                echo "<tr><td>  {$row['descproducto']}  </td></tr>";
             }
             ?>
         </table>
