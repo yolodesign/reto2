@@ -5,6 +5,7 @@ include ("Session/Conf/PersistentManager.php");
 //include 'Session/Utils/SessionUtils.php';
 //unset($_SESSION['user']);
 ?>
+
 <div id="container-login">
     <div class="logButtons">
         <!--<input type="button" value="Log in" onclick="loginSign('login')">-->
@@ -26,6 +27,15 @@ include ("Session/Conf/PersistentManager.php");
                 <input type="submit" value="Log in">
             </div>
         </form>
+
+            <?php
+            if (isset($_GET['error']) && $_GET['error'] == "login"){
+                echo "<div class=\"errorMLogin\">";
+                echo "<p>Lo sentimos, los datos introducidos son incorrectos</p>";
+                echo "</div>";
+            }
+            ?>
+
     </div>
 </div>
 <!--Sign up-->
@@ -84,8 +94,14 @@ include ("Session/Conf/PersistentManager.php");
                 <input type="submit" value="Sign up">
             </div>
         </form>
+        <?php
+        if (isset($_GET['error']) && $_GET['error'] == "signup"){
+            echo "<div class=\"errorMLogin\">";
+            echo "<p>Lo sentimos, el email ya está registrado</p>";
+            echo "</div>";
+        }
+        ?>
         <div id="errorSign">
-
         </div>
     </div>
 </div>

@@ -81,8 +81,8 @@ function checkGender($genderP)
     <div class="box c">
         <div id="anuncios">
 
-            <button onclick="editarPerfil(true)">Subir Anuncio</button>
-            <button onclick="editarPerfil(false)">Editar Perfil</button>
+            <button class="boton_Perfil" onclick="editarPerfil(true)">Ver Anuncios</button>
+            <button class="boton_Perfil" onclick="editarPerfil(false)">Editar Perfil</button>
 
         </div>
 
