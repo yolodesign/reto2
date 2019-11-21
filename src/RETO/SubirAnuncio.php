@@ -6,7 +6,7 @@ include ("Session/Conf/PersistentManager.php");
 ?>
 <div id="container-login">
     <div class="login-item">
-        <form action="Session/DAO/ProductDAO.php" method="post" class="form form-login" onsubmit="return subirAnuncio()">
+        <form action="Session/DAO/ProductDAO.php" method="post" class="form form-login" onsubmit="return subirAnuncio()" enctype="multipart/form-data">
             <div class="form-field">
                 <label class="nombreProducto" for="nombreProducto"><span class="hidden">Nombre</span></label>
                 <input id="nombreProducto" name="nombreProducto" type="text" class="form-input" placeholder="Nombre" required>
@@ -28,7 +28,7 @@ include ("Session/Conf/PersistentManager.php");
             </div>
             <div class="uploadFile">
                 <button class="uploadFileBtn">Upload a image</button>
-                <input type="file" id="fotoProducto" name="fotoProducto" />
+                <input type="file" id="fotoProducto" name="fotoProducto" accept="image/*" />
             </div>
             <div class="form-field">
                 <input type="submit" name="subirAnuncio" value="Subir anuncio">

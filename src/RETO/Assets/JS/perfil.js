@@ -46,10 +46,7 @@ function editarPerfil(ocultar){
     let anuncios = document.getElementById("tusAnuncios").style
     if (ocultar == true){
         editarP.display = "none";
-        anuncios.display = "flex";
-        anuncios.flexDirection ="column";
-        anuncios.justifyContent = "space-around";
-        anuncios.alignItems = "center";
+        anuncios.display = "block";
     } else{
         editarP.display = "flex";
         anuncios.display = "none";
