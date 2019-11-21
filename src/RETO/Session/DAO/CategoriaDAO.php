@@ -33,4 +33,36 @@ function consultaCategoriasPro($dbh,$id)
     }
 
 }
+function productosPorCategoria($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    try{
+        $stmt = $dbh->prepare("SELECT nombre FROM productos WHERE id_categoria = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            echo $row->nombre;
+        }
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function categoriaPorId($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT nombre FROM categorias WHERE id=:id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->nombre;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
 

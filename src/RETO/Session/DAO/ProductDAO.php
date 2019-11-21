@@ -163,7 +163,22 @@ function getNombreProductoById($id, $dbh ){
         die($e->getMessage());
     }
 }
-
+function getFotoProductoById($id, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT foto FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->foto;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
 function getDescripcionProductoById($id, $dbh ){
     $data = array(
         'id' => $id
@@ -257,6 +272,23 @@ function getProfileIdByproductId($id, $dbh){
         die($e->getMessage());
     }
 }
+function getNamePById($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT nombre FROM perfiles WHERE id=:id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->nombre;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
 function getEmailById($id, $dbh){
     $data = array(
         'id' => $id
@@ -274,4 +306,7 @@ function getEmailById($id, $dbh){
         die($e->getMessage());
     }
 }
+
+
+
 ?>
