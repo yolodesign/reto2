@@ -3,7 +3,7 @@ include("head.php");
 include("Session/DAO/ProductDAO.php");
 include("Session/Conf/PersistentManager.php");
 $dbh = connect();
-$id = 4;
+$id = $_GET['id'];
 $disabled = "";
 $disabled2 = "disabled";
 $idP = getProfileIdByproductId($id, $dbh);
@@ -21,13 +21,13 @@ if ($_SESSION['user'] == $correo){
 
         <div id="productoHead">
             <h1><?php echo getNombreProductoById($id, $dbh) ?></h1>
-            <img src="Assets/MEDIA/coche.jpg">
+            <img src="Assets/MEDIA/<?php echo getFotoProductoById($id, $dbh) ?>">
         </div>
 
         <p><?php echo getDescripcionProductoById($id, $dbh) ?></p>
         <div id="productoBody">
             <p id="fechaProd"><?php echo getFechaProductoById($id, $dbh) ?></p>
-            <p id="persona"><?php echo "Giorno Giovanna"; ?></p>
+            <p id="persona"><?php echo getNamePById($idP, $dbh) ?></p>
             <p id="direccion"><?php echo getDireccionProductoById($id, $dbh) ?></p>
         </div>
     </div>
