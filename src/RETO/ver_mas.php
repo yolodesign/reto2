@@ -6,7 +6,7 @@ include "head.php";
 //$dbh = connect();
 include "buscador.php";
 ?>
-
+<!--
     <section class="contenido">
         <div class="ver_mas_anuncios">
                 <div class="box item1">
@@ -31,7 +31,7 @@ include "buscador.php";
                 <div class="box item5">Five</div>
             </div>
     </section>
-
+-->
 
 
 <?php
