@@ -32,8 +32,8 @@ p{
 
 
 .imagenAnuncion{
-    width: 15%;
-    height: 15%;
+    width: 10%;
+    height: 10%;
 }
 .contenido{
     max-width: 80%;
@@ -217,7 +217,9 @@ h1 a:hover:after {
   }
 
 
-/**Login/Sign up:*/
+/* ==================================================================================== */
+/*LOGIN/SIGNUP*/
+/* ==================================================================================== */
 
 #loginBody{
     display: flex;
@@ -427,6 +429,15 @@ input {
     font: 14px fontawesome;
     color: #5b5b5b;
 }
+
+.errorMLogin{
+    border:solid 1px #DEDEDE;
+    color: #D8000C;
+    background-color: #FFD2D2;
+    padding:4px;
+    text-align:center;
+}
+
 /* ================= */
 /* Subir Anuncio */
 /* ================= */
@@ -486,6 +497,7 @@ input {
     padding: 20px;
     display: flex;
     flex-wrap: nowrap;
+      overflow: hidden;
   }
   
   .item1 {
@@ -627,6 +639,7 @@ li a:visited{
     .b {
         grid-column: 3 ;
         grid-row: 1 / 3;
+        overflow: hidden;
     }
     .c {
         grid-column: 1 ;
@@ -662,6 +675,28 @@ li a:visited{
     margin-bottom: 30px;
 }
 
+.boton_Perfil{
+    background-color: #00B9BC;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 5px;
+    padding: 0;
+    transition: background-color .3s;
+}
+.boton_Perfil:hover{
+    background-color: #8B0000;
+}
+#anuncios{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
 
 
 
@@ -731,6 +766,9 @@ li a:visited{
 #datos div p{
     font-style: italic;
 }
+#datos{
+    overflow: hidden;
+}
 #tusAnuncios{
     display: none;
 }
@@ -782,7 +820,7 @@ li a:visited{
 .donde_estamos, .ayuda {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 0,8fr);
+    grid-template-rows: repeat(5, 0.8fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
 }
@@ -958,6 +996,115 @@ li a:visited{
     align-self: flex-start;
 }
 
+/* ================= */
+/* Página anuncio/
+/* ================= */
+
+#contenedorProducto{
+    background: rgba(58, 63, 68, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+    width: 750px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+#actualizarAnuncio{
+    background: rgba(58, 63, 68, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+    width: 750px;
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+#productoBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-self: flex-end;
+}
+#productoBody #fechaProd{
+    align-self: flex-start;
+}
+#productoBody #persona{
+    align-self: center;
+}
+#productoBody #direccion{
+    align-self: flex-end;
+}
+#productoHead{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#contenedorProducto img{
+    width: 300px;
+    height: 200px;
+    margin-bottom: 2%;
+}
+
+#formBotones{
+    margin-top: 3%;
+    background: rgba(58, 63, 68, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 1.5px 0 0 rgba(0, 0, 0, 0.1);
+    width: 750px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#paginaProducto{
+    display: flex;
+    flex-direction: column;
+    margin-top: 7%;
+    margin-bottom: 6%;
+}
+#boton_contacto{
+    width: 50%;
+    background-color: green;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: background-color .3s;
+}
+#boton_contacto:hover{
+    background-color: darkgreen;
+}
+#boton_update{
+    width: 50%;
+    background-color: dodgerblue;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: background-color .3s;
+}
+#boton_update:hover{
+    background-color: blue;
+
+}
 
 /* ==================================================================================== */
 /* MEDIA QUERY PORTATIL*/
@@ -1064,4 +1211,5 @@ li a:visited{
         display: none;
     }
 }
+
 

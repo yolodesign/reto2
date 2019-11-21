@@ -14,12 +14,22 @@ function consultaCategorias($dbh)
 $categorias = consultaCategorias($dbh);
 
 
-function consultaCategoriasPro($dbh)
-{
 
-    $stmt = $dbh->prepare("SELECT c.id, c.nombre, p.id, p.nombre nombreproducto, p.descripcion, p.foto FROM categorias c, productos p 
-                                    WHERE p.id_categoria = c.id");
-    $stmt->setFetchMode(PDO::FETCH_OBJ);
-    $stmt->execute();
-    return $stmt->fetchAll();
+function consultaCategoriasPro($dbh,$id)
+{
+    try{
+        $stmt = $dbh->prepare("SELECT c.id idcat , c.nombre nombrecat, p.id idproducto, p.nombre nombreproducto, 
+                                    p.descripcion descproducto, p.foto fotoproducto
+                                    FROM categorias c, productos p 
+                                    WHERE p.id_categoria = c.id
+                                    AND c.id = :id");
+        $stmt->bindParam("id", $id);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt;
+    }catch (PDOException $e){
+        echo $e->getMessage();
+    }
+
 }
+

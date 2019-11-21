@@ -1,9 +1,7 @@
 <?php
 include("../Conf/PersistentManager.php");
 include '../Utils/SessionUtils.php';
-
 //startSessionIfNotStarted();
-$dbh = connect();
 
 
 if (isset($_POST["nombreProducto"])){
@@ -22,8 +20,27 @@ if (isset($_POST["nombreProducto"])){
     $dbh = connect();
     añadirProducto($producto, $dbh);
 }
-
-function consulta($dbh)
+if (isset($_POST["enviarP"])){
+    $correo = $_GET['correo'];
+    header('Location: ../../enviarMail.php?correo=' . $correo);
+}
+if (isset($_POST["actualizarAnuncio"])){
+    $producto = array(
+        "nombre" => $_POST["nombreProductoA"],
+        "descripcion" => $_POST["descrpcionProductoA"],
+        "direccion" => $_POST["direccionProductoA"],
+        "foto" => $_POST["fotoProductoA"],
+        "id" => $_GET['id']
+    );
+    $dbh = connect();
+    actualizarProducto($producto, $dbh);
+}
+if (isset($_POST["borrarP"])){
+    $dbh = connect();
+    borrarProductoById($_GET['id'], $dbh);
+    header('Location: ../../index.php');
+}
+function consulta()
 {
     $dbh = connect();
     $stmt = $dbh->prepare("SELECT id, nombre, foto FROM productos");
@@ -34,7 +51,6 @@ function consulta($dbh)
         echo '<img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['foto'] . '"><br>';
     }
 }
-
 function mostrarCategorias(){
     try{
         $dbh = connect();
@@ -48,7 +64,6 @@ function mostrarCategorias(){
         die($e->getMessage());
     }
 }
-
 function idCategoriaPorNombre($nombre){
     try{
         $data = array(
@@ -68,12 +83,10 @@ function idCategoriaPorNombre($nombre){
     }
 }
 function getIdUsuarioByEmail(){
-
     $dbh = connect();
     $data = array(
         'email' => $_SESSION['user']
     );
-
     try{
         $stmt = $dbh->prepare("SELECT id FROM usuarios WHERE usuario=:email");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
@@ -81,7 +94,6 @@ function getIdUsuarioByEmail(){
         while($row = $stmt->fetch()){
             $value = $row->id;
         }
-
         $data = array(
             "id" => $value
         );
@@ -91,13 +103,11 @@ function getIdUsuarioByEmail(){
         while($row = $stmt->fetch()){
             $value = $row->id;
         }
-
     }catch (PDOException $e){
         die($e->getMessage());
     }
     return $value;
 }
-
 function añadirProducto($producto, $dbh)
 {
     $data = array(
@@ -119,8 +129,6 @@ function añadirProducto($producto, $dbh)
     //Redireccionar al index
     header('Location: ../../index.php');
 }
-
-
 function getProductosById($dbh, $id)
 {
     $data = array(
@@ -133,34 +141,137 @@ function getProductosById($dbh, $id)
                                     FROM productos pro, perfiles per, categorias cat 
                                     WHERE pro.id=:id 
                                     AND per.id = pro.id_perfiles AND pro.id_categoria = cat.id");
-
         $stmt->execute($data);
         return $stmt->FetchObject();
     } catch (PDOException $e) {
         die($e->getMessage());
     }
 }
-
-
-function ProductosByIdCat($dbh)
-{
+function getNombreProductoById($id, $dbh ){
+    $data = array(
+        'id' => $id
+    );
     try {
-        $stmt = $dbh->prepare("SELECT pro.nombre productonombre, pro.descripcion productodescripcion, pro.foto productofoto, 
-                                    pro.direccion productodireccion, pro.fecha productofecha, cat.id idcategoria, cat.nombre categorianombre, 
-                                    per.id idperfiles, per.nombre perfilnombre, 
-                                    per.telefono perfiltelefono, per.correo  perfilcorreo
-                                    FROM productos pro, perfiles per, categorias cat                                     
-                                    WHERE per.id = pro.id_perfiles 
-                                    AND pro.id_categoria = cat.id");
+        $stmt = $dbh->prepare("SELECT nombre FROM productos WHERE id = :id");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->nombre;
+        }
+        return $value;
     } catch (PDOException $e) {
         die($e->getMessage());
     }
 }
 
-$productosid = ProductosByIdCat($dbh);
-
-
+function getDescripcionProductoById($id, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT descripcion FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->descripcion;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function getFechaProductoById($id, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT fecha FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->fecha;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function getDireccionProductoById($id, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT direccion FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->direccion;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function actualizarProducto($producto, $dbh){
+    $data = array(
+        'nombre' => $producto["nombre"],
+        'descripcion' => $producto["descripcion"],
+        'foto' => $producto["foto"],
+        'direccion' => $producto["direccion"],
+        'id' => $producto["id"]
+    );
+    try {
+        $stmt = $dbh->prepare("UPDATE productos SET nombre = :nombre, descripcion = :descripcion, direccion = :direccion, foto = :foto WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute($data);
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+    header('Location: ../../index.php');
+}
+function borrarProductoById($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    try{
+        $stmt = $dbh->prepare("DELETE FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
+function getProfileIdByproductId($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT id_perfiles FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->id_perfiles;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function getEmailById($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT correo FROM perfiles WHERE id=:id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->correo;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
 ?>

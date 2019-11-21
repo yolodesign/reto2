@@ -1,7 +1,7 @@
 <?php
 include ("head.php");
-//include ("Session/DAO/ProductDAO.php");
-//include ("Session/Conf/PersistentManager.php");
+include ("Session/DAO/ProductDAO.php");
+include ("Session/Conf/PersistentManager.php");
 //include 'Session/Utils/SessionUtils.php';
 ?>
 <div id="container-login">
@@ -36,3 +36,6 @@ include ("head.php");
         </form>
     </div>
 </div>
+<?php
+include("footer.php");
+?>

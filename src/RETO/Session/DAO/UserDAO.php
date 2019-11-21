@@ -27,7 +27,7 @@ function checkAction()
      }
      else
     {
-        header('Location: ../../index2.php');
+        header('Location: ../../Login.php?error=login');
     }
 }
 
@@ -35,26 +35,30 @@ function checkAction()
 function createAction()
 {
     $dbh = connect();
-    $url_basica = "../img/imagenes_usuarios/";
-    $url_imagen = "";
-    //$url_imagen = validateAndUploadImage($url_basica, $_POST["emailSignup"], "subida_foto_perfil");
-    $user = array(
-        "nombre" => $_POST["name"],
-        "apellido" => $_POST["lastname"],
-        "telefono" => $_POST["phone"],
-        "fecha" => $_POST["birthdate"],
-        "genero" => $_POST["gender"],
-        "profImg" => $url_imagen,
-        "email" => $_POST["emailSignup"],
-        "password" => $_POST["passwordSignup"]
+    if (checkCreate($_POST['emailSignup'], $dbh)){
+        $url_basica = "../img/imagenes_usuarios/";
+        $url_imagen = "";
+        //$url_imagen = validateAndUploadImage($url_basica, $_POST["emailSignup"], "subida_foto_perfil");
+        $user = array(
+            "nombre" => $_POST["name"],
+            "apellido" => $_POST["lastname"],
+            "telefono" => $_POST["phone"],
+            "fecha" => $_POST["birthdate"],
+            "genero" => $_POST["gender"],
+            "profImg" => $url_imagen,
+            "email" => $_POST["emailSignup"],
+            "password" => $_POST["passwordSignup"]
         );
-    echo "cosa de files - ".$_FILES['profImg'];
+        echo "cosa de files - ".$_FILES['profImg'];
 
-    insert($user, $dbh);
-    //Establecemos la sesión
-    startSessionIfNotStarted();
-    setSession($_POST["emailSignup"]);
-    header('Location: ../../index.php');
+        insert($user, $dbh);
+        //Establecemos la sesión
+        startSessionIfNotStarted();
+        setSession($_POST["emailSignup"]);
+        header('Location: ../../index.php');
+    }else{
+        header('Location: ../../Login.php?error=signup');
+    }
 }
 function validateAndUploadImage($url, $correo, $queImagen)
 {
@@ -146,17 +150,13 @@ function actualizarPerfil($user, $dbh){
     }
 }
 //Comprueba si los datos ya existen en la base de datos
-function check($email, $password, $dbh)
-{
-
+function check($email, $password, $dbh){
     $data = array(
         'email' => $email,
         'password' => $password
     );
-
     try {
         $stmt = $dbh->prepare("SELECT usuario FROM usuarios WHERE usuario = :email AND contrasena = :password");
-
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         $num = 0;
@@ -172,7 +172,28 @@ function check($email, $password, $dbh)
     catch (PDOException $e){
         die($e->getMessage());
     }
-
+}
+function checkCreate($email, $dbh){
+    $data = array(
+        'email' => $email
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT usuario FROM usuarios WHERE usuario = :email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        $num = 0;
+        while($row = $stmt->fetch()){
+            $num++;
+        }
+        if ($num > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    catch (PDOException $e){
+        die($e->getMessage());
+    }
 }
 
 //Añade en la tabla seleccionada todos sus datos
