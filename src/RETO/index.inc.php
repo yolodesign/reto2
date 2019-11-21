@@ -13,45 +13,17 @@ function sectionPorCat($categorias){
         <?php
         $datos = consultaCategoriasPro(connect(),$categoria->id);?>
         <table>
-            <thead>
-            <tr>
-                <th> Productos</th>
-
-            </tr>
-            </thead>
-            <tbody>
-
             <?php
-
-
             while($row = $datos->fetch()){
-                echo "<tr><td> {$row['nombreproducto']} </td>";
-                echo '<td> <a href=\'verProducto.php?id=' .$row["idproducto"] .'\'><img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['fotoproducto'] . '"></a></td>';
+                echo "<tr><th> {$row['nombreproducto']} </th></tr>";
+                echo '<tr><td> <a href=\'verProducto.php?id=' .$row["idproducto"] .'\'><img class ="imagenAnuncion" src="Assets/MEDIA/' . $row['fotoproducto'] . '"></a></td>';
                 echo "<td>  {$row['descproducto']}  </td></tr>";
             }
             ?>
-
-
-            </tbody>
         </table>
+
         <?php
         echo "</div></section>";
     }
 
 }
-
-/*
- *
- * <table>
-            <thead>
-            <tr>
-                <th>prueba</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>pruebatd</td>
-            </tr>
-            </tbody>
-        </table>
- */
