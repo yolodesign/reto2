@@ -7,10 +7,10 @@ $id = $_GET['id'];
 include "buscador.php";
 ?>
 
-    <section class="contenido">
+    <section id="contenedorProductosVerMas">
         <div id="tablaVerMas">
             <h1 id="tituloCat"><?php echo categoriaPorId($id, $dbh); ?></h1>
-            <table>
+            <table id="verMasProductos">
                 <?php
                 productosPorCategoria($id, $dbh);
                 ?>

@@ -19,7 +19,7 @@ startSessionIfNotStarted();
     <script src="Assets/JS/header.js"></script>
     <script src="Assets/JS/jquery-3.4.1.js"></script>
     <script src="Assets/JS/navegacionCategorias.js"></script>
-    <script src="https://kit.fontawesome.com/1de908b2dd.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/1de908b2dd.js" crossorigin="anonymous"></script>
 
 </head>
 <body id="loginBody" onload="loggeado(<?php echo $_SESSION["logged"] ?>)">

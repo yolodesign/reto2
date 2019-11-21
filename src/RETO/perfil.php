@@ -57,7 +57,7 @@ function checkGender($genderP)
     </div>
     <div class="box b">
         <div id="perfilCabecera">
-            <img src="<?php echo getImgProfile($_SESSION['user']) ?>">
+            <img src="<?php echo "Assets/MEDIA/".getImgProfile($_SESSION['user']) ?>">
         </div>
         <div id="datos">
             <div>
