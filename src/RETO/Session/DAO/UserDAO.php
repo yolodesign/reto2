@@ -15,11 +15,6 @@ if (isset($_POST["update"])){
 if (isset($_POST["borrar"])){
     borrarCuenta();
 }
-if (isset($_POST["cerrarSession"])){
-    unset($_SESSION['user']);
-    header('Location: ../../Login.php');
-}
-
 function checkAction()
 {
     $dbh = connect();
@@ -32,7 +27,7 @@ function checkAction()
      }
      else
     {
-        header('Location: ../../index2.php');
+        header('Location: ../../Login.php?error=login');
     }
 }
 
@@ -40,29 +35,63 @@ function checkAction()
 function createAction()
 {
     $dbh = connect();
-    $user = array(
-        "nombre" => $_POST["name"],
-        "apellido" => $_POST["lastname"],
-        "telefono" => $_POST["phone"],
-        "fecha" => $_POST["birthdate"],
-        "genero" => $_POST["gender"],
-        "profImg" => $_POST["profImg"],
-        "email" => $_POST["emailSignup"],
-        "password" => $_POST["passwordSignup"]
-        );
+    if (checkCreate($_POST['emailSignup'], $dbh)){
+        if (isset($_FILES['fotoPerfil'])){
+            echo "prueba de coger foto";
+            echo $_FILES['fotoPerfil'];
+            echo $_FILES['fotoPerfil']['name'];
 
+            $url_foto = validateAndUploadImageProfile("../../Assets/MEDIA/", $_POST["emailSignup"], 'fotoPerfil');
 
-        insert($user, $dbh);
+            $user = array(
+                "nombre" => $_POST["name"],
+                "apellido" => $_POST["lastname"],
+                "telefono" => $_POST["phone"],
+                "fecha" => $_POST["birthdate"],
+                "genero" => $_POST["gender"],
+                "profImg" => $url_foto,
+                "email" => $_POST["emailSignup"],
+                "password" => $_POST["passwordSignup"]
+            );
+            insert($user, $dbh);
+            //Establecemos la sesión
+            startSessionIfNotStarted();
+            setSession($_POST["emailSignup"]);
 
-
-    // Establecemos la sesión
-    startSessionIfNotStarted();
-    setSession($_POST["emailSignup"]);
-
-
-
-    header('Location: ../../index.php');
+            header('Location: ../../index.php');
+        }else{
+            header('Location: ../../Login.php?error=signup2');
+        }
+    }else{
+        header('Location: ../../Login.php?error=signup');
+    }
 }
+function validateAndUploadImageProfile($url, $correo, $queImagen)
+{
+    $destination = $url . $correo . ".jpg";
+    $nombre = $correo . ".jpg";
+    if (file_exists($destination)) {
+        unlink($destination);
+    }
+    if (!is_uploaded_file($_FILES[$queImagen]['tmp_name'])) {
+        echo "Error: El fichero encontrado no fue procesado por la subida correctamente";
+        exit;
+    }
+    $source = $_FILES[$queImagen]['tmp_name'];
+    if (is_file($destination)) {
+        echo "Error: Ya existe almacenado un fichero con ese nombre";
+        @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
+        exit;
+    }
+    if (!@move_uploaded_file($source, $destination)) {
+        echo "Error: No se ha podido mover el fichero enviado a la carpeta de destino";
+        echo "<br>  $destination";
+        @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
+        exit;
+    }
+    return $nombre;
+}
+
 function borrarCuenta(){
     startSessionIfNotStarted();
     $dbh = connect();
@@ -122,17 +151,13 @@ function actualizarPerfil($user, $dbh){
     }
 }
 //Comprueba si los datos ya existen en la base de datos
-function check($email, $password, $dbh)
-{
-
+function check($email, $password, $dbh){
     $data = array(
         'email' => $email,
         'password' => $password
     );
-
     try {
         $stmt = $dbh->prepare("SELECT usuario FROM usuarios WHERE usuario = :email AND contrasena = :password");
-
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         $num = 0;
@@ -148,12 +173,35 @@ function check($email, $password, $dbh)
     catch (PDOException $e){
         die($e->getMessage());
     }
-
+}
+function checkCreate($email, $dbh){
+    $data = array(
+        'email' => $email
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT nombre FROM perfiles WHERE correo = :email");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        $num = 0;
+        while($row = $stmt->fetch()){
+            $num++;
+            echo $num;
+        }
+        if ($num == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    catch (PDOException $e){
+        die($e->getMessage());
+    }
 }
 
 //Añade en la tabla seleccionada todos sus datos
 function insert($user, $dbh)
 {
+    echo 'a';
     $data2 = array(
         "email" => $user["email"],
         "password" => $user["password"]
@@ -231,7 +279,7 @@ function getImgProfile($email){
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         while($row = $stmt->fetch()){
-            $value = $row->nombre;
+            $value = $row->foto;
         }
         return $value;
     }catch (PDOException $e){
@@ -333,5 +381,49 @@ function getIdUsuarioByEmail(){
     }
     return $value;
 }
+function getIdPerfil(){
+    $dbh = connect();
+    $id = getIdUsuarioByEmail();
+    $data = array(
+        'id' => $id
+    );
+    try{
+        $stmt = $dbh->prepare("SELECT id FROM perfiles WHERE id_usuario = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->id;
+        }
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+    return $value;
+}
 
+function mostrarProductoPorUsuario(){
+    $dbh = connect();
+    $id = getIdPerfil();
+    $data = array(
+        'id' => $id
+    );
+
+    $stmt = $dbh->prepare("SELECT nombre, descripcion, fecha FROM productos WHERE id_perfiles = :id");
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+    $stmt->execute($data);
+    while($row = $stmt->fetch()){
+        //Crear la tarjeta
+        echo "<div class='tarjetasPerfil'>";
+        echo "<p class='p1'>";
+        echo $row -> fecha;
+        echo "</p>";
+        echo "<h1>";
+        echo $row -> nombre;
+        echo "</h1>";
+        echo "<p class='p2'>";
+        echo $row -> descripcion;
+        "</p>";
+        echo "</div>";
+    }
+
+};
 ?>

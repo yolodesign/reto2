@@ -34,13 +34,6 @@ function signup() {
             if (expRegPhone.exec(phone)){
                 if (expRegCorreo.exec(email)) {
                     if (expRegPassword.exec(password)) {
-                        if (foto.src == "" || foto.src == null){
-                            if (gender.toUpperCase() == "MALE"){
-                                document.getElementById("profImg").src = "Assets/MEDIA/ImgMujer.jpeg";
-                            }else if(gender.toUpperCase() == "FEMALE"){
-                                document.getElementById("profImg").src = "Assets/MEDIA/ImgHombre.jpeg";
-                            }
-                        }
                         let today = new Date();
                         let edad;
                         if (cumple.getMonth() == today.getMonth() && cumple.getDay() == today.getDay()) {
@@ -53,36 +46,45 @@ function signup() {
                             edad = today.getFullYear() - cumple.getFullYear()
                         } else if (cumple.getMonth() < today.getMonth()) {
                             edad = today.getFullYear() - cumple.getFullYear()
+                        }else{
+                            edad = today.getFullYear() - cumple.getFullYear()
                         }
                         if (edad >= 18) {
-                            error("Entra.")
+                            alert("Ha entrado")
                             return true;
                         }else{
-                            error("Solo las personas mayores de 18 años pueden registrarse en esta página.")
+                            error("Solo las personas mayores de 18 años pueden registrarse en esta página.");
                             return false;
                         }
                     } else {
-                        error("Por favor, introduzca una contraseña con letras mayúsculas, minúsculas y números.")
+                        error("Por favor, introduzca una contraseña con letras mayúsculas, minúsculas y números.");
                         return false;
                     }
                 } else {
-                    error("Por favor, introduzca un email válido.")
+                    error("Por favor, introduzca un email válido.");
                     return false;
                 }
             }else{
-                error("Por favor, introduzca un teléfono válido.")
+                error("Por favor, introduzca un teléfono válido.");
                 return false;
             }
         } else {
-            error("Para continuar, debe aceptar la politica de privacidad.")
+            error("Para continuar, debe aceptar la politica de privacidad.");
             return false;
         }
     } else {
-        error("Por favor, rellene todos los campos.")
+        error("Por favor, rellene todos los campos.");
         return false;
     }
 }
 
 function error(mensaje) {
-console.log(mensaje)
+    alert(mensaje);
+    console.log(mensaje)
+    let apartadoError = document.getElementById("errorSign");
+    apartadoError.style.background = "#CD5C5C";
+    let elementoError = document.createTextNode(mensaje);
+    let p = document.createElement("p");
+    p.appendChild(elementoError)
+    apartadoError.appendChild(p)
 }

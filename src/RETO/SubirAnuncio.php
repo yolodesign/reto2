@@ -2,11 +2,11 @@
 include ("head.php");
 include ("Session/DAO/ProductDAO.php");
 include ("Session/Conf/PersistentManager.php");
-include 'Session/Utils/SessionUtils.php';
+//include 'Session/Utils/SessionUtils.php';
 ?>
 <div id="container-login">
     <div class="login-item">
-        <form action="Session/DAO/ProductDAO.php" method="post" class="form form-login" onsubmit="return subirAnuncio()">
+        <form action="Session/DAO/ProductDAO.php" method="post" class="form form-login" onsubmit="return subirAnuncio()" enctype="multipart/form-data">
             <div class="form-field">
                 <label class="nombreProducto" for="nombreProducto"><span class="hidden">Nombre</span></label>
                 <input id="nombreProducto" name="nombreProducto" type="text" class="form-input" placeholder="Nombre" required>
@@ -16,10 +16,17 @@ include 'Session/Utils/SessionUtils.php';
                 <input id="direccionProducto" name="direccionProducto" type="text" class="form-input" placeholder="Dirección" required>
             </div>
             <div class="form-field">
-                <label class="categ" for="categoriaProducto"><span class="hidden">Gender</span></label>
+                <label class="categ" for="categoriaProducto"><span class="hidden">Categoria</span></label>
                 <select id="categoriaProducto" name="categoriaProducto" class="categ" required>
                     <option></option>
                     <?php mostrarCategorias(); ?>
+                </select>
+            </div>
+            <div class="form-field">
+                <label class="etiqueta" for="etiquetaProducto"><span class="hidden">Etiqueta</span></label>
+                <select id="etiquetaProducto" name="etiquetaProducto" class="categ" required>
+                    <option></option>
+                    <?php mostrarEtiquetas(); ?>
                 </select>
             </div>
             <div class="form-field">
@@ -28,7 +35,7 @@ include 'Session/Utils/SessionUtils.php';
             </div>
             <div class="uploadFile">
                 <button class="uploadFileBtn">Upload a image</button>
-                <input type="file" id="fotoProducto" name="fotoProducto" />
+                <input type="file" id="fotoProducto" name="fotoProducto" accept="image/*" />
             </div>
             <div class="form-field">
                 <input type="submit" name="subirAnuncio" value="Subir anuncio">
@@ -36,3 +43,6 @@ include 'Session/Utils/SessionUtils.php';
         </form>
     </div>
 </div>
+<?php
+include("footer.php");
+?>

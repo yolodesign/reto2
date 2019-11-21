@@ -1,11 +1,10 @@
 <?php
 include("head.php");
 include("Session/Conf/PersistentManager.php");
+$dbh = connect();
 include("Session/DAO/ProductDAO.php");
 include("Session/DAO/CategoriaDAO.php");
-
-
-$dbh = connect();
+include ("index.inc.php");
 ?>
 
 <div id="indexBody">
@@ -22,9 +21,7 @@ $dbh = connect();
                 </div>
                 <ul id="ulCatNav">
                     <?php
-                    foreach ($categorias as $categoria) {
-                        echo "<li class=\"liCatNav\">{$categoria->nombre}<a href=\"#section{$categoria->id}\"></a></li>";
-                    }
+                        menuCat($categorias);
                     ?>
                 </ul>
             </div>
@@ -33,25 +30,13 @@ $dbh = connect();
             <?php
             include("buscador.php");
             ?>
+            <span class="ir-arriba icon-arrow-up2">subir</span>
         </div>
         <?php
-        foreach ($categorias as $categoria) {
-            echo "<section id=\"section{$categoria->id}\">
-                    <div id=\"heading\"> </div>
-                  </section>";
-        }
+            sectionPorCat($categorias);
         ?>
 
-    </div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
 
-    <div>
-        <?php
-        consulta($dbh);
-        ?>
     </div>
 </div>
 

@@ -11,15 +11,18 @@ function visualizarMenu() {
 }
 function loggeado(logged){
     let login = document.getElementById("loginHead");
+    let perfil = document.getElementById("irPerfil");
     let cerrarSesion = document.getElementById("cerrarSesionHeader");
     let anunciate = document.getElementById("anunciate");
     if (logged == true){
         login.style.display = "none";
-        anunciate.href = "SubirAnuncio.php";
+        perfil.style.display = "list-item";
+        anunciate.style.display = "list-item";
         cerrarSesion.style.display = "list-item";
     }else{
         login.style.display = "list-item";
-        anunciate.href = "Login.php";
+        perfil.style.display = "none";
+        anunciate.style.display = "none";
         cerrarSesion.style.display = "none";
         console.log(logged)
     }

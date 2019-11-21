@@ -2,9 +2,10 @@
 include ("head.php");
 include ("Session/DAO/UserDAO.php");
 include ("Session/Conf/PersistentManager.php");
-include 'Session/Utils/SessionUtils.php';
-unset($_SESSION['user']);
+//include 'Session/Utils/SessionUtils.php';
+//unset($_SESSION['user']);
 ?>
+
 <div id="container-login">
     <div class="logButtons">
         <!--<input type="button" value="Log in" onclick="loginSign('login')">-->
@@ -26,6 +27,15 @@ unset($_SESSION['user']);
                 <input type="submit" value="Log in">
             </div>
         </form>
+
+            <?php
+            if (isset($_GET['error']) && $_GET['error'] == "login"){
+                echo "<div class=\"errorMLogin\">";
+                echo "<p>Lo sentimos, los datos introducidos son incorrectos</p>";
+                echo "</div>";
+            }
+            ?>
+
     </div>
 </div>
 <!--Sign up-->
@@ -35,7 +45,7 @@ unset($_SESSION['user']);
         <!--<input type="button" value="Sign in" onclick="loginSign('sign')">-->
     </div>
     <div class="login-item">
-        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return signup()">
+        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return signup()" enctype="multipart/form-data">
             <div class="form-field">
                 <label class="user" for="signup-name"><span class="hidden">Name</span></label>
                 <input id="signup-name" name="name" type="text" class="form-input" placeholder="Name" required>
@@ -73,8 +83,8 @@ unset($_SESSION['user']);
                 <input id="signup-password" name="passwordSignup" type="password" class="form-input" placeholder="Password" required>
             </div>
             <div class="uploadFile">
-                <button class="uploadFileBtn">Upload a file</button>
-                <input type="file" id="profImg" name="profImg" />
+                <button class="uploadFileBtn">Upload a Image</button>
+                <input type="file" id="nueva_foto" accept="image/*" name="fotoPerfil" />
             </div>
 
             <div class="form-field privacidad">
@@ -84,6 +94,15 @@ unset($_SESSION['user']);
                 <input type="submit" value="Sign up">
             </div>
         </form>
+        <?php
+        if (isset($_GET['error']) && $_GET['error'] == "signup"){
+            echo "<div class=\"errorMLogin\">";
+            echo "<p>Lo sentimos, el email ya está registrado</p>";
+            echo "</div>";
+        }
+        ?>
+        <div id="errorSign">
+        </div>
     </div>
 </div>
 <?php

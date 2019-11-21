@@ -11,6 +11,7 @@ startSessionIfNotStarted();
     <link rel="StyleSheet" href="Assets/CSS/main.css" type="text/css">
     <link rel="StyleSheet" href="Assets/CSS/buscador.css" type="text/css">
     <link rel="Stylesheet" href="Assets/CSS/navegacionCategorias.css" type="text/css">
+    <link rel="Stylesheet" href="Assets/CSS/tarjetas.css">
     <link rel="icon" type="image/png" href="Assets/MEDIA/icono_yolo_sin.png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="Assets/JS/Login.js"></script>
@@ -20,6 +21,7 @@ startSessionIfNotStarted();
     <script src="Assets/JS/jquery-3.4.1.js"></script>
     <script src="Assets/JS/navegacionCategorias.js"></script>
     <script src="https://kit.fontawesome.com/1de908b2dd.js" crossorigin="anonymous"></script>
+    <script src="Assets/JS/irArriba.js"></script>
 
 </head>
 <body id="loginBody" onload="loggeado(<?php echo $_SESSION["logged"] ?>)">
@@ -30,7 +32,7 @@ startSessionIfNotStarted();
     </div>
 
     <div id="nav_title">
-        <h1><a href="#">Yolo Pop</a></h1>
+        <h1><a href="index.php">Yolo Pop</a></h1>
     </div>
     <article class="top-nav">
         <input id="menu-toggle" type="checkbox"/>
@@ -38,9 +40,10 @@ startSessionIfNotStarted();
             <div class='menu-button' onclick="visualizarMenu();"></div>
         </label>
         <ul class="menu" id="menu_desplegable">
-            <li><a id="anunciate">ANUNCIATE</a></li>
+            <li id="anunciate"><a href="SubirAnuncio.php">ANUNCIATE</a></li>
+            <li id="irPerfil"><a href="perfil.php">PERFIL</a></li>
             <li id="loginHead"><a href="Login.php">LOG IN</a></li>
-            <li id="cerrarSesionHeader" >CERRAR SESIÓN</li>
+            <li id="cerrarSesionHeader"><a href="logout.php">CERRAR SESIÓN</a></li>
         </ul>
     </article>
 </header>
