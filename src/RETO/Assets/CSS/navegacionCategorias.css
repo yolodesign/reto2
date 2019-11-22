@@ -115,7 +115,7 @@
 
 #hero-section {
     width: 100vw;
-    height: calc(100vh - 160px);
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,10 +155,13 @@
 
 
 section {
-    width: 100vw;
-    height: calc(100vh - 100px);
+    width: 80vw;
+    height: auto;
     display: flex;
-    justify-content: center;
+    margin: 0 auto;
+}
+.sectionDiv{
+    margin: 0px 261px;
 }
 section:nth-child(odd) {
     background: #fa6c98;

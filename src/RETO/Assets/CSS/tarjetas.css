@@ -30,10 +30,11 @@
 }
 @media (min-width: 56rem) {
     .cards__item {
-        width: 33.3333%;
     }
 }
 .card {
+    width: 65%;
+    height: auto;
     background-color: white;
     border-radius: 0.25rem;
     box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -51,7 +52,9 @@
     flex-direction: column;
     padding: 1rem;
 }
+
 .card__image {
+    width: auto;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -88,4 +91,6 @@
     line-height: 1.5;
     margin-bottom: 1.25rem;
     color: gray;
+    overflow: auto;
+    height: 100px;
 }
