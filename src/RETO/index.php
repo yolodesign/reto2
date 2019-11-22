@@ -27,9 +27,12 @@ include ("index.inc.php");
             </div>
         </nav>
         <div id="hero-section">
-            <?php
-            include("buscador.php");
-            ?>
+            <div id="buscadorIndex">
+                <?php
+                include("buscador.php");
+                ?>
+            </div>
+
             <span class="ir-arriba icon-arrow-up2">subir</span>
         </div>
         <?php
