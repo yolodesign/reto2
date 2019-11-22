@@ -27,7 +27,7 @@ function checkAction()
      }
      else
     {
-        header('Location: ../../Login.php?error=login');
+        header('Location: ../../login.php?error=login');
     }
 }
 
@@ -36,7 +36,7 @@ function createAction()
 {
     $dbh = connect();
     if (checkCreate($_POST['emailSignup'], $dbh)){
-        if (isset($_FILES['fotoPerfil'])){
+        if (isset($_FILES) && isset($_FILES['fotoPerfil']) && !empty($_FILES['fotoPerfil']['name'] && !empty($_FILES['fotoPerfil']['tmp_name']))) {
             echo "prueba de coger foto";
             echo $_FILES['fotoPerfil'];
             echo $_FILES['fotoPerfil']['name'];
@@ -60,10 +60,10 @@ function createAction()
 
             header('Location: ../../index.php');
         }else{
-            header('Location: ../../Login.php?error=signup2');
+            header('Location: ../../login.php?error=signup2');
         }
     }else{
-        header('Location: ../../Login.php?error=signup');
+        header('Location: ../../login.php?error=signup');
     }
 }
 function validateAndUploadImageProfile($url, $correo, $queImagen)
@@ -94,6 +94,7 @@ function validateAndUploadImageProfile($url, $correo, $queImagen)
 
 function borrarCuenta(){
     startSessionIfNotStarted();
+    destroySession();
     $dbh = connect();
     $id = getIdUsuarioByEmail();
     $data = array(
@@ -114,7 +115,7 @@ function borrarCuenta(){
         die($e->getMessage());
     }
 
-    header('Location: ../../Login.php');
+    header('Location: ../../login.php');
 }
 function updateAction(){
     startSessionIfNotStarted();
