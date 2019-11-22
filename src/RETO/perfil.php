@@ -14,7 +14,7 @@ function checkGender($genderP)
 }
 ?>
 
-<div class="perfil">
+<div id="perfil" class="perfil">
     <div id="updatePerfil" class="box a">
         <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return validacionesPerfil()">
             <div class="form-field">
@@ -55,7 +55,7 @@ function checkGender($genderP)
         </div>
 
     </div>
-    <div class="box b">
+    <div id="datosPerfil" class="box b">
         <div id="perfilCabecera">
             <img src="<?php echo "Assets/MEDIA/".getImgProfile($_SESSION['user']) ?>">
         </div>
@@ -81,7 +81,7 @@ function checkGender($genderP)
         </div>
     </div>
 
-    <div class="box c">
+    <div id="botonesPerfilO" class="box c">
         <div id="anuncios">
 
             <button class="boton_Perfil" onclick="editarPerfil(true)">Ver Anuncios</button>
@@ -90,7 +90,7 @@ function checkGender($genderP)
         </div>
 
     </div>
-    <div class="box d">
+    <div id="botonLogOutPerfil" class="box d">
         <button id="boton_log_out"><a href="logout.php">LOG OUT</a></button>
     </div>
 </div>
