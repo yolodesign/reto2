@@ -36,39 +36,43 @@ function createAction()
 {
     $dbh = connect();
     if (checkCreate($_POST['emailSignup'], $dbh)){
-        $url_basica = "../img/imagenes_usuarios/";
-        $url_imagen = "";
-        //$url_imagen = validateAndUploadImage($url_basica, $_POST["emailSignup"], "subida_foto_perfil");
-        $user = array(
-            "nombre" => $_POST["name"],
-            "apellido" => $_POST["lastname"],
-            "telefono" => $_POST["phone"],
-            "fecha" => $_POST["birthdate"],
-            "genero" => $_POST["gender"],
-            "profImg" => $url_imagen,
-            "email" => $_POST["emailSignup"],
-            "password" => $_POST["passwordSignup"]
-        );
-        echo "cosa de files - ".$_FILES['profImg'];
+        if (isset($_FILES['fotoPerfil'])){
+            echo "prueba de coger foto";
+            echo $_FILES['fotoPerfil'];
+            echo $_FILES['fotoPerfil']['name'];
 
-        insert($user, $dbh);
-        //Establecemos la sesión
-        startSessionIfNotStarted();
-        setSession($_POST["emailSignup"]);
-        header('Location: ../../index.php');
+            $url_foto = validateAndUploadImageProfile("../../Assets/MEDIA/", $_POST["emailSignup"], 'fotoPerfil');
+
+            $user = array(
+                "nombre" => $_POST["name"],
+                "apellido" => $_POST["lastname"],
+                "telefono" => $_POST["phone"],
+                "fecha" => $_POST["birthdate"],
+                "genero" => $_POST["gender"],
+                "profImg" => $url_foto,
+                "email" => $_POST["emailSignup"],
+                "password" => $_POST["passwordSignup"]
+            );
+            insert($user, $dbh);
+            //Establecemos la sesión
+            startSessionIfNotStarted();
+            setSession($_POST["emailSignup"]);
+
+            header('Location: ../../index.php');
+        }else{
+            header('Location: ../../Login.php?error=signup2');
+        }
     }else{
         header('Location: ../../Login.php?error=signup');
     }
 }
-function validateAndUploadImage($url, $correo, $queImagen)
+function validateAndUploadImageProfile($url, $correo, $queImagen)
 {
-    $destination = $url . $correo . ".png";
-    // borrar la existente
+    $destination = $url . $correo . ".jpg";
+    $nombre = $correo . ".jpg";
     if (file_exists($destination)) {
         unlink($destination);
     }
-    //Hemos recibido el fichero
-    //Comprobamos que es un fichero subido por PHP, y no hay inyección por otros medios
     if (!is_uploaded_file($_FILES[$queImagen]['tmp_name'])) {
         echo "Error: El fichero encontrado no fue procesado por la subida correctamente";
         exit;
@@ -85,11 +89,8 @@ function validateAndUploadImage($url, $correo, $queImagen)
         @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
         exit;
     }
-    //  echo "Fichero subido correctamente a: " . $destination;
-    //  echo " <br> Ultimo echo " . file_get_contents($_FILES["userfile"]["tmp_name"]);
-    return $destination;
+    return $nombre;
 }
-
 
 function borrarCuenta(){
     startSessionIfNotStarted();
@@ -178,14 +179,15 @@ function checkCreate($email, $dbh){
         'email' => $email
     );
     try {
-        $stmt = $dbh->prepare("SELECT usuario FROM usuarios WHERE usuario = :email");
+        $stmt = $dbh->prepare("SELECT nombre FROM perfiles WHERE correo = :email");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         $num = 0;
         while($row = $stmt->fetch()){
             $num++;
+            echo $num;
         }
-        if ($num > 0) {
+        if ($num == 0) {
             return true;
         } else {
             return false;
@@ -199,6 +201,7 @@ function checkCreate($email, $dbh){
 //Añade en la tabla seleccionada todos sus datos
 function insert($user, $dbh)
 {
+    echo 'a';
     $data2 = array(
         "email" => $user["email"],
         "password" => $user["password"]
@@ -276,7 +279,7 @@ function getImgProfile($email){
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         while($row = $stmt->fetch()){
-            $value = $row->nombre;
+            $value = $row->foto;
         }
         return $value;
     }catch (PDOException $e){

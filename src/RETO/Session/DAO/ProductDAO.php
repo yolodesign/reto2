@@ -7,6 +7,7 @@ include '../Utils/SessionUtils.php';
 if (isset($_POST["nombreProducto"])){
     startSessionIfNotStarted();
     $idCategoria = idCategoriaPorNombre($_POST["categoriaProducto"]);
+    $idEtiqueta = idEtiquetaPorNombre($_POST["etiquetaProducto"]);
     $idPerfil = getIdUsuarioByEmail();
     $producto = array(
         "nombre" => $_POST["nombreProducto"],
@@ -15,6 +16,7 @@ if (isset($_POST["nombreProducto"])){
         "fecha" => date("Y-m-d"),
         "foto" => $_POST["fotoProducto"],
         "id_categoria" => $idCategoria,
+        "id_etiqueta" => $idEtiqueta,
         "id_User" => $idPerfil
     );
     $dbh = connect();
@@ -64,6 +66,19 @@ function mostrarCategorias(){
         die($e->getMessage());
     }
 }
+function mostrarEtiquetas(){
+    try{
+        $dbh = connect();
+        $stmt = $dbh->prepare("SELECT nombre FROM etiquetas");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        while ($row = $stmt->fetch()) {
+            echo "<option>{$row['nombre']}</option>";
+        }
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
 function idCategoriaPorNombre($nombre){
     try{
         $data = array(
@@ -82,6 +97,27 @@ function idCategoriaPorNombre($nombre){
         die($e->getMessage());
     }
 }
+
+function idEtiquetaPorNombre($nombre){
+    try{
+        $data = array(
+            "nombre" => $nombre
+        );
+        $dbh = connect();
+        $stmt = $dbh->prepare("SELECT id FROM etiquetas where nombre=:nombre");
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute($data);
+        $value = "";
+        while ($row = $stmt->fetch()) {
+            $value = $row['id'];
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
+
 function getIdUsuarioByEmail(){
     $dbh = connect();
     $data = array(
@@ -108,26 +144,62 @@ function getIdUsuarioByEmail(){
     }
     return $value;
 }
+function validateAndUploadImage($url, $correo, $queImagen)
+{
+    $destination = $url . $correo . ".jpg";
+    $nombre = $correo . ".jpg";
+    if (file_exists($destination)) {
+        unlink($destination);
+    }
+    if (!is_uploaded_file($_FILES[$queImagen]['tmp_name'])) {
+        echo "Error: El fichero encontrado no fue procesado por la subida correctamente";
+        exit;
+    }
+    $source = $_FILES[$queImagen]['tmp_name'];
+    if (is_file($destination)) {
+        echo "Error: Ya existe almacenado un fichero con ese nombre";
+        @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
+        exit;
+    }
+    if (!@move_uploaded_file($source, $destination)) {
+        echo "Error: No se ha podido mover el fichero enviado a la carpeta de destino";
+        echo "<br>  $destination";
+        @unlink(ini_get('upload_tmp_dir') . $_FILES[$queImagen]['tmp_name']);
+        exit;
+    }
+    return $nombre;
+}
+
 function añadirProducto($producto, $dbh)
 {
-    $data = array(
-        'nombre' => $producto["nombre"],
-        'descripcion' => $producto["descripcion"],
-        'foto' => $producto["foto"],
-        'direccion' => $producto["direccion"],
-        'fecha' => $producto["fecha"],
-        'id_categoria' => $producto["id_categoria"],
-        'id_User' => $producto["id_User"]
-    );
-    try {
-        $stmt = $dbh->prepare("INSERT INTO productos (nombre, descripcion, foto, direccion, fecha, id_categoria, id_perfiles) VALUES (:nombre, :descripcion, :foto, :direccion, :fecha, :id_categoria, :id_User)");
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->execute($data);
-    } catch (PDOException $e) {
-        die($e->getMessage());
+    if (isset($_FILES['fotoProducto'])) {
+        echo "prueba de coger foto";
+        echo $_FILES['fotoProducto'];
+        echo $_FILES['fotoProducto']['name'];
+
+        $url_foto = validateAndUploadImage("../../Assets/MEDIA/", $producto["nombre"] . $_SESSION['user'], 'fotoProducto');
+
+        $data = array(
+            'nombre' => $producto["nombre"],
+            'descripcion' => $producto["descripcion"],
+            'foto' => $url_foto,
+            'direccion' => $producto["direccion"],
+            'fecha' => $producto["fecha"],
+            'id_categoria' => $producto["id_categoria"],
+            'id_User' => $producto["id_User"]
+        );
+        try {
+            $stmt = $dbh->prepare("INSERT INTO productos (nombre, descripcion, foto, direccion, fecha, id_categoria, id_perfiles) VALUES (:nombre, :descripcion, :foto, :direccion, :fecha, :id_categoria, :id_User)");
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $stmt->execute($data);
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
+        //Redireccionar al index
+        header('Location: ../../index.php');
+    }else{
+        header('Location: ../../subirAnuncio.php');
     }
-    //Redireccionar al index
-    header('Location: ../../index.php');
 }
 function getProductosById($dbh, $id)
 {
@@ -163,7 +235,22 @@ function getNombreProductoById($id, $dbh ){
         die($e->getMessage());
     }
 }
-
+function getFotoProductoById($id, $dbh ){
+    $data = array(
+        'id' => $id
+    );
+    try {
+        $stmt = $dbh->prepare("SELECT foto FROM productos WHERE id = :id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->foto;
+        }
+        return $value;
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
 function getDescripcionProductoById($id, $dbh ){
     $data = array(
         'id' => $id
@@ -257,6 +344,23 @@ function getProfileIdByproductId($id, $dbh){
         die($e->getMessage());
     }
 }
+function getNamePById($id, $dbh){
+    $data = array(
+        'id' => $id
+    );
+    $value = "";
+    try{
+        $stmt = $dbh->prepare("SELECT nombre FROM perfiles WHERE id=:id");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->nombre;
+        }
+        return $value;
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+}
 function getEmailById($id, $dbh){
     $data = array(
         'id' => $id
@@ -274,4 +378,7 @@ function getEmailById($id, $dbh){
         die($e->getMessage());
     }
 }
+
+
+
 ?>

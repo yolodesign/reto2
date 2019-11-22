@@ -49,12 +49,15 @@ function checkGender($genderP)
         </form>
     </div>
     <div id="tusAnuncios" class="box a">
-        <h1>Mis anuncios</h1>
-        <?php mostrarProductoPorUsuario(); ?>
+        <div id="contenedorAnuncios">
+            <h1>Mis anuncios</h1>
+            <?php mostrarProductoPorUsuario(); ?>
+        </div>
+
     </div>
     <div class="box b">
         <div id="perfilCabecera">
-            <img src="<?php echo getImgProfile($_SESSION['user']) ?>">
+            <img src="<?php echo "Assets/MEDIA/".getImgProfile($_SESSION['user']) ?>">
         </div>
         <div id="datos">
             <div>

@@ -30,18 +30,13 @@ include ("index.inc.php");
             <?php
             include("buscador.php");
             ?>
+            <span class="ir-arriba icon-arrow-up2">subir</span>
         </div>
         <?php
             sectionPorCat($categorias);
         ?>
 
 
-    </div>
-
-    <div>
-        <?php
-        //consulta($dbh);
-        ?>
     </div>
 </div>
 
