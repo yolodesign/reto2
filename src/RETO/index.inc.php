@@ -8,7 +8,7 @@ function menuCat($categorias){
 
 function sectionPorCat($categorias){
     foreach ($categorias as $categoria) {
-        echo "<section id=\"section{$categoria->id}\">
+        echo "<section class='sectionParaIndex' id=\"section{$categoria->id}\">
                     <div class='sectionDiv'><a href=ver_mas.php?id={$categoria->id}>Ver mas</a> <h1>{$categoria->nombre}</h1> ";?>
         <?php
         $datos = consultaCategoriasPro(connect(),$categoria->id);?>

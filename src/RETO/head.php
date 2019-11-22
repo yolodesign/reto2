@@ -24,7 +24,7 @@ startSessionIfNotStarted();
     <script src="Assets/JS/irArriba.js"></script>
 
 </head>
-<body id="loginBody" onload="loggeado(<?php echo $_SESSION["logged"] ?>)">
+<body id="body" onload="loggeado(<?php echo $_SESSION["logged"] ?>)">
 <header>
 
     <div id="nav_icon">

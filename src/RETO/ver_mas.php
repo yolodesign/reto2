@@ -4,8 +4,13 @@ include("Session/Conf/PersistentManager.php");
 $dbh = connect();
 include("Session/DAO/CategoriaDAO.php");
 $id = $_GET['id'];
-include "buscador.php";
 ?>
+<div id="buscadorVerMas">
+    <?php
+    include "buscador.php";
+    ?>
+</div>
+
 
     <section id="contenedorProductosVerMas">
         <div id="tablaVerMas">

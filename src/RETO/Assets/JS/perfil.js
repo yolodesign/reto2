@@ -10,18 +10,23 @@ function validacionesPerfil() {
         if (expRegPhone.exec(phone)) {
             let today = new Date();
             let edad;
-            if (cumple.getMonth() == today.getMonth() && cumple.getDay() == today.getDay()) {
-                edad = today.getFullYear() - cumple.getFullYear()
-            } else if (cumple.getMonth() > today.getMonth()) {
+            //let cumple = new Date(cumple);
+            //alert(cumple.getMonth() + " " + today.getMonth());
+            let partesCumple =cumple.split("-");
+            let myDate = new Date(partesCumple[0]-0, partesCumple[1]-1, partesCumple[2]-0);
+            if (myDate.getMonth() == myDate.getMonth() && myDate.getDay() == today.getDay()) {
+                edad = today.getFullYear() - myDate.getFullYear()
+            } else if (myDate.getMonth() > today.getMonth()) {
+                edad = today.getFullYear() - myDate.getFullYear() - 1
+            } else if (myDate.getMonth() == today.getMonth() && myDate.getDay() > today.getDay()) {
                 edad = today.getFullYear() - cumple.getFullYear() - 1
-            } else if (cumple.getMonth() == today.getMonth() && cumple.getDay() > today.getDay()) {
-                edad = today.getFullYear() - cumple.getFullYear() - 1
-            } else if (cumple.getMonth() == today.getMonth() && cumple.getDay() < today.getDay()) {
-                edad = today.getFullYear() - cumple.getFullYear()
-            } else if (cumple.getMonth() < today.getMonth()) {
-                edad = today.getFullYear() - cumple.getFullYear()
+                alert(edad);
+            } else if (myDate.getMonth() == today.getMonth() && myDate.getDay() < today.getDay()) {
+                edad = today.getFullYear() - myDate.getFullYear()
+            } else if (myDate.getMonth() < today.getMonth()) {
+                edad = today.getFullYear() - myDate.getFullYear()
             }else{
-                edad = today.getFullYear() - cumple.getFullYear()
+                edad = today.getFullYear() - myDate.getFullYear()
             }
             if (edad >= 18) {
                 error("Entra.")
