@@ -56,7 +56,7 @@ if ($_SESSION['user'] == $correo){
             </form>
         </div>
     </div>
-    <div>
+    <div id="botonesProductoPag">
         <form action="Session/DAO/ProductDAO.php?id=<?php echo $id ?>&correo=<?php echo $correo ?>" method="post" id="formBotones">
             <input type="submit" id="boton_contacto" name="enviarP" value="Ponerse en contacto" <?php echo $disabled2 ?>>
             <input type="button" onclick="updateProduct()" id="boton_update" value="Modificar producto" <?php echo $disabled ?>>

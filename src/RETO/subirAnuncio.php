@@ -4,7 +4,7 @@ include ("Session/DAO/ProductDAO.php");
 include ("Session/Conf/PersistentManager.php");
 //include 'Session/Utils/SessionUtils.php';
 ?>
-<div id="container-login">
+<div id="container-Anuncio">
     <div class="login-item">
         <form action="Session/DAO/ProductDAO.php" method="post" class="form form-login" onsubmit="return subirAnuncio()" enctype="multipart/form-data">
             <div class="form-field">

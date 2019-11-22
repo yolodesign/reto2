@@ -45,7 +45,7 @@ function productosPorCategoria($id, $dbh){
         while($row = $stmt->fetch()){
 
             echo "<tr><td> {$row -> nombre} </td>";
-            echo '<td> <a href=\'verProducto.php?id=' .$row -> id.'\'><img class ="imagenAnuncioMasGrande" src="Assets/MEDIA/' . $row -> foto . '"></a>';
+            echo '<td class="fileImagenesAnuncio"> <a href=\'verProducto.php?id=' .$row -> id.'\'><img class ="imagenAnuncioMasGrande" src="Assets/MEDIA/' . $row -> foto . '"></a>';
             echo "<td>  {$row -> descripcion}  </td></tr>";
         }
     } catch (PDOException $e) {
