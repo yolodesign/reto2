@@ -11,12 +11,8 @@ function loginSign(seleccionado) {
     }
 }
 
-
-function login() {
-
-}
-
 function signup() {
+    alert("Hola")
     let expRegCorreo = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
     let expRegPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/
     let expRegPhone = /^(\+34|0034|34)?[6|7|8|9][0-9]{8}$/;
@@ -28,7 +24,6 @@ function signup() {
     let password = document.getElementById("signup-password").value;
     let politicaPriv = document.getElementById("signup-privacidad").checked;
     let phone = document.getElementById("signup-phone").value;
-    let foto = document.getElementById("profImg").value;
     if (nombre != "" && apellido != "" && cumple != "" && gender != "" && email != "" && password != "") {
         if (politicaPriv == true) {
             if (expRegPhone.exec(phone)){
@@ -36,6 +31,7 @@ function signup() {
                     if (expRegPassword.exec(password)) {
                         let today = new Date();
                         let edad;
+                        //let cumple = new Date(cumple);
                         if (cumple.getMonth() == today.getMonth() && cumple.getDay() == today.getDay()) {
                             edad = today.getFullYear() - cumple.getFullYear()
                         } else if (cumple.getMonth() > today.getMonth()) {
@@ -81,10 +77,10 @@ function signup() {
 function error(mensaje) {
     alert(mensaje);
     console.log(mensaje)
-    let apartadoError = document.getElementById("errorSign");
+    /**let apartadoError = document.getElementById("errorSign");
     apartadoError.style.background = "#CD5C5C";
     let elementoError = document.createTextNode(mensaje);
     let p = document.createElement("p");
     p.appendChild(elementoError)
-    apartadoError.appendChild(p)
+    apartadoError.appendChild(p)**/
 }
