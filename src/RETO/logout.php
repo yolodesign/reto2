@@ -2,5 +2,5 @@
 require_once('Session/Utils/SessionUtils.php');
 startSessionIfNotStarted();
 destroySession();
-header('Location: Login.php');
+header('Location: login.php');
 ?>
