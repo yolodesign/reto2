@@ -14,6 +14,7 @@ function loggeado(logged){
     let perfil = document.getElementById("irPerfil");
     let cerrarSesion = document.getElementById("cerrarSesionHeader");
     let anunciate = document.getElementById("anunciate");
+    console.log(logged)
     if (logged == true){
         login.style.display = "none";
         perfil.style.display = "list-item";
@@ -24,6 +25,6 @@ function loggeado(logged){
         perfil.style.display = "none";
         anunciate.style.display = "none";
         cerrarSesion.style.display = "none";
-        console.log(logged)
+
     }
 }
