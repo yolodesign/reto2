@@ -1445,6 +1445,26 @@ li a:visited{
         margin-left: 30%;
    
     }
+      #updatePerfil{
+          display: none;
+      }
+      #tusAnuncios{
+          display: none;
+      }
+      #botonesPerfilO{
+          display: none;
+      }
+      #botonLogOutPerfil{
+          display: none;
+      }
+      #datosPerfil{
+          width: 100%;
+      }
+      #perfil{
+          display: flex;
+          margin-bottom: 10%;
+
+      }
       
     /* ---------------------------------------------------------------- */
     /* Footer */
