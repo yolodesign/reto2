@@ -1533,6 +1533,7 @@ li a:visited{
 background: #821f3e;
 }
 #tituloCat{
+    padding-top: 3%;
     align-self: center;
 }
 #contenedorProductosVerMas{
