@@ -1,7 +1,7 @@
 .btn {
     background-color: white;
     border: 1px solid #cccccc;
-    color: #696969;
+    color: #696969 !important;
     padding: 0.5rem;
     text-transform: lowercase;
 }
@@ -30,6 +30,7 @@
 }
 @media (min-width: 56rem) {
     .cards__item {
+        width: 33%;
     }
 }
 .card {
