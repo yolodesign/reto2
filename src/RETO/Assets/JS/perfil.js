@@ -8,18 +8,20 @@ function validacionesPerfil() {
 
     if (nombre != "" && apellido != "" && cumple != "" && gender != "" && phone != "") {
         if (expRegPhone.exec(phone)) {
-            let hoy = new Date();
+            let today = new Date();
             let edad;
-            if (cumple.getMonth() == hoy.getMonth() && cumple.getDay() == hoy.getDay()) {
-                edad = hoy.getFullYear() - cumple.getFullYear()
-            } else if (cumple.getMonth() > hoy.getMonth()) {
-                edad = hoy.getFullYear() - cumple.getFullYear() - 1
-            } else if (cumple.getMonth() == hoy.getMonth() && cumple.getDay() > hoy.getDay()) {
-                edad = todhoyay.getFullYear() - cumple.getFullYear() - 1
-            } else if (cumple.getMonth() == hoy.getMonth() && cumple.getDay() < hoy.getDay()) {
-                edad = hoy.getFullYear() - cumple.getFullYear()
-            } else if (cumple.getMonth() < hoy.getMonth()) {
-                edad = hoy.getFullYear() - cumple.getFullYear()
+            if (cumple.getMonth() == today.getMonth() && cumple.getDay() == today.getDay()) {
+                edad = today.getFullYear() - cumple.getFullYear()
+            } else if (cumple.getMonth() > today.getMonth()) {
+                edad = today.getFullYear() - cumple.getFullYear() - 1
+            } else if (cumple.getMonth() == today.getMonth() && cumple.getDay() > today.getDay()) {
+                edad = today.getFullYear() - cumple.getFullYear() - 1
+            } else if (cumple.getMonth() == today.getMonth() && cumple.getDay() < today.getDay()) {
+                edad = today.getFullYear() - cumple.getFullYear()
+            } else if (cumple.getMonth() < today.getMonth()) {
+                edad = today.getFullYear() - cumple.getFullYear()
+            }else{
+                edad = today.getFullYear() - cumple.getFullYear()
             }
             if (edad >= 18) {
                 error("Entra.")

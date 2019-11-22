@@ -44,7 +44,26 @@ function productosPorCategoria($id, $dbh){
         $stmt->execute($data);
         while($row = $stmt->fetch()){
 
-            echo "<tr><td class='aaaa'> {$row -> nombre} </td>";
+            echo "<tr><td> {$row -> nombre} </td>";
+            echo '<td> <a href=\'verProducto.php?id=' .$row -> id.'\'><img class ="imagenAnuncioMasGrande" src="Assets/MEDIA/' . $row -> foto . '"></a>';
+            echo "<td>  {$row -> descripcion}  </td></tr>";
+        }
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+function productosPorCategoriaNombre($id, $palabra ,$dbh){
+    $data = array(
+        'id' => $id,
+        'palabra' => "%".$palabra."%"
+    );
+    try{
+        $stmt = $dbh->prepare("SELECT id, nombre, foto, descripcion FROM productos WHERE id_categoria = :id AND nombre LIKE :palabra");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+
+            echo "<tr><td> {$row -> nombre} </td>";
             echo '<td> <a href=\'verProducto.php?id=' .$row -> id.'\'><img class ="imagenAnuncioMasGrande" src="Assets/MEDIA/' . $row -> foto . '"></a>';
             echo "<td>  {$row -> descripcion}  </td></tr>";
         }

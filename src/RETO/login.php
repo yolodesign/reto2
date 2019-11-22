@@ -12,7 +12,7 @@ include ("Session/Conf/PersistentManager.php");
         <input type="button" value="Sign in" onclick="loginSign('sign')">
     </div>
     <div class="login-item">
-        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return login()">
+        <form action="Session/DAO/UserDAO.php" method="post" class="form form-login"">
             <div class="form-field">
                 <label class="user" for="login-username"><span class="hidden">Email</span></label>
                 <input id="login-username" name="emailLogin" type="text" class="form-input" placeholder="Email" required>
@@ -48,7 +48,7 @@ include ("Session/Conf/PersistentManager.php");
         <form action="Session/DAO/UserDAO.php" method="post" class="form form-login" onsubmit="return signup()" enctype="multipart/form-data">
             <div class="form-field">
                 <label class="user" for="signup-name"><span class="hidden">Name</span></label>
-                <input id="signup-name" name="name" type="text" class="form-input" placeholder="Name" required>
+                <input id="signup-name" name="name" type="text" class="form-input" placeholder="Name">
             </div>
             <div class="form-field">
                 <label class="user" for="signup-lastname"><span class="hidden">Lastname</span></label>
@@ -88,7 +88,7 @@ include ("Session/Conf/PersistentManager.php");
             </div>
 
             <div class="form-field privacidad">
-                <input type="checkbox" id="signup-privacidad" value=""><p>I have read and agree to the <a href="Login.php">Terms and Conditions</a> and <a href="">Privacy Policy</a></p>
+                <input type="checkbox" id="signup-privacidad" value=""><p>I have read and agree to the <a href="login.php">Terms and Conditions</a> and <a href="">Privacy Policy</a></p>
             </div>
             <div class="form-field">
                 <input type="submit" value="Sign up">
@@ -98,6 +98,10 @@ include ("Session/Conf/PersistentManager.php");
         if (isset($_GET['error']) && $_GET['error'] == "signup"){
             echo "<div class=\"errorMLogin\">";
             echo "<p>Lo sentimos, el email ya está registrado</p>";
+            echo "</div>";
+        }elseif (isset($_GET['error']) && $_GET['error'] == "signup2"){
+            echo "<div class=\"errorMLogin\">";
+            echo "<p>Lo sentimos, pero debe de subir una foto</p>";
             echo "</div>";
         }
         ?>

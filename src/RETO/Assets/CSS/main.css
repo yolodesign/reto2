@@ -1445,8 +1445,27 @@ li a:visited{
         margin-left: 30%;
    
     }
+      #updatePerfil{
+          display: none;
+      }
+      #tusAnuncios{
+          display: none;
+      }
+      #botonesPerfilO{
+          display: none;
+      }
+      #botonLogOutPerfil{
+          display: none;
+      }
+      #datosPerfil{
+          width: 100%;
+      }
+      #perfil{
+          display: flex;
+          margin-bottom: 10%;
 
-
+      }
+      
     /* ---------------------------------------------------------------- */
     /* Footer */
     /* ---------------------------------------------------------------- */
@@ -1459,7 +1478,34 @@ li a:visited{
         list-style: none;
     }
 }
+@media (max-width: 640px) {
+    #container-login {
+        margin-bottom: 10%;
+    }
+    #container-signup{
+        margin-bottom: 31.5%;
+    }
+    #updatePerfil{
+        display: none;
+    }
+    #tusAnuncios{
+        display: none;
+    }
+    #botonesPerfilO{
+        display: none;
+    }
+    #botonLogOutPerfil{
+        display: none;
+    }
+    #datosPerfil{
+        width: 100%;
+    }
+    #perfil{
+        display: flex;
+        margin-bottom: 20%;
 
+    }
+}
 
 /* ==================================================================================== */
 /* VER MÁS*/
@@ -1484,8 +1530,8 @@ li a:visited{
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    padding-bottom: 7%;
-    margin-top: 5%;
+    padding-bottom: 10%;
+    margin-top: 7%;
 }
 #verMasProductos{
     text-align: left;
@@ -1494,6 +1540,7 @@ li a:visited{
 #verMasProductos, #verMasProductos tr{
     border: solid 3px black;
     background: #ed8caa;
+    height: 90%;
 
 }
 #verMasProductos td{
@@ -1507,6 +1554,7 @@ li a:visited{
 background: #821f3e;
 }
 #tituloCat{
+    padding-top: 3%;
     align-self: center;
 }
 #contenedorProductosVerMas{

@@ -172,7 +172,7 @@ function validateAndUploadImage($url, $correo, $queImagen)
 
 function añadirProducto($producto, $dbh)
 {
-    if (isset($_FILES['fotoProducto'])) {
+    if (isset($_FILES) && isset($_FILES['fotoProducto']) && !empty($_FILES['fotoProducto']['name'] && !empty($_FILES['fotoProducto']['tmp_name']))) {
         echo "prueba de coger foto";
         echo $_FILES['fotoProducto'];
         echo $_FILES['fotoProducto']['name'];
