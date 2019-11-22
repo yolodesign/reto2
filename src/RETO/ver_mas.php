@@ -12,7 +12,16 @@ include "buscador.php";
             <h1 id="tituloCat"><?php echo categoriaPorId($id, $dbh); ?></h1>
             <table id="verMasProductos">
                 <?php
-                productosPorCategoria($id, $dbh);
+                /**if(isset($_GET['id'])){
+                    if ($_GET['id'] == 0);
+                }**/
+                if (isset($_GET['palabra'])){
+                    $palabra = $_GET['palabra'];
+                    productosPorCategoriaNombre($id, $palabra, $dbh);
+                }else{
+                    productosPorCategoria($id, $dbh);
+                }
+
                 ?>
             </table>
         </div>
