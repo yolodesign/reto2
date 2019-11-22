@@ -52,12 +52,13 @@ function productosPorCategoria($id, $dbh){
         die($e->getMessage());
     }
 }
-function productosPorCategoriaNombre($id, $dbh){
+function productosPorCategoriaNombre($id, $palabra ,$dbh){
     $data = array(
-        'id' => $id
+        'id' => $id,
+        'palabra' => "%".$palabra."%"
     );
     try{
-        $stmt = $dbh->prepare("SELECT id, nombre, foto, descripcion FROM productos WHERE id_categoria = :id");
+        $stmt = $dbh->prepare("SELECT id, nombre, foto, descripcion FROM productos WHERE id_categoria = :id AND nombre LIKE :palabra");
         $stmt->setFetchMode(PDO::FETCH_OBJ);
         $stmt->execute($data);
         while($row = $stmt->fetch()){
