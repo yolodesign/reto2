@@ -52,6 +52,23 @@ function productosPorCategoria($id, $dbh){
         die($e->getMessage());
     }
 }
+/**
+function idCategoriaPorNombre($nombre, $dbh){
+    $data = array(
+        'nombre' => $nombre
+    );
+    try{
+        $stmt = $dbh->prepare("SELECT id FROM categorias WHERE nombre=:nombre");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->id;
+        }
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+    return $value;
+}**/
 function productosPorCategoriaNombre($id, $palabra ,$dbh){
     $data = array(
         'id' => $id,
@@ -88,4 +105,5 @@ function categoriaPorId($id, $dbh){
         die($e->getMessage());
     }
 }
+
 
