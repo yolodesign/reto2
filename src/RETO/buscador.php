@@ -2,11 +2,11 @@
 ?>
 
 <div class="s003">
-    <form>
+    <form action="ver_mas.php" method="get">
         <div class="inner-form">
             <div class="input-field first-wrap">
                 <div class="input-select">
-                    <select data-trigger="" name="choices-single-defaul">
+                    <select data-trigger="" name="nombre">
                         <option placeholder="">Categorias</option>
                             <?php
                             foreach ($categorias as $categoria){
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="input-field second-wrap">
-                <input id="search" type="text" placeholder="Que deseas buscar?"/>
+                <input id="search" type="text" name="palabra" placeholder="Que deseas buscar?"/>
             </div>
             <div class="input-field third-wrap">
                 <button class="btn-search" type="button">
