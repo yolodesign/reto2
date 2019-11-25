@@ -52,7 +52,7 @@ INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_p
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Cascos','Cascos por conexion jack que sirven para movil, PC o play/Xbox','cascospc.jpg','dir_prueba',NOW(),1,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('NVidia 1080','Tremenda grafica para tremendos jugadores, a que esperas?','1080.jpg','dir_prueba',NOW(),1,1);
 INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('NVidia 1070','Casi una tremenda grafica pero para autenticos jugadores, a que esperas?','1070.jpg','dir_prueba',NOW(),1,1);
-INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Pantalla AOC','Experiencia de juego envolvente con curvatura 1500R. El C24G1 cuenta con un panel VA Full HD con curvatura 1500R, carece de marco e incluye un soporte ergonomico. Dispone de 144 Hz, FreeSync y tiempo de respuesta de la imagen en movimiento (MPRT) de 1 ms, ademas de multiples caracteristicas especificas para juegos.','aoc.jpg','dir_prueba',NOW(),1,1);
+INSERT INTO productos (nombre,descripcion,foto,direccion,fecha,id_categoria,id_perfiles) values ('Pantalla AOC','Experiencia de juego envolvente con curvatura 1500R.','aoc.jpg','dir_prueba',NOW(),1,1);
 
 /*Alimentacion y Bebidas*/
 
