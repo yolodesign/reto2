@@ -52,23 +52,7 @@ function productosPorCategoria($id, $dbh){
         die($e->getMessage());
     }
 }
-/**
-function idCategoriaPorNombre($nombre, $dbh){
-    $data = array(
-        'nombre' => $nombre
-    );
-    try{
-        $stmt = $dbh->prepare("SELECT id FROM categorias WHERE nombre=:nombre");
-        $stmt->setFetchMode(PDO::FETCH_OBJ);
-        $stmt->execute($data);
-        while($row = $stmt->fetch()){
-            $value = $row->id;
-        }
-    }catch (PDOException $e){
-        die($e->getMessage());
-    }
-    return $value;
-}**/
+
 function productosPorCategoriaNombre($id, $palabra ,$dbh){
     $data = array(
         'id' => $id,
@@ -88,6 +72,23 @@ function productosPorCategoriaNombre($id, $palabra ,$dbh){
         die($e->getMessage());
     }
 }
+
+function seleccionarTodosPorCategoria($dbh){
+    try{
+        $stmt = $dbh->prepare("SELECT id, nombre, foto, descripcion FROM productos");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute();
+        while($row = $stmt->fetch()){
+
+            echo "<tr><td> {$row -> nombre} </td>";
+            echo '<td class="fileImagenesAnuncio"> <a href=\'verProducto.php?id=' .$row -> id.'\'><img class ="imagenAnuncioMasGrande" src="Assets/MEDIA/' . $row -> foto . '"></a>';
+            echo "<td>  {$row -> descripcion}  </td></tr>";
+        }
+    } catch (PDOException $e) {
+        die($e->getMessage());
+    }
+}
+
 function categoriaPorId($id, $dbh){
     $data = array(
         'id' => $id
