@@ -42,6 +42,45 @@ if (isset($_POST["borrarP"])){
     borrarProductoById($_GET['id'], $dbh);
     header('Location: ../../index.php');
 }
+if (isset($_POST["nombreBuscador"]) && isset($_POST["palabra"])){
+
+        if ($_POST["nombreBuscador"] != "Categorias"){
+            $dbh = connect();
+            $id = idCategoriaPorNombreBuscador($_POST["nombreBuscador"], $dbh);
+
+            if ($_POST["palabra"] != ""){
+                $id = idCategoriaPorNombreBuscador($_POST["nombreBuscador"], $dbh);
+                header('Location: ../../ver_mas.php?id=' . $id .'&palabra='.$_POST["palabra"]);
+            }else{
+                header('Location: ../../ver_mas.php?id=' . $id);
+            }
+        }else{
+            if ($_POST["palabra"] != ""){
+                header('Location: ../../index.php');
+            }else{
+                header('Location: ../../ver_mas.php');
+            }
+
+        }
+}
+
+function idCategoriaPorNombreBuscador($nombre, $dbh){
+    $data = array(
+        'nombre' => $nombre
+    );
+    try{
+        $stmt = $dbh->prepare("SELECT id FROM categorias WHERE nombre=:nombre");
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+        $stmt->execute($data);
+        while($row = $stmt->fetch()){
+            $value = $row->id;
+        }
+    }catch (PDOException $e){
+        die($e->getMessage());
+    }
+    return $value;
+}
+
 function consulta()
 {
     $dbh = connect();
