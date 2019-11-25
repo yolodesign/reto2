@@ -17,13 +17,18 @@ $id = $_GET['id'];
             <h1 id="tituloCat"><?php echo categoriaPorId($id, $dbh); ?></h1>
             <table id="verMasProductos">
                 <?php
-                if (isset($_GET['palabra'])){
-                    $palabra = $_GET['palabra'];
-                    //$id = idCategoriaPorNombre($_GET['nombreCat'], $dbh);
-                    productosPorCategoriaNombre($id, $palabra, $dbh);
+                if (isset($_GET['id'])){
+                    if (isset($_GET['palabra'])){
+                        $palabra = $_GET['palabra'];
+                        //$id = idCategoriaPorNombre($_GET['nombreCat'], $dbh);
+                        productosPorCategoriaNombre($id, $palabra, $dbh);
+                    }else{
+                        productosPorCategoria($id, $dbh);
+                    }
                 }else{
-                    productosPorCategoria($id, $dbh);
+                        seleccionarTodosPorCategoria($dbh);
                 }
+
 
                 ?>
             </table>
